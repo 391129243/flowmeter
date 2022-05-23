@@ -1,0 +1,131 @@
+[BreakpointUsageDialog]
+Placement=_ 502 296 939 574
+[DebugChecksum]
+Checksum=-2081233286
+[DisAssemblyWindow]
+NumStates=_ 1
+State 1=_ 1
+[InstructionProfiling]
+Enabled=_ 0
+[CodeCoverage]
+Enabled=_ 0
+[StackPlugin]
+Enabled=1
+OverflowWarningsEnabled=1
+WarningThreshold=90
+SpWarningsEnabled=1
+WarnHow=0
+UseTrigger=1
+TriggerName=main
+LimitSize=0
+ByteLimit=50
+[State Storage]
+Control Register=0
+[Sequencer]
+Control Register=0
+NextState0=0
+NextState1=0
+[Action Register]
+Break=0
+State Storage=0
+[TraceHelper]
+Enabled=0
+ShowSource=1
+[Stack]
+FillEnabled=0
+OverflowWarningsEnabled=1
+WarningThreshold=90
+SpWarningsEnabled=1
+WarnLogOnly=1
+UseTrigger=1
+TriggerName=main
+LimitSize=0
+ByteLimit=50
+[CallStack]
+ShowArgs=0
+[Disassembly]
+MixedMode=1
+[InterruptLog]
+LogEnabled=0
+SumEnabled=0
+GraphEnabled=0
+ShowTimeLog=1
+ShowTimeSum=1
+SumSortOrder=0
+[DataLog]
+LogEnabled=0
+SumEnabled=0
+GraphEnabled=0
+ShowTimeLog=1
+ShowTimeSum=1
+[Breakpoints2]
+Count=0
+[Interrupts]
+Enabled=1
+[MemoryMap]
+Enabled=0
+Base=0
+UseAuto=0
+TypeViolation=1
+UnspecRange=1
+ActionState=1
+[Trace1]
+Enabled=0
+ShowSource=1
+[watch_formats]
+Fmt0={W}0:g_calibrateResult	0	7
+Fmt1={W}0:g_tdcStatusRegister	4	4
+Fmt2={W}0:p4	4	0
+[Breakpoints]
+Bp0=_ "STD_CODE" "{$PROJ_DIR$}.57.8" 0 0 0 0 "" 0 ""
+Bp1=_ "STD_CODE" "{$PROJ_DIR$\main.c}.27.4" 0 0 0 0 "" 0 ""
+Bp2=_ "STD_CODE" "{$PROJ_DIR$\TDC-GP22.c}.609.8" 1 0 0 0 "" 0 ""
+Count=3
+[FET]
+Clock mode=14
+Extended Clock mode=-1
+Secure Password=
+Extended Clock Control Enable=1
+Advanced Extended Clock Control=1
+Emulation mode=0
+Free running=0
+Shutting Down=1
+[Memory Dump]
+Start address=
+Lenghth=
+Address info=0
+Format=0
+Dump registers=0
+PC=0
+SP=0
+SR=0
+all registers=0
+File name=
+[Log file]
+LoggingEnabled=_ 0
+LogFile=_ ""
+Category=_ 0
+[TermIOLog]
+LoggingEnabled=_ 0
+LogFile=_ ""
+[Aliases]
+A0=_ "C:\Documents and Settings\Administrator\桌面\GP22超声波水表V3.2资料-4MHz\超声水表程序GP22-V3.2-4MHz\TimerB0.c" ""
+A1=_ "C:\Documents and Settings\Administrator\桌面\GP22超声波水表V3.2资料-8MHz-改LCD\GP22超声波水表V3.2资料-8MHz-改LCD\GP22超声波水表V3.0资料-8MHz-改LCD\GP22超声波水表V3.0资料-8MHz\超声水表程序GP22-V3.2-4MHz\Flash.c" ""
+A2=_ "C:\Documents and Settings\Administrator\桌面\GP22超声波水表V3.3资料-4MHz\超声水表程序GP22-V3.2-4MHz\IR.c" ""
+A3=_ "C:\Documents and Settings\Administrator\桌面\GP22超声波水表V3.3资料-4MHz\超声水表程序GP22-V3.2-4MHz\timerB0.c" ""
+A4=_ "C:\Documents and Settings\Administrator\桌面\GP22超声波水表V3.4资料-4MHz\超声水表程序GP22-V3.2-4MHz\IR.c" ""
+A5=_ "C:\Documents and Settings\Administrator\桌面\GP22超声波水表V3.4资料-4MHz\超声水表程序GP22-V3.2-4MHz\main.c" ""
+A6=_ "C:\Documents and Settings\Administrator\桌面\超声水表程序GP22-V3.0\lcd.c" ""
+A7=_ "C:\Documents and Settings\Administrator\桌面\超声水表程序GP22-V4.1-4MHz\TDC-GP22.c" ""
+A8=_ "C:\Users\Administrator\Desktop\超声水表程序GP22-V4.1-4MHz\IR.c" ""
+A9=_ "C:\Users\Administrator\Desktop\超声水表程序GP22-V4.1-4MHz\timerB0.c" ""
+Count=10
+SuppressDialog=1
+[CallStackLog]
+Enabled=0
+[DriverProfiling]
+Enabled=0
+Mode=0
+Graph=0
+Symbiont=0
+Exclusions=
