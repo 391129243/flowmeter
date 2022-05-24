@@ -225,7 +225,7 @@ extern float         g_averageTimeResultDown;
 extern float         g_PW1STValue;
 extern long         g_timeOfFlight;
 extern long         g_timeOfFlight_ave;
-extern long         g_timeOfFlightBuffer[10];
+extern long         g_timeOfFlightBuffer[60];
 extern long         g_tofDisplay;
 extern float         g_waterLineSpeed;
 extern float         g_waterSurfaceSpeed;

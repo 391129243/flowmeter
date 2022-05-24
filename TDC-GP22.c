@@ -434,8 +434,8 @@ void initConfigureRegisterTDCGP21( void )
   powerOnResetTDCGP21();
   for(unsigned int i = 0; i < 65000; i++);
   initMeasureTDCGP21();
-  //configureRegisterTDCGP21( WRITE_REG0, 0xD1C7E800 );
-  configureRegisterTDCGP21( WRITE_REG0, 0xD3C7E800 );     /// Configure TDC register.
+  configureRegisterTDCGP21( WRITE_REG0, 0xD1C7E800 );
+  //configureRegisterTDCGP21( WRITE_REG0, 0xD3C7E800 );     /// Configure TDC register.
 	// 设置低四位超声波发射的脉冲数为20个；            4M陶瓷晶振，1MHz脉冲，设置时钟信号产生脉冲分频因数为3=4分频；
 	// 设置校准陶瓷晶振需要32.768KHz周期数为3=16个周期=488.28125us；                  设置高速参考时钟CLKHS分频因数为0=不分频；
 	// 设置高速参考时钟CLKHS起振后和开始测量前的时间间隔为1：一直开启;               设置温度测量端口数为1=4个温度测量端口；
@@ -451,8 +451,8 @@ void initConfigureRegisterTDCGP21( void )
 	// 设置fire脉冲作为触发TDC_Start信号为1=应用fire内部触发Start；          设置EN_START管脚功能为1=START_TDC信号输出；
 	// 设置FIRE_IN管脚功能为7=32KHz 信号输出；
   configureRegisterTDCGP21( WRITE_REG2, 0xA0140002 );
-  //configureRegisterTDCGP21( WRITE_REG2, 0xa00c8002 );
-  //configureRegisterTDCGP21( WRITE_REG2, 0xa0040002 );//8us
+  configureRegisterTDCGP21( WRITE_REG2, 0xa0050002 );//10us
+  configureRegisterTDCGP21( WRITE_REG2, 0xa0040002 );//8us
 	// 设置TimeOut(溢出)中断触发有效，EndHits(达到预定采样数)中断触发无效，ALU(ALU数据处理完成)中断触发有效，中断都开启；
 	// 设置通道2的边沿敏感性为0=上升沿或则下降沿,这里仅应用上升沿；
 	// 设置通道1的边沿敏感性为0=上升沿或则下降沿,这里仅应用上升沿；
@@ -467,13 +467,15 @@ void initConfigureRegisterTDCGP21( void )
 	// 设置内第一波检测到后，第3个stop是接收第几个回波周期，这里为A=第一波后的第10个回波为第3个stop;
 	// 设置内第一波检测到后，第2个stop是接收第几个回波周期，这里为9=第一波后的第9个回波为第2个stop;
         // 设置内第一波检测到后，第1个stop是接收第几个回波周期，这里为8=第一波后的第8个回波为第1个stop;
-  configureRegisterTDCGP21( WRITE_REG4, 0x20004A04 );
+  //configureRegisterTDCGP21( WRITE_REG4, 0x20004A04 );
+  //configureRegisterTDCGP21( WRITE_REG4, 0x20000a04 );
+  configureRegisterTDCGP21( WRITE_REG4, 0x20003f04 );
 	// 这里有十五个保留位；
         // 设置是否关闭脉冲宽度测量功能，这里为0=开启该功能；
         // 设置第一波识别的边沿敏感，这里为0=上升沿；
-        // 设置是否开启额外的offset +20mV，这里为1=关闭该功能;
+        // 设置是否开启额外的offset +20mV，这里为1=开启该功能;
         // 设置是否开启额外的offset -20mV，这里为0=关闭该功能；
-	// 设置比较器offset，单位为1mV, 这里为F=+10mV;这里总的offset为 (+10mV)+(+10mV) = +30mV;
+	// 设置比较器offset，单位为1mV, 这里为F=+10mV;这里总的offset为 (+20mV)+(+10mV) = +30mV;
   configureRegisterTDCGP21( WRITE_REG5, 0x40000005 );
 	// 设置关闭FIRE_UP，先从FIRE_DOWN下游测量开始,交替的给上游下游换能器进行驱动测量；
 	// 设置Start通道是否外加噪声为0=关闭噪声单元；                设置是否关闭相位噪声单元为0=开启相位噪声移位单元；
@@ -588,6 +590,8 @@ void ultrasonicTimeOfFlightMeasure(void)
      unsigned int i;
      unsigned long temp,temp1;
      
+     DelayNS(10000);//等待至少2.8us 
+     
      //unsigned char time=BCDtoDec(g_tagRTC.g_Second);
      if((time++%30==0)&&(tempMeasureOk==0)) //2 second测温度一次
      {
@@ -619,7 +623,7 @@ void ultrasonicTimeOfFlightMeasure(void)
        g_averageTimeResultDown = g_timeResult3/3;
      }
      configureRegisterTDCGP21( WRITE_REG5, 0x20000005 );//切换上游测量
-     DelayNS(10);//等待至少2.8us 
+     DelayNS(10000);//等待至少2.8us 
      
      initMeasureTDCGP21();
      timeFlightStartTDCGP21();
@@ -638,11 +642,11 @@ void ultrasonicTimeOfFlightMeasure(void)
        g_averageTimeResultUp = g_timeResult3/3;    
      }
      configureRegisterTDCGP21( WRITE_REG5, 0x40000005 );//切换下游测量
-     DelayNS(10);//等待至少2.8us 
+     DelayNS(10000);//等待至少2.8us 
      
      if( (0 == g_downTimeOutFlag) && (0 == g_upTimeOutFlag) )
      {
-       if( ( (g_averageTimeResultDown<=10)||(g_averageTimeResultDown>=400) ) || ( (g_averageTimeResultUp<=10)||(g_averageTimeResultUp>=400) ) )
+       if( ( (g_averageTimeResultDown<=10)||(g_averageTimeResultDown>=200) ) || ( (g_averageTimeResultUp<=10)||(g_averageTimeResultUp>=200) ) )
        {       
          Display_Alarm_Icon(1);
          initConfigureRegisterTDCGP21();
@@ -661,22 +665,22 @@ void ultrasonicTimeOfFlightMeasure(void)
        Display_Alarm_Icon(0);
        
 
-         for( i = 9; i > 0; i-- )  //将最新一次的飞行时间差采样，送入缓冲区（8 bits）
+         for( i = 59; i > 0; i-- )  //将最新一次的飞行时间差采样，送入缓冲区（8 bits）
           {
             g_timeOfFlightBuffer[i] = g_timeOfFlightBuffer[i-1];
           }
           g_timeOfFlightBuffer[0] = g_timeOfFlight;
 
-          long tempValueBuffer[10];  // 排序，求平均
-          for( i = 0; i < 10; i++ )
+          long tempValueBuffer[60];  // 排序，求平均
+          for( i = 0; i < 60; i++ )
           {
             tempValueBuffer[i] = g_timeOfFlightBuffer[i];
           }
           unsigned j, k;
           long tempValue;
-          for( j = 0; j < 10-1; j++ )
+          for( j = 0; j < 60-1; j++ )
           {
-            for( k = 0; k < 10-j-1; k++ )
+            for( k = 0; k < 60-j-1; k++ )
             {
               if( tempValueBuffer[k] > tempValueBuffer[k+1] )
               {
@@ -692,11 +696,11 @@ void ultrasonicTimeOfFlightMeasure(void)
           //  tempValueSum += tempValueBuffer[i];
           //}
           //tempValueSum = tempValueSum/8;
-          for( i = 2; i < 8; i++ )
+          for( i = 20; i < 40; i++ )
           {
             tempValueSum += tempValueBuffer[i];
           }
-          tempValueSum = tempValueSum/6;
+          tempValueSum = tempValueSum/20;
           g_timeOfFlight_ave = tempValueSum;
           g_tofDisplay = tempValueSum;
 
