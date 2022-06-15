@@ -33,8 +33,8 @@ typedef struct {
 	unsigned long 	TotalVolumeDecimal;  //Decimal*10000
 	unsigned long 	TotalVolumeSave; // 1L/10000
 	unsigned long 	TotalVolumeDecimalSave;  //Decimal*10000        
-	float	InstantFlowRate;	//当前流速
-	float	InstantFrequence;	//当前频率
+	double	InstantFlowRate;	//当前流速
+	double	InstantFrequence;	//当前频率
 	unsigned short	InstantInterval;	//
 } FLOW_ST;
 
@@ -59,17 +59,17 @@ typedef struct {
 	unsigned char 		WaterFlow_Direction;	//当前流向
 	unsigned char 		WaterFlow_Warn;			//报警
 	unsigned short		Interval;				//timer interval by msec
-	float		TotalNormalCount;
-	float		TotalReverseCount;
+	double		TotalNormalCount;
+	double		TotalReverseCount;
 }WFM_INFO;
 
 typedef struct {
-	float Normal_SumCnt;
-	float Reverse_SumCnt;
+	double Normal_SumCnt;
+	double Reverse_SumCnt;
 	unsigned short NormalDuration;
 	unsigned short ReverseDuration;
-	float NormalCntPre;
-	float ReverseCntPre;
+	double NormalCntPre;
+	double ReverseCntPre;
 } WFMCOUNTINFO;
 
 extern WFMCOUNTINFO WFMCountInfo;
@@ -201,37 +201,52 @@ extern volatile unsigned char g_tdcInterruptFlag;
 extern unsigned int  g_tdcStatusRegister;
 extern unsigned long g_tdcTimeOutCount;
 
-extern float         g_calibrateResult;
-extern float         g_calibrateCorrectionFactor;
+extern double         g_calibrateResult;
+extern double         g_calibrateCorrectionFactor;
 
 extern unsigned char g_numberOfTemperatureMeasure;
-extern float         g_temperature1Result0;
-extern float         g_temperature1Result1;
-extern float         g_temperature1Result2;
-extern float         g_temperature1Result3;
-extern float         g_temperature2Result0;
-extern float         g_temperature2Result1;
-extern float         g_temperature2Result2;
-extern float         g_temperature2Result3;
-extern float         g_RhotByRref;
-extern float         g_RcoldByRref;
+extern double         g_temperature1Result0;
+extern double         g_temperature1Result1;
+extern double         g_temperature1Result2;
+extern double         g_temperature1Result3;
+extern double         g_temperature2Result0;
+extern double         g_temperature2Result1;
+extern double         g_temperature2Result2;
+extern double         g_temperature2Result3;
+extern double         g_RhotByRref;
+extern double         g_RcoldByRref;
 
-extern float         g_timeResult0;
-extern float         g_timeResult1;
-extern float         g_timeResult2;
-extern float         g_timeResult3;
-extern float         g_averageTimeResultUp;
-extern float         g_averageTimeResultDown;
-extern float         g_PW1STValue;
+
+
+extern double         g_timeResultup0;
+extern double         g_timeResultup1;
+extern double         g_timeResultup2;
+extern double         g_timeResultup3;
+
+extern double         g_timeResultdown0;
+extern double         g_timeResultdown1;
+extern double         g_timeResultdown2;
+extern double         g_timeResultdown3;
+
+extern double         g_timeResult0;
+extern double         g_timeResult1;
+extern double         g_timeResult2;
+extern double         g_timeResult3;
+extern double         g_averageTimeResultUp;
+extern double         g_averageTimeResultDown;
+extern double         g_PW1STValue;
 extern long         g_timeOfFlight;
 extern long         g_timeOfFlight_ave;
-extern long         g_timeOfFlightBuffer[60];
+
+extern long         g_timeOfFlightBuffer[100];
+extern long         tempValueBuffer[100];
+
 extern long         g_tofDisplay;
-extern float         g_waterLineSpeed;
-extern float         g_waterSurfaceSpeed;
-extern float         g_waterSurfaceSpeedDisp;
-extern float         g_accumulationAmount;
-extern float         g_tempAccumulationAmount;
+extern double         g_waterLineSpeed;
+extern double         g_waterSurfaceSpeed;
+extern double         g_waterSurfaceSpeedDisp;
+extern double         g_accumulationAmount;
+extern double         g_tempAccumulationAmount;
 extern unsigned char g_hitCount;
 extern unsigned char g_streamCount;
 extern unsigned char g_upStreamFlag;
@@ -246,8 +261,8 @@ extern unsigned char g_valueOpenFlag;//阀门开关标志
 extern unsigned char g_valueOpenCount;//阀门开关标志
 
 extern unsigned int  g_tempValue;
-extern float         g_tempHot;
-extern float         g_tempClod;
+extern double         g_tempHot;
+extern double         g_tempClod;
 extern unsigned int  g_tempTableP;
 
 #endif  // PARAMS_H__

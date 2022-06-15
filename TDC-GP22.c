@@ -434,7 +434,8 @@ void initConfigureRegisterTDCGP21( void )
   powerOnResetTDCGP21();
   for(unsigned int i = 0; i < 65000; i++);
   initMeasureTDCGP21();
-  configureRegisterTDCGP21( WRITE_REG0, 0xD1C7E800 );
+  //configureRegisterTDCGP21( WRITE_REG0, 0xD1C7E800 );
+  configureRegisterTDCGP21( WRITE_REG0, 0xd1c7d800 );
   //configureRegisterTDCGP21( WRITE_REG0, 0xD3C7E800 );     /// Configure TDC register.
 	// 设置低四位超声波发射的脉冲数为20个；            4M陶瓷晶振，1MHz脉冲，设置时钟信号产生脉冲分频因数为3=4分频；
 	// 设置校准陶瓷晶振需要32.768KHz周期数为3=16个周期=488.28125us；                  设置高速参考时钟CLKHS分频因数为0=不分频；
@@ -443,23 +444,28 @@ void initConfigureRegisterTDCGP21( void )
 	// 设置温度测量参考时钟信号为1=128*CLSHS；             设置ALU中的校准为1=校准开启；
 	// 设置TDC运行中的自动校准为0=在测量后自动校准；               设置测量范围为1=选择测量范围2（500ns~4ms）,范围2测量>2μs的时差；
 	// 设置stop1,stop2,start信号为0=非反向输入信号（上升沿）；
-  configureRegisterTDCGP21( WRITE_REG1, 0x21444001 );
+  //configureRegisterTDCGP21( WRITE_REG1, 0x21444001 );
+  configureRegisterTDCGP21( WRITE_REG1, 0x2142c001 );
+  //configureRegisterTDCGP21( WRITE_REG1, 0x2144c001 );
+  
 	// 定义ALU数据处理的计算公式：（测量范围1：HIT1-HIT2）,（测量范围2：HIT2-start）
 	// 设置HIT2为2=1.Stop Ch1（Stop通道1的第一个接收信号）；                    设置HIT1为1=Start（Start启动信号）；
 	// 设置快速初始化功能为0=关闭该功能；                  这里有一个保留位；                    设置Stop通道2的预期脉冲数为0=关闭Stop通道2；
 	// 设置设置Stop通道1的预期脉冲接收数为4=4个脉冲(实际只有3个，Start算一个)；           设置32.768KHz晶振的低功耗为0=低电流；
 	// 设置fire脉冲作为触发TDC_Start信号为1=应用fire内部触发Start；          设置EN_START管脚功能为1=START_TDC信号输出；
 	// 设置FIRE_IN管脚功能为7=32KHz 信号输出；
-  configureRegisterTDCGP21( WRITE_REG2, 0xA0140002 );
-  configureRegisterTDCGP21( WRITE_REG2, 0xa0050002 );//10us
-  configureRegisterTDCGP21( WRITE_REG2, 0xa0040002 );//8us
+  //configureRegisterTDCGP21( WRITE_REG2, 0xA0140002 );
+  //configureRegisterTDCGP21( WRITE_REG2, 0xa0050002 );//10us
+  //configureRegisterTDCGP21( WRITE_REG2, 0xa0040002 );//8us
+    configureRegisterTDCGP21( WRITE_REG2, 0xe0040002 );//8us
 	// 设置TimeOut(溢出)中断触发有效，EndHits(达到预定采样数)中断触发无效，ALU(ALU数据处理完成)中断触发有效，中断都开启；
 	// 设置通道2的边沿敏感性为0=上升沿或则下降沿,这里仅应用上升沿；
 	// 设置通道1的边沿敏感性为0=上升沿或则下降沿,这里仅应用上升沿；
 	// 设置内部允许Stop1通道接收第1个信号的延迟时间为DELVAL1=160.0,第一个stop脉冲在40μs后才会被接受
 	// (共19位,其中14位整数部分,5位小数部分)；
   //configureRegisterTDCGP21( WRITE_REG3, 0xF8A24803 );
-  configureRegisterTDCGP21( WRITE_REG3, 0xf8718503 );
+  //configureRegisterTDCGP21( WRITE_REG3, 0xf8718503 );
+  configureRegisterTDCGP21( WRITE_REG3, 0xf0510303 );
 	// 设置在测量范围2，自动计算所有开启获得的脉冲TOF，并将结果的平均值写入结果寄存器3当中，这里为1=开启该功能；
         // 设置是否开启第一波检测功能，这里为1=开启该功能；
 	// 设置由于timeout强迫ALU写入0xFFFFFFFF到结果寄存器的功能为1=开启该功能,防止读取状态寄存器的时间不够；
@@ -467,21 +473,30 @@ void initConfigureRegisterTDCGP21( void )
 	// 设置内第一波检测到后，第3个stop是接收第几个回波周期，这里为A=第一波后的第10个回波为第3个stop;
 	// 设置内第一波检测到后，第2个stop是接收第几个回波周期，这里为9=第一波后的第9个回波为第2个stop;
         // 设置内第一波检测到后，第1个stop是接收第几个回波周期，这里为8=第一波后的第8个回波为第1个stop;
-  //configureRegisterTDCGP21( WRITE_REG4, 0x20004A04 );
-  //configureRegisterTDCGP21( WRITE_REG4, 0x20000a04 );
-  configureRegisterTDCGP21( WRITE_REG4, 0x20003f04 );
+  //configureRegisterTDCGP21( WRITE_REG4, 0x10004f04 );
+  
+  //configureRegisterTDCGP21( WRITE_REG4, 0x20004a04 );
+  
+  
+  
+ //configureRegisterTDCGP21( WRITE_REG4, 0x1000bf04 );
+  
+   configureRegisterTDCGP21( WRITE_REG4, 0x10009604 );
+  
 	// 这里有十五个保留位；
         // 设置是否关闭脉冲宽度测量功能，这里为0=开启该功能；
         // 设置第一波识别的边沿敏感，这里为0=上升沿；
         // 设置是否开启额外的offset +20mV，这里为1=开启该功能;
         // 设置是否开启额外的offset -20mV，这里为0=关闭该功能；
 	// 设置比较器offset，单位为1mV, 这里为F=+10mV;这里总的offset为 (+20mV)+(+10mV) = +30mV;
-  configureRegisterTDCGP21( WRITE_REG5, 0x40000005 );
+  configureRegisterTDCGP21( WRITE_REG5, 0x80000005 );
+  //configureRegisterTDCGP21( WRITE_REG5, 0x50000005 );
 	// 设置关闭FIRE_UP，先从FIRE_DOWN下游测量开始,交替的给上游下游换能器进行驱动测量；
 	// 设置Start通道是否外加噪声为0=关闭噪声单元；                设置是否关闭相位噪声单元为0=开启相位噪声移位单元；
 	// 设置用于声环法的脉冲序列的重复次数为0=不重复，无需声环法；               设置脉冲序列的相位是否需要改变为0=不改变其相位；
   //configureRegisterTDCGP21( WRITE_REG6, 0xC0E06106 );
-  configureRegisterTDCGP21( WRITE_REG6, 0xc0e06006 );
+  //configureRegisterTDCGP21( WRITE_REG6, 0xc0e06006 );
+  configureRegisterTDCGP21( WRITE_REG6, 0xc0006006 );
 	// 设置是否开启超声波流量测量中需要的模拟测量部分为1=开启模拟部分测量；
 	// 设置是否应用内部的温度测量用的施密特触发器为1=应用内部施密特触发器；                          这里有一个保留位；
         // 设置比较器offset，这里为0=0mV;
@@ -585,12 +600,15 @@ void tempMeasure( void )
 unsigned char displayFre;
 unsigned char tempMeasureOk;
 unsigned int time = 0;
+
+unsigned int timecalibratorcount = 0;
+
 void ultrasonicTimeOfFlightMeasure(void)
 {
      unsigned int i;
      unsigned long temp,temp1;
      
-     DelayNS(10000);//等待至少2.8us 
+     
      
      //unsigned char time=BCDtoDec(g_tagRTC.g_Second);
      if((time++%30==0)&&(tempMeasureOk==0)) //2 second测温度一次
@@ -621,9 +639,16 @@ void ultrasonicTimeOfFlightMeasure(void)
        temp = readRegisterTDCGP21(READ_RES3);
        g_timeResult3 = dotHextoDotDec(temp);
        g_averageTimeResultDown = g_timeResult3/3;
+       
+       temp = readRegisterTDCGP21(READ_RES0);
+       g_timeResultdown0 = dotHextoDotDec(temp);
+       temp = readRegisterTDCGP21(READ_RES1);
+       g_timeResultdown1 = dotHextoDotDec(temp);
+       temp = readRegisterTDCGP21(READ_RES2);
+       g_timeResultdown2 = dotHextoDotDec(temp);
      }
      configureRegisterTDCGP21( WRITE_REG5, 0x20000005 );//切换上游测量
-     DelayNS(10000);//等待至少2.8us 
+     DelayNS(100);//等待至少2.8us 
      
      initMeasureTDCGP21();
      timeFlightStartTDCGP21();
@@ -639,39 +664,60 @@ void ultrasonicTimeOfFlightMeasure(void)
      {          
        temp = readRegisterTDCGP21(READ_RES3);
        g_timeResult3 = dotHextoDotDec(temp);
-       g_averageTimeResultUp = g_timeResult3/3;    
+       g_averageTimeResultUp = g_timeResult3/3;  
+       temp = readRegisterTDCGP21(READ_RES0);
+       g_timeResultup0 = dotHextoDotDec(temp);
+       temp = readRegisterTDCGP21(READ_RES1);
+       g_timeResultup1 = dotHextoDotDec(temp);
+       temp = readRegisterTDCGP21(READ_RES2);
+       g_timeResultup2 = dotHextoDotDec(temp);
      }
      configureRegisterTDCGP21( WRITE_REG5, 0x40000005 );//切换下游测量
-     DelayNS(10000);//等待至少2.8us 
+     //DelayNS(100);//等待至少2.8us 
      
      if( (0 == g_downTimeOutFlag) && (0 == g_upTimeOutFlag) )
      {
-       if( ( (g_averageTimeResultDown<=10)||(g_averageTimeResultDown>=200) ) || ( (g_averageTimeResultUp<=10)||(g_averageTimeResultUp>=200) ) )
+       if( ( (g_averageTimeResultDown<=10)||(g_averageTimeResultDown>=400) ) || ( (g_averageTimeResultUp<=10)||(g_averageTimeResultUp>=400) ) )
        {       
          Display_Alarm_Icon(1);
          initConfigureRegisterTDCGP21();
          return;
        }
-         
-       calibrateResonator();//高频时钟校准
+       if(timecalibratorcount++ > 10000){
+         calibrateResonator();//高频时钟校准
+       }
+       
+       g_PW1STValue = 0.0;
      
        g_PW1STValue = readPW1STRegisterTDCGP22();//获取首波脉宽比
+       
+       if(g_PW1STValue<0.3){/////如果 PW1ST < 0.3 信号太弱, 则发出报警信号。
+         
+         Display_Alarm_Icon(1);
+         initConfigureRegisterTDCGP21();
+         return;
+       }
      
-       g_averageTimeResultDown = g_averageTimeResultDown*0.25/g_calibrateCorrectionFactor;
-       g_averageTimeResultUp = g_averageTimeResultUp*0.25/g_calibrateCorrectionFactor;
-       g_timeOfFlight = (long)((g_averageTimeResultDown - g_averageTimeResultUp)*1000000);     
+       //g_averageTimeResultDown = g_averageTimeResultDown*0.25/g_calibrateCorrectionFactor;
+       //g_averageTimeResultUp = g_averageTimeResultUp*0.25/g_calibrateCorrectionFactor;
+       //g_averageTimeResultDown = g_averageTimeResultDown*0.25;
+       //g_averageTimeResultUp = g_averageTimeResultUp*0.25;
+       //g_timeOfFlight = (long)((g_averageTimeResultDown - g_averageTimeResultUp)*1000000*0.25);    
+       g_timeOfFlight = (long)((g_averageTimeResultDown - g_averageTimeResultUp)*1000000);    
+       
+       DelayNS(100);//等待至少2.8us 
        
        
        Display_Alarm_Icon(0);
        
 
-         for( i = 59; i > 0; i-- )  //将最新一次的飞行时间差采样，送入缓冲区（8 bits）
+         for( i = 60; i > 0; i-- )  //将最新一次的飞行时间差采样，送入缓冲区（8 bits）
           {
             g_timeOfFlightBuffer[i] = g_timeOfFlightBuffer[i-1];
           }
           g_timeOfFlightBuffer[0] = g_timeOfFlight;
 
-          long tempValueBuffer[60];  // 排序，求平均
+          
           for( i = 0; i < 60; i++ )
           {
             tempValueBuffer[i] = g_timeOfFlightBuffer[i];
@@ -732,15 +778,18 @@ void ultrasonicTimeOfFlightMeasure(void)
           // 反射式管段，采用速度差法计算管段线平均速度公式：V = L/2*(Ttof/Tdown/Tup),L = 0.06
           // 这里线速度的单位为：mm/s
           //g_waterLineSpeed = 0.06/2*(tempValueSum/g_averageTimeResultDown/g_averageTimeResultUp)*1000;
-          g_waterLineSpeed = tempValueSum/(g_averageTimeResultDown-20)/(g_averageTimeResultUp-20)*30;
+          //g_waterLineSpeed = tempValueSum/(g_averageTimeResultDown-20)/(g_averageTimeResultUp-20)*30;
           //g_waterLineSpeed = 0.0183027*tempValueSum;
           // 测试管段DN = 20mm
           // 线速度转换为面速度这里简单地处理为：面速度=线速度*3/4，在实际应用中，要用分段直线去拟合（建议参考论文：单声道超声水表测量特性分段校正方法的研究，宁波水表 ：姚灵，王让定， 左富强）
           // 瞬时流速qv = S*Lv = Kh*(3.1415926*0.02*0.02/4)*g_waterLineSpeed
           // 这里面速度的单位为：L/s
           //g_waterSurfaceSpeed = 0.75*(3.1415926*0.02*0.02/4)*g_waterLineSpeed*1000;
-          g_waterSurfaceSpeed = g_waterLineSpeed*0.235619445;
+          //g_waterSurfaceSpeed = g_waterLineSpeed*0.235619445;
           
+          g_waterLineSpeed = 1450.0 *1450.0 *tempValueSum / 2 / 0.0045 / 0.707 /1000000/1000000 ;
+          
+          g_waterSurfaceSpeed = 0.75 * g_waterLineSpeed  * 0.5 * 0.5 * 60;
              /*if( tempValueSum < 300 )
             {
                     g_valueOpenCount++;
@@ -773,7 +822,8 @@ void ultrasonicTimeOfFlightMeasure(void)
             if( g_displayState == DISP_STAT_MAIN )               
             {
               temp = WfmInfo.Normal.TotalVolume;
-              g_waterSurfaceSpeedDisp = g_waterSurfaceSpeed*3.6;//单位转换为m3/h
+              //g_waterSurfaceSpeedDisp = g_waterSurfaceSpeed*3.6;//单位转换为m3/h
+              g_waterSurfaceSpeedDisp = g_waterSurfaceSpeed;//单位转换为m3/h
               if( g_waterSurfaceSpeedDisp < 0 )
                 g_waterSurfaceSpeedDisp *= -1;
               temp1 = (unsigned long)(g_waterSurfaceSpeedDisp);          

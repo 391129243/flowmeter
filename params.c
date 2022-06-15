@@ -89,37 +89,53 @@ volatile unsigned char g_tdcInterruptFlag                 = 0;
 unsigned int  g_tdcStatusRegister                = 0;
 unsigned long g_tdcTimeOutCount                  = 0;
 
-float         g_calibrateResult                  = 0;
-float         g_calibrateCorrectionFactor        = 0;
+double         g_calibrateResult                  = 0;
+double         g_calibrateCorrectionFactor        = 0;
 
 unsigned char g_numberOfTemperatureMeasure       = 1;
-float         g_temperature1Result0              = 0;
-float         g_temperature1Result1              = 0;
-float         g_temperature1Result2              = 0;
-float         g_temperature1Result3              = 0;
-float         g_temperature2Result0              = 0;
-float         g_temperature2Result1              = 0;
-float         g_temperature2Result2              = 0;
-float         g_temperature2Result3              = 0;
-float         g_RhotByRref                       = 0;
-float         g_RcoldByRref                      = 0;
+double         g_temperature1Result0              = 0;
+double         g_temperature1Result1              = 0;
+double         g_temperature1Result2              = 0;
+double         g_temperature1Result3              = 0;
+double         g_temperature2Result0              = 0;
+double         g_temperature2Result1              = 0;
+double         g_temperature2Result2              = 0;
+double         g_temperature2Result3              = 0;
+double         g_RhotByRref                       = 0;
+double         g_RcoldByRref                      = 0;
 
-float         g_timeResult0                      = 0;
-float         g_timeResult1                      = 0;
-float         g_timeResult2                      = 0;
-float         g_timeResult3                      = 0;
-float         g_averageTimeResultUp              = 0;
-float         g_averageTimeResultDown            = 0;
-float         g_PW1STValue                       = 0;
- long         g_timeOfFlight                     = 0;
- long         g_timeOfFlight_ave                 = 0;
- long         g_timeOfFlightBuffer[60]           = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+double         g_timeResultup0                      = 0;
+double         g_timeResultup1                      = 0;
+double         g_timeResultup2                      = 0;
+double         g_timeResultup3                      = 0;
+
+double         g_timeResultdown0                    = 0;
+double         g_timeResultdown1                    = 0;
+double         g_timeResultdown2                    = 0;
+double         g_timeResultdown3                    = 0;
+
+
+double         g_timeResult0                      = 0;
+double         g_timeResult1                      = 0;
+double         g_timeResult2                      = 0;
+double         g_timeResult3                      = 0;
+double         g_averageTimeResultUp              = 0;
+double         g_averageTimeResultDown            = 0;
+double         g_PW1STValue                       = 0;
+long         g_timeOfFlight                     = 0;
+long         g_timeOfFlight_ave                 = 0;
+long         g_timeOfFlightBuffer[100]           = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+                                                           ,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+ 
+long         tempValueBuffer[100]           = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+                                                           ,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
  long         g_tofDisplay                       = 0;
-float         g_waterLineSpeed                   = 0;
-float         g_waterSurfaceSpeed                = 0;
-float         g_waterSurfaceSpeedDisp            = 0;
-float         g_accumulationAmount               = 0;
-float         g_tempAccumulationAmount           = 0;
+double         g_waterLineSpeed                   = 0;
+double         g_waterSurfaceSpeed                = 0;
+double         g_waterSurfaceSpeedDisp            = 0;
+double         g_accumulationAmount               = 0;
+double         g_tempAccumulationAmount           = 0;
 unsigned char g_hitCount                         = 1;
 unsigned char g_streamCount                      = 1;
 unsigned char g_upStreamFlag                     = 0;
@@ -134,6 +150,6 @@ unsigned char g_valueOpenFlag                    = 0;//阀门开关标志
 unsigned char g_valueOpenCount                   = 0;//阀门开关标志
 
 unsigned int g_tempValue                         = 0;
-float         g_tempHot                          = 0;
-float         g_tempClod                         = 0;
+double         g_tempHot                          = 0;
+double         g_tempClod                         = 0;
 unsigned int  g_tempTableP                       = 0;
