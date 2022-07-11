@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <settings>
     <DebugChecksum>
-        <Checksum>3863920375</Checksum>
+        <Checksum>1945976698</Checksum>
     </DebugChecksum>
     <Stack>
         <FillEnabled>0</FillEnabled>
@@ -38,7 +38,8 @@
         <ShowTimeLog>1</ShowTimeLog>
     </DataSample>
     <Breakpoints>
-        <Count>0</Count>
+        <Bp0>_ "STD_CODE" "{$PROJ_DIR$\cluster.h}.0.1" 0 0 0 0 "" 0 ""</Bp0>
+        <Count>1</Count>
     </Breakpoints>
     <FET>
         <Clock_mode>46</Clock_mode>
@@ -72,7 +73,11 @@
         <LogFile>_ ""</LogFile>
     </TermIOLog>
     <Aliases>
-        <Count>0</Count>
-        <SuppressDialog>0</SuppressDialog>
+        <A0>_ "D:\GP224MHz\Flash.c" ""</A0>
+        <A1>_ "D:\GP224MHz\IR.c" ""</A1>
+        <A2>_ "D:\GP224MHz\TDC-GP22.c" ""</A2>
+        <A3>_ "D:\GP224MHz\main.c" ""</A3>
+        <Count>4</Count>
+        <SuppressDialog>1</SuppressDialog>
     </Aliases>
 </settings>

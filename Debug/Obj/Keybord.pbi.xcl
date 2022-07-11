@@ -1,4 +1,4 @@
-"D:\GP224MHz\Keybord.c"
+"D:\GP224MHz_2Mhz\Keybord.c"
 -std=c99
 -ferror-limit=100
 -I

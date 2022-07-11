@@ -1,4 +1,4 @@
-"D:\GP224MHz\params.c"
+"D:\GP224MHz_2Mhz\params.c"
 -std=c99
 -ferror-limit=100
 -I

@@ -9,6 +9,15 @@
 #include "dataSave.h"
 #include "rs485.h"
 
+#include "cluster.h"
+
+long kalman_filter( long z);
+
+double kalman_filterup( double zup);
+
+
+double kalman_filterdown( double zdown);
+
 //PT1000分度表
 const unsigned int tempTable[1000]=
 {
@@ -434,8 +443,8 @@ void initConfigureRegisterTDCGP21( void )
   powerOnResetTDCGP21();
   for(unsigned int i = 0; i < 65000; i++);
   initMeasureTDCGP21();
-  //configureRegisterTDCGP21( WRITE_REG0, 0xD1C7E800 );
-  configureRegisterTDCGP21( WRITE_REG0, 0xd1c7d800 );
+  configureRegisterTDCGP21( WRITE_REG0,0xd107ef00);//  0xd1c7f800
+  //configureRegisterTDCGP21( WRITE_REG0, 0xd1c7d800 );
   //configureRegisterTDCGP21( WRITE_REG0, 0xD3C7E800 );     /// Configure TDC register.
 	// 设置低四位超声波发射的脉冲数为20个；            4M陶瓷晶振，1MHz脉冲，设置时钟信号产生脉冲分频因数为3=4分频；
 	// 设置校准陶瓷晶振需要32.768KHz周期数为3=16个周期=488.28125us；                  设置高速参考时钟CLKHS分频因数为0=不分频；
@@ -465,7 +474,7 @@ void initConfigureRegisterTDCGP21( void )
 	// (共19位,其中14位整数部分,5位小数部分)；
   //configureRegisterTDCGP21( WRITE_REG3, 0xF8A24803 );
   //configureRegisterTDCGP21( WRITE_REG3, 0xf8718503 );
-  configureRegisterTDCGP21( WRITE_REG3, 0xf0510303 );
+  configureRegisterTDCGP21( WRITE_REG3, 0xf0a24803 );
 	// 设置在测量范围2，自动计算所有开启获得的脉冲TOF，并将结果的平均值写入结果寄存器3当中，这里为1=开启该功能；
         // 设置是否开启第一波检测功能，这里为1=开启该功能；
 	// 设置由于timeout强迫ALU写入0xFFFFFFFF到结果寄存器的功能为1=开启该功能,防止读取状态寄存器的时间不够；
@@ -475,13 +484,16 @@ void initConfigureRegisterTDCGP21( void )
         // 设置内第一波检测到后，第1个stop是接收第几个回波周期，这里为8=第一波后的第8个回波为第1个stop;
   //configureRegisterTDCGP21( WRITE_REG4, 0x10004f04 );
   
+  //configureRegisterTDCGP21( WRITE_REG4, 0x10004004 );
+  
+  
   //configureRegisterTDCGP21( WRITE_REG4, 0x20004a04 );
   
   
   
  //configureRegisterTDCGP21( WRITE_REG4, 0x1000bf04 );
   
-   configureRegisterTDCGP21( WRITE_REG4, 0x10009604 );
+   configureRegisterTDCGP21( WRITE_REG4, 0x1000a004 );
   
 	// 这里有十五个保留位；
         // 设置是否关闭脉冲宽度测量功能，这里为0=开启该功能；
@@ -496,7 +508,7 @@ void initConfigureRegisterTDCGP21( void )
 	// 设置用于声环法的脉冲序列的重复次数为0=不重复，无需声环法；               设置脉冲序列的相位是否需要改变为0=不改变其相位；
   //configureRegisterTDCGP21( WRITE_REG6, 0xC0E06106 );
   //configureRegisterTDCGP21( WRITE_REG6, 0xc0e06006 );
-  configureRegisterTDCGP21( WRITE_REG6, 0xc0006006 );
+  configureRegisterTDCGP21( WRITE_REG6, 0xd0c0e006 );
 	// 设置是否开启超声波流量测量中需要的模拟测量部分为1=开启模拟部分测量；
 	// 设置是否应用内部的温度测量用的施密特触发器为1=应用内部施密特触发器；                          这里有一个保留位；
         // 设置比较器offset，这里为0=0mV;
@@ -532,7 +544,10 @@ void calibrateResonator( void )
   temp = readRegisterTDCGP21(READ_RES0+(g_tdcStatusRegister&0x0007)-1);
   g_calibrateResult = dotHextoDotDec(temp);
   // 16*(1/32768)/0.25*1000000=1953.125
-  g_calibrateCorrectionFactor = 1953.125/g_calibrateResult;
+  //g_calibrateCorrectionFactor = 1953.125/g_calibrateResult;
+  
+   // 2*(1/32768)/0.25*1000000=1953.125
+  g_calibrateCorrectionFactor = 244.140625/(g_calibrateResult+1);
 }
 
 
@@ -648,7 +663,7 @@ void ultrasonicTimeOfFlightMeasure(void)
        g_timeResultdown2 = dotHextoDotDec(temp);
      }
      configureRegisterTDCGP21( WRITE_REG5, 0x20000005 );//切换上游测量
-     DelayNS(100);//等待至少2.8us 
+     DelayNS(200);//等待至少2.8us 
      
      initMeasureTDCGP21();
      timeFlightStartTDCGP21();
@@ -673,82 +688,206 @@ void ultrasonicTimeOfFlightMeasure(void)
        g_timeResultup2 = dotHextoDotDec(temp);
      }
      configureRegisterTDCGP21( WRITE_REG5, 0x40000005 );//切换下游测量
-     //DelayNS(100);//等待至少2.8us 
+     DelayNS(200);//等待至少2.8us 
      
      if( (0 == g_downTimeOutFlag) && (0 == g_upTimeOutFlag) )
      {
        if( ( (g_averageTimeResultDown<=10)||(g_averageTimeResultDown>=400) ) || ( (g_averageTimeResultUp<=10)||(g_averageTimeResultUp>=400) ) )
        {       
-         Display_Alarm_Icon(1);
-         initConfigureRegisterTDCGP21();
-         return;
+         //Display_Alarm_Icon(1);
+         //initConfigureRegisterTDCGP21();
+         //return;
        }
-       if(timecalibratorcount++ > 10000){
-         calibrateResonator();//高频时钟校准
-       }
+       
        
        g_PW1STValue = 0.0;
      
        g_PW1STValue = readPW1STRegisterTDCGP22();//获取首波脉宽比
        
-       if(g_PW1STValue<0.3){/////如果 PW1ST < 0.3 信号太弱, 则发出报警信号。
+       if(g_PW1STValue<0.5){/////如果 PW1ST < 0.3 信号太弱, 则发出报警信号。
          
          Display_Alarm_Icon(1);
          initConfigureRegisterTDCGP21();
          return;
        }
-     
+       
+       DelayNS(200);//等待至少2.8us 
+       
+       calibrateResonator();
+       
+       if( g_calibrateCorrectionFactor == 0){
+         
+         
+         DelayNS(200);//等待至少2.8us 
+         return;
+         
+       }
+    
        //g_averageTimeResultDown = g_averageTimeResultDown*0.25/g_calibrateCorrectionFactor;
        //g_averageTimeResultUp = g_averageTimeResultUp*0.25/g_calibrateCorrectionFactor;
        //g_averageTimeResultDown = g_averageTimeResultDown*0.25;
        //g_averageTimeResultUp = g_averageTimeResultUp*0.25;
        //g_timeOfFlight = (long)((g_averageTimeResultDown - g_averageTimeResultUp)*1000000*0.25);    
-       g_timeOfFlight = (long)((g_averageTimeResultDown - g_averageTimeResultUp)*1000000);    
        
-       DelayNS(100);//等待至少2.8us 
+       
+       
+       
+       
+       
+       
+       
+       g_averageTimeResultDown = kalman_filterdown(g_averageTimeResultDown);
+       
+       
+       
+       g_averageTimeResultUp = kalman_filterup(g_averageTimeResultUp);
+       
+       
+       /*
+       
+       
+      ////////////////////////////////////////////////////////////////////////////// 
+      for( i = 100; i > 0; i-- )  //将最新一次的飞行时间差采样，送入缓冲区（8 bits）
+      {
+        g_timeOfFlightUpBuffer[i] = g_timeOfFlightUpBuffer[i-1];
+      }
+      g_timeOfFlightUpBuffer[0] = g_averageTimeResultUp;
+
+      
+      for( i = 0; i < 100; i++ )
+      {
+        tempValueUpBuffer[i] = g_timeOfFlightUpBuffer[i];
+      }
+      unsigned jUp, kUp;
+      double tempUpValue;
+      for( jUp = 0; jUp < 100-1; jUp++ )
+      {
+        for( kUp = 0; kUp < 100-jUp-1; kUp++ )
+        {
+          if( tempValueUpBuffer[kUp] > tempValueUpBuffer[kUp+1] )
+          {
+            tempUpValue = tempValueUpBuffer[kUp];
+            tempValueUpBuffer[kUp] = tempValueUpBuffer[kUp+1];
+            tempValueUpBuffer[kUp+1] = tempUpValue;
+          }
+        }
+      }
+      double tempValueUpSum = 0;
+
+      
+      
+      for( i = 20; i < 80; i++ )
+      {
+        tempValueUpSum += tempValueUpBuffer[i];
+        
+      }
+      
+      g_averageTimeResultUp = tempValueUpSum/60;
+      
+      
+      
+      
+      
+      
+      //////////////////////////////////////////////////
+       for( i = 100; i > 0; i-- )  //将最新一次的飞行时间差采样，送入缓冲区（8 bits）
+      {
+        g_timeOfFlightDownBuffer[i] = g_timeOfFlightDownBuffer[i-1];
+      }
+      g_timeOfFlightDownBuffer[0] = g_averageTimeResultDown;
+
+      
+      for( i = 0; i < 100; i++ )
+      {
+        tempValueDownBuffer[i] = g_timeOfFlightDownBuffer[i];
+      }
+      unsigned jDown, kDown;
+      double tempDownValue;
+      for( jDown = 0; jDown < 100-1; jDown++ )
+      {
+        for( kDown = 0; kDown < 100-jDown-1; kDown++ )
+        {
+          if( tempValueUpBuffer[kDown] > tempValueUpBuffer[kDown+1] )
+          {
+            tempDownValue = tempValueUpBuffer[kDown];
+            tempValueDownBuffer[kDown] = tempValueUpBuffer[kDown+1];
+            tempValueDownBuffer[kDown+1] = tempDownValue;
+          }
+        }
+      }
+      double tempValueDownSum = 0;
+
+      
+      
+      for( i = 20; i < 80; i++ )
+      {
+        tempValueDownSum += tempValueDownBuffer[i];
+        
+      }
+      g_averageTimeResultDown = tempValueDownSum/60;
+       
+       
+      */
+       
+       
+       g_timeOfFlight = (long)((g_averageTimeResultDown - g_averageTimeResultUp)*1000000)/g_calibrateCorrectionFactor;    
+     
+       if( g_timeOfFlight > 10000 || g_timeOfFlight < -10000 )
+       {       
+         Display_Alarm_Icon(1);
+         //initConfigureRegisterTDCGP21();
+         //return;
+       }
+       
+       
+       DelayNS(200);//等待至少2.8us 
        
        
        Display_Alarm_Icon(0);
        
+       
+       g_timeOfFlight = kalman_filter(g_timeOfFlight);
+       
 
-         for( i = 60; i > 0; i-- )  //将最新一次的飞行时间差采样，送入缓冲区（8 bits）
-          {
-            g_timeOfFlightBuffer[i] = g_timeOfFlightBuffer[i-1];
-          }
-          g_timeOfFlightBuffer[0] = g_timeOfFlight;
+        for( i = 60; i > 0; i-- )  //将最新一次的飞行时间差采样，送入缓冲区（8 bits）
+        {
+          g_timeOfFlightBuffer[i] = g_timeOfFlightBuffer[i-1];
+        }
+        g_timeOfFlightBuffer[0] = g_timeOfFlight;
 
-          
-          for( i = 0; i < 60; i++ )
+        
+        for( i = 0; i < 60; i++ )
+        {
+          tempValueBuffer[i] = g_timeOfFlightBuffer[i];
+        }
+        unsigned j, k;
+        long tempValue;
+        for( j = 0; j < 60-1; j++ )
+        {
+          for( k = 0; k < 60-j-1; k++ )
           {
-            tempValueBuffer[i] = g_timeOfFlightBuffer[i];
-          }
-          unsigned j, k;
-          long tempValue;
-          for( j = 0; j < 60-1; j++ )
-          {
-            for( k = 0; k < 60-j-1; k++ )
+            if( tempValueBuffer[k] > tempValueBuffer[k+1] )
             {
-              if( tempValueBuffer[k] > tempValueBuffer[k+1] )
-              {
-                tempValue = tempValueBuffer[k];
-                tempValueBuffer[k] = tempValueBuffer[k+1];
-                tempValueBuffer[k+1] = tempValue;
-              }
+              tempValue = tempValueBuffer[k];
+              tempValueBuffer[k] = tempValueBuffer[k+1];
+              tempValueBuffer[k+1] = tempValue;
             }
           }
-          long tempValueSum = 0;
-          //for( i = 1; i < 9; i++ )
-          //{
-          //  tempValueSum += tempValueBuffer[i];
-          //}
-          //tempValueSum = tempValueSum/8;
-          for( i = 20; i < 40; i++ )
-          {
-            tempValueSum += tempValueBuffer[i];
-          }
-          tempValueSum = tempValueSum/20;
-          g_timeOfFlight_ave = tempValueSum;
-          g_tofDisplay = tempValueSum;
+        }
+        long tempValueSum = 0;
+
+        
+        
+        for( i = 10; i < 50; i++ )
+        {
+          tempValueSum += tempValueBuffer[i];
+          
+        }
+        tempValueSum = tempValueSum/40;
+        g_timeOfFlight_ave = tempValueSum;
+        g_tofDisplay = tempValueSum;
+        
+        //cluster(kmeanqueue,60);
 
         g_valueOpenFlag =1;
         if( 0 == g_valueOpenFlag ) //阀门未开启
@@ -1138,3 +1277,134 @@ __interrupt void PORT2 (void)
   P2IFG = 0;  //手动清中断标志位
 
 }
+
+
+
+//卡尔曼滤波
+double q = 0.1;
+double r = 2;
+
+//状态均值x， 过程噪声均值w，方差p
+static double x = 0;
+
+static double w = 0;
+
+static double p = 0;
+
+
+
+long kalman_filter( long z){
+  
+  // 预测
+  double x_ = x + 0.003 + w;
+  
+  double p_ = p + q;
+  
+  double k = p_ / (p_ + r);
+  
+  // 更新
+  x = x_ + k * (z - x_);
+  
+  p = (1-k) * p_;
+  
+  return (long)x;
+    
+}
+
+
+
+//卡尔曼滤波
+double qup = 0.1;
+double rup = 2;
+
+//状态均值x， 过程噪声均值w，方差p
+static double xup = 0;
+
+static double wup = 0;
+
+static double pup = 0;
+
+
+
+double kalman_filterup( double zup){
+  
+  // 预测
+  double xup_ = xup + 0 + wup;
+  
+  double pup_ = pup + qup;
+  
+  double kup = pup_ / (pup_ + rup);
+  
+  // 更新
+  xup = xup_ + kup * (zup - xup_);
+  
+  pup = (1-kup) * pup_;
+  
+  return xup;
+    
+}
+
+
+//卡尔曼滤波
+double qdown = 0.1;
+double rdown = 2;
+//状态均值x， 过程噪声均值w，方差p
+static double xdown = 0;
+
+static double wdown = 0;
+
+static double pdown = 0;
+
+
+
+double kalman_filterdown( double zdown){
+  
+  // 预测
+  double xdown_ = xdown + 0 + wdown;
+  
+  double pdown_ = pdown + qdown;
+  
+  double kdown = pdown_ / (pdown_ + rdown);
+  
+  // 更新
+  xdown = xdown_ + kdown * (zdown - xdown_);
+  
+  pdown = (1-kdown) * pdown_;
+  
+  return xdown;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

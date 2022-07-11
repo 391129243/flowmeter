@@ -2098,6 +2098,12 @@
         </settings>
     </configuration>
     <file>
+        <name>$PROJ_DIR$\cluster.c</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\cluster.h</name>
+    </file>
+    <file>
         <name>$PROJ_DIR$\DataSave.c</name>
     </file>
     <file>

@@ -1,4 +1,4 @@
-"D:\GP224MHz\DataSave.c"
+"D:\GP224MHz_2Mhz\DataSave.c"
 -std=c99
 -ferror-limit=100
 -I

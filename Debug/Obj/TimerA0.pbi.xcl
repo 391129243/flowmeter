@@ -1,4 +1,4 @@
-"D:\GP224MHz\TimerA0.c"
+"D:\GP224MHz_2Mhz\TimerA0.c"
 -std=c99
 -ferror-limit=100
 -I

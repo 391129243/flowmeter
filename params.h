@@ -241,6 +241,13 @@ extern long         g_timeOfFlight_ave;
 extern long         g_timeOfFlightBuffer[100];
 extern long         tempValueBuffer[100];
 
+extern double         g_timeOfFlightUpBuffer[100];
+extern double         tempValueUpBuffer[100];
+
+extern double         g_timeOfFlightDownBuffer[100];
+extern double         tempValueDownBuffer[100];
+
+
 extern long         g_tofDisplay;
 extern double         g_waterLineSpeed;
 extern double         g_waterSurfaceSpeed;

@@ -23,9 +23,9 @@ param([String]$debugfile = "");
 
 if ($debugfile -eq "")
 {
-& "D:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "D:\GP224MHz\settings\CSSBV1.Debug.general.xcl" --backend -f "D:\GP224MHz\settings\CSSBV1.Debug.driver.xcl" 
+& "D:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "D:\GP224MHz_2Mhz\settings\CSSBV1.Debug.general.xcl" --backend -f "D:\GP224MHz_2Mhz\settings\CSSBV1.Debug.driver.xcl" 
 }
 else
 {
-& "D:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "D:\GP224MHz\settings\CSSBV1.Debug.general.xcl" --debug_file=$debugfile --backend -f "D:\GP224MHz\settings\CSSBV1.Debug.driver.xcl" 
+& "D:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "D:\GP224MHz_2Mhz\settings\CSSBV1.Debug.general.xcl" --debug_file=$debugfile --backend -f "D:\GP224MHz_2Mhz\settings\CSSBV1.Debug.driver.xcl" 
 }
