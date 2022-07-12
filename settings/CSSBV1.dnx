@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <settings>
     <DebugChecksum>
-        <Checksum>1945976698</Checksum>
+        <Checksum>3997668186</Checksum>
     </DebugChecksum>
     <Stack>
         <FillEnabled>0</FillEnabled>
@@ -32,6 +32,9 @@
     <Disassembly>
         <MixedMode>1</MixedMode>
     </Disassembly>
+    <watch_formats>
+        <Fmt0>{W}1:g_timeOfFlightDownBuffer	0	10</Fmt0>
+    </watch_formats>
     <DataSample>
         <LogEnabled>0</LogEnabled>
         <GraphEnabled>0</GraphEnabled>
