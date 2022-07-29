@@ -158,7 +158,7 @@
                 </option>
                 <option>
                     <name>MathLib</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>RadioCodeModelType</name>
@@ -1179,15 +1179,15 @@
                 </option>
                 <option>
                     <name>RTDescription</name>
-                    <state></state>
+                    <state>Use the normal configuration of the C/EC++ runtime library. No locale interface, C locale, no file descriptor support, no multibytes in printf and scanf, and no hex floats in strtod.</state>
                 </option>
                 <option>
                     <name>RTConfigPath</name>
-                    <state>xxx.h</state>
+                    <state>$TOOLKIT_DIR$\lib\dlib\dl430xllfn.h</state>
                 </option>
                 <option>
                     <name>RTLibraryPath</name>
-                    <state>xxx.r43</state>
+                    <state>$TOOLKIT_DIR$\lib\dlib\dl430xllfn.r43</state>
                 </option>
                 <option>
                     <name>Input variant</name>
@@ -1196,7 +1196,7 @@
                 </option>
                 <option>
                     <name>Input description</name>
-                    <state></state>
+                    <state>Full formatting.</state>
                 </option>
                 <option>
                     <name>Output variant</name>
@@ -1205,7 +1205,7 @@
                 </option>
                 <option>
                     <name>Output description</name>
-                    <state></state>
+                    <state>Full formatting.</state>
                 </option>
                 <option>
                     <name>GRuntimeLibSelectSlave</name>
@@ -1226,7 +1226,7 @@
                 </option>
                 <option>
                     <name>OGChipSelectMenu</name>
-                    <state>CC430F5133	CC430F5133</state>
+                    <state>MSP430F5438A	MSP430F5438A</state>
                 </option>
                 <option>
                     <name>GStackHeapOverride</name>
@@ -1234,19 +1234,19 @@
                 </option>
                 <option>
                     <name>GStackSize2</name>
-                    <state>###Uninitialized###</state>
+                    <state>160</state>
                 </option>
                 <option>
                     <name>GHeapSize2</name>
-                    <state>###Uninitialized###</state>
+                    <state>160</state>
                 </option>
                 <option>
                     <name>RadioDataModelType</name>
-                    <state>0</state>
+                    <state>2</state>
                 </option>
                 <option>
                     <name>GHeap20Size</name>
-                    <state>###Uninitialized###</state>
+                    <state>80</state>
                 </option>
                 <option>
                     <name>GeneralMisraRules98</name>
@@ -1288,7 +1288,7 @@
                 </option>
                 <option>
                     <name>MathLib</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>RadioCodeModelType</name>
@@ -1353,7 +1353,7 @@
                 </option>
                 <option>
                     <name>Math description</name>
-                    <state></state>
+                    <state>Default variants of cos, sin, tan, log, log10, pow, and exp.</state>
                 </option>
             </data>
         </settings>
@@ -1479,7 +1479,7 @@
                 </option>
                 <option>
                     <name>OutputFile</name>
-                    <state></state>
+                    <state>$FILE_BNAME$.r43</state>
                 </option>
                 <option>
                     <name>CCLibConfigHeader</name>
@@ -1556,7 +1556,7 @@
                 </option>
                 <option>
                     <name>CCOptLevelSlave</name>
-                    <state>1</state>
+                    <state>3</state>
                 </option>
                 <option>
                     <name>CInput</name>
@@ -1871,7 +1871,7 @@
                 </option>
                 <option>
                     <name>OutputFile</name>
-                    <state></state>
+                    <state>CSSBV1.0.txt</state>
                 </option>
                 <option>
                     <name>OutputFormat</name>
@@ -1885,7 +1885,7 @@
                 </option>
                 <option>
                     <name>SecondaryOutputFile</name>
-                    <state></state>
+                    <state>(None for the selected format)</state>
                 </option>
                 <option>
                     <name>XDefines</name>
@@ -1937,7 +1937,7 @@
                 </option>
                 <option>
                     <name>XclFile</name>
-                    <state>lnk0t.xcl</state>
+                    <state>$TOOLKIT_DIR$\config\linker\lnk430f5438a.xcl</state>
                 </option>
                 <option>
                     <name>XclFileSlave</name>
@@ -2025,7 +2025,7 @@
                 </option>
                 <option>
                     <name>xcProgramEntryLabel</name>
-                    <state></state>
+                    <state>__program_start</state>
                 </option>
                 <option>
                     <name>DebugInformation</name>
@@ -2065,7 +2065,7 @@
                 </option>
                 <option>
                     <name>ExtraOutputFile</name>
-                    <state></state>
+                    <state>CSSBV1.0.a43</state>
                 </option>
                 <option>
                     <name>ExtraOutputFormat</name>
@@ -2230,7 +2230,11 @@
                 <debug>0</debug>
                 <option>
                     <name>CUTest</name>
-                    <state>###Uninitialized###</state>
+                    <state>-I$TOOLKIT_DIR$\inc</state>
+                    <state>-@$TOOLKIT_DIR$\bin\iar.cmd</state>
+                    <state>-@$PROJ_DIR$\source.txt</state>
+                    <state>-@$PROJ_DIR$\include.txt</state>
+                    <state>--preinclude=$PROJ_DIR$\IAR_ULPAdvisor_Defs.h</state>
                 </option>
                 <option>
                     <name>ULPRules</name>
@@ -2243,7 +2247,7 @@
                 </option>
                 <option>
                     <name>OutputFile</name>
-                    <state></state>
+                    <state>$PROJ_FNAME$.ulp</state>
                 </option>
                 <option>
                     <name>ULPStatus</name>

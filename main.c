@@ -57,10 +57,10 @@ int main( void )
 {
   WDTCTL = WDTPW + WDTHOLD;  // 关闭看门狗 
   initUCS();  //初始化UCS
-  initRTC();
+  //initRTC();
   InitLCD();
-  initIR();
-  Init_Flash();
+  //initIR();
+  //Init_Flash();
   Init_Keybord();
   initTimerA1();
   initRS485();

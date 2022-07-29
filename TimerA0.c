@@ -36,5 +36,5 @@ void StopTimerA0(void)
 __interrupt void TimerA0ISR (void) //CCR0
 {
 
-  AmrTimerIntProcess();
+  //AmrTimerIntProcess();
 }

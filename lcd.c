@@ -20,6 +20,9 @@ const unsigned char digit[12] = {
 
 unsigned char seg[24] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
+
+int positiveFlag = 1;
+
 /*******************************************
 *void ht1621_write_com(unsigned char com)
 *
@@ -541,6 +544,14 @@ void Display_Temp_Icon( unsigned long t1 )
 void Display_TimeOfFlight_Icon( unsigned char flag, unsigned long time )
 {
   ClearLCD();
+  
+  if(positiveFlag){
+    Display_unit_Icon(0);
+  }else{ 
+    Display_unit_Icon(1);
+  }
+  
+  
   if(flag==1)//·ÉÐÐÊ±¼ä²î
   {
     seg[22] = (seg[22] & 0x08) | (digit[2] & 0x0f);

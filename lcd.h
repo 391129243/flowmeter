@@ -111,5 +111,7 @@ void Display_Temp_Icon( unsigned long t1 );
 void Display_Else_Icon(unsigned char flag, unsigned long dat1, unsigned long dat2);
 void LCD_ReFlash(void);
 
+extern int positiveFlag;
+
 
 #endif 

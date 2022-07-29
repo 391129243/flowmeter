@@ -164,11 +164,11 @@ __interrupt void rtc(void)
            if((g_tagRTC.g_Hour==0x00)&&(g_tagRTC.g_Minite==0x02)) //一天到了
            {
              // 日冻结
-             saveDayCum();
+             //saveDayCum();
              if(g_tagRTC.g_Day==0x01) //一个月到了
              {
                // 月冻结
-               saveMonthCum();
+               //saveMonthCum();
              }
            }    
          }

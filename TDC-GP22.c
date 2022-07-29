@@ -507,7 +507,7 @@ void initConfigureRegisterTDCGP21( void )
 	// 设置Start通道是否外加噪声为0=关闭噪声单元；                设置是否关闭相位噪声单元为0=开启相位噪声移位单元；
 	// 设置用于声环法的脉冲序列的重复次数为0=不重复，无需声环法；               设置脉冲序列的相位是否需要改变为0=不改变其相位；
   //configureRegisterTDCGP21( WRITE_REG6, 0xC0E06106 );
-  //configureRegisterTDCGP21( WRITE_REG6, 0xc0e06006 );
+  //configureRegisterTDCGP21( WRITE_REG6, 0xd000e006 );
   configureRegisterTDCGP21( WRITE_REG6, 0xd0c0e006 );
 	// 设置是否开启超声波流量测量中需要的模拟测量部分为1=开启模拟部分测量；
 	// 设置是否应用内部的温度测量用的施密特触发器为1=应用内部施密特触发器；                          这里有一个保留位；
@@ -626,7 +626,7 @@ void ultrasonicTimeOfFlightMeasure(void)
      
      
      //unsigned char time=BCDtoDec(g_tagRTC.g_Second);
-     if((time++%30==0)&&(tempMeasureOk==0)) //2 second测温度一次
+     /*if((time++%30==0)&&(tempMeasureOk==0)) //2 second测温度一次
      {
        tempMeasureOk = 1;
        tempMeasure();
@@ -635,6 +635,7 @@ void ultrasonicTimeOfFlightMeasure(void)
      {
        tempMeasureOk = 0;
      }
+     */
      
      g_downTimeOutFlag = 0;
      g_upTimeOutFlag = 0;
@@ -653,17 +654,17 @@ void ultrasonicTimeOfFlightMeasure(void)
      {     
        temp = readRegisterTDCGP21(READ_RES3);
        g_timeResult3 = dotHextoDotDec(temp);
-       g_averageTimeResultDown = g_timeResult3/3;
+       g_averageTimeResultDown = g_timeResult3;
        
-       temp = readRegisterTDCGP21(READ_RES0);
-       g_timeResultdown0 = dotHextoDotDec(temp);
-       temp = readRegisterTDCGP21(READ_RES1);
-       g_timeResultdown1 = dotHextoDotDec(temp);
-       temp = readRegisterTDCGP21(READ_RES2);
-       g_timeResultdown2 = dotHextoDotDec(temp);
+       //temp = readRegisterTDCGP21(READ_RES0);
+       //g_timeResultdown0 = dotHextoDotDec(temp);
+       //temp = readRegisterTDCGP21(READ_RES1);
+       //g_timeResultdown1 = dotHextoDotDec(temp);
+       //temp = readRegisterTDCGP21(READ_RES2);
+       //g_timeResultdown2 = dotHextoDotDec(temp);
      }
-     configureRegisterTDCGP21( WRITE_REG5, 0x20000005 );//切换上游测量
-     DelayNS(20);//等待至少2.8us 
+     configureRegisterTDCGP21( WRITE_REG5, 0x30000005 );//切换上游测量
+     DelayNS(1);//等待至少2.8us 
      
      initMeasureTDCGP21();
      timeFlightStartTDCGP21();
@@ -679,20 +680,21 @@ void ultrasonicTimeOfFlightMeasure(void)
      {          
        temp = readRegisterTDCGP21(READ_RES3);
        g_timeResult3 = dotHextoDotDec(temp);
-       g_averageTimeResultUp = g_timeResult3/3;  
-       temp = readRegisterTDCGP21(READ_RES0);
-       g_timeResultup0 = dotHextoDotDec(temp);
-       temp = readRegisterTDCGP21(READ_RES1);
-       g_timeResultup1 = dotHextoDotDec(temp);
-       temp = readRegisterTDCGP21(READ_RES2);
-       g_timeResultup2 = dotHextoDotDec(temp);
+       g_averageTimeResultUp = g_timeResult3;  
+       
+       //temp = readRegisterTDCGP21(READ_RES0);
+       //g_timeResultup0 = dotHextoDotDec(temp);
+       //temp = readRegisterTDCGP21(READ_RES1);
+       //g_timeResultup1 = dotHextoDotDec(temp);
+       //temp = readRegisterTDCGP21(READ_RES2);
+       //g_timeResultup2 = dotHextoDotDec(temp);
      }
-     configureRegisterTDCGP21( WRITE_REG5, 0x40000005 );//切换下游测量
-     DelayNS(20);//等待至少2.8us 
+     configureRegisterTDCGP21( WRITE_REG5, 0x50000005 );//切换下游测量
+     DelayNS(1);//等待至少2.8us 
      
      if( (0 == g_downTimeOutFlag) && (0 == g_upTimeOutFlag) )
      {
-       if( ( (g_averageTimeResultDown<=10)||(g_averageTimeResultDown>=50) ) || ( (g_averageTimeResultUp<=10)||(g_averageTimeResultUp>=50) ) )
+       if( ( (g_averageTimeResultDown<=60)||(g_averageTimeResultDown>=65) ) || ( (g_averageTimeResultUp<=60)||(g_averageTimeResultUp>=65) ) )
        {       
          Display_Alarm_Icon(1);
          //initConfigureRegisterTDCGP21();
@@ -704,24 +706,17 @@ void ultrasonicTimeOfFlightMeasure(void)
      
        g_PW1STValue = readPW1STRegisterTDCGP22();//获取首波脉宽比
        
-       if(g_PW1STValue<0.5){/////如果 PW1ST < 0.3 信号太弱, 则发出报警信号。
+       if(g_PW1STValue<0.6){/////如果 PW1ST < 0.3 信号太弱, 则发出报警信号。
          
          Display_Alarm_Icon(1);
          //initConfigureRegisterTDCGP21();
          return;
        }
        
-       DelayNS(20);//等待至少2.8us 
+       DelayNS(1);//等待至少2.8us 
        
        calibrateResonator();
        
-       if( g_calibrateCorrectionFactor == 0){
-         
-         
-         DelayNS(20);//等待至少2.8us 
-         return;
-         
-       }
     
        //g_averageTimeResultDown = g_averageTimeResultDown*0.25/g_calibrateCorrectionFactor;
        //g_averageTimeResultUp = g_averageTimeResultUp*0.25/g_calibrateCorrectionFactor;
@@ -731,33 +726,30 @@ void ultrasonicTimeOfFlightMeasure(void)
        
        
        
-       g_averageTimeResultDown = kalman_filterdown(g_averageTimeResultDown);
+       g_averageTimeResultDown = kalman_filterdown(g_averageTimeResultDown * g_calibrateCorrectionFactor);
        
        
        
-       g_averageTimeResultUp = kalman_filterup(g_averageTimeResultUp);
-       
-       
-       
+       g_averageTimeResultUp = kalman_filterup(g_averageTimeResultUp * g_calibrateCorrectionFactor);
        
        
       ////////////////////////////////////////////////////////////////////////////// 
-      for( i = 39; i > 0; i-- )  //将最新一次的飞行时间差采样，送入缓冲区（8 bits）
+      for( i = 19; i > 0; i-- )  //将最新一次的飞行时间差采样，送入缓冲区（8 bits）
       {
         g_timeOfFlightUpBuffer[i] = g_timeOfFlightUpBuffer[i-1];
       }
       g_timeOfFlightUpBuffer[0] = g_averageTimeResultUp;
 
       
-      for( i = 0; i < 40; i++ )
+      for( i = 0; i < 20; i++ )
       {
         tempValueUpBuffer[i] = g_timeOfFlightUpBuffer[i];
       }
       unsigned jUp, kUp;
       double tempUpValue;
-      for( jUp = 0; jUp < 40-1; jUp++ )
+      for( jUp = 0; jUp < 20-1; jUp++ )
       {
-        for( kUp = 0; kUp < 40-jUp-1; kUp++ )
+        for( kUp = 0; kUp < 20-jUp-1; kUp++ )
         {
           if( tempValueUpBuffer[kUp] > tempValueUpBuffer[kUp+1] )
           {
@@ -780,30 +772,28 @@ void ultrasonicTimeOfFlightMeasure(void)
       
       
       
-      g_averageTimeResultUp = tempValueUpSum/10;
+      g_averageTimeResultUp = tempValueUpSum;
       
       
-      
-      
-      
+     
       
       //////////////////////////////////////////////////
-       for( i = 39; i > 0; i-- )  //将最新一次的飞行时间差采样，送入缓冲区（8 bits）
+       for( i = 19; i > 0; i-- )  //将最新一次的飞行时间差采样，送入缓冲区（8 bits）
       {
         g_timeOfFlightDownBuffer[i] = g_timeOfFlightDownBuffer[i-1];
       }
       g_timeOfFlightDownBuffer[0] = g_averageTimeResultDown;
 
       
-      for( i = 0; i < 40; i++ )
+      for( i = 0; i < 20; i++ )
       {
         tempValueDownBuffer[i] = g_timeOfFlightDownBuffer[i];
       }
       unsigned jDown, kDown;
       double tempDownValue;
-      for( jDown = 0; jDown < 40-1; jDown++ )
+      for( jDown = 0; jDown < 20-1; jDown++ )
       {
-        for( kDown = 0; kDown < 40-jDown-1; kDown++ )
+        for( kDown = 0; kDown < 20-jDown-1; kDown++ )
         {
           if( tempValueDownBuffer[kDown] > tempValueDownBuffer[kDown+1] )
           {
@@ -822,14 +812,20 @@ void ultrasonicTimeOfFlightMeasure(void)
         tempValueDownSum += tempValueDownBuffer[i];
         
       }
-      g_averageTimeResultDown = tempValueDownSum/10;
+      g_averageTimeResultDown = tempValueDownSum;
        
       
+      
+      
+      //g_calibrateCorrectionFactor = 1;
      
      
        
        
-       g_timeOfFlight = (long)((g_averageTimeResultDown - g_averageTimeResultUp)*1000000*0.25)/g_calibrateCorrectionFactor;    
+       double temp1 = ((g_averageTimeResultDown - g_averageTimeResultUp)*10000.0);    
+        
+
+       g_timeOfFlight = (long)temp1;
      
        if( g_timeOfFlight > 5000 || g_timeOfFlight < -5000 )
        {       
@@ -839,13 +835,13 @@ void ultrasonicTimeOfFlightMeasure(void)
        }
        
        
-       DelayNS(20);//等待至少2.8us 
+       DelayNS(1);//等待至少2.8us 
        
        
        Display_Alarm_Icon(0);
        
        
-       //g_timeOfFlight = kalman_filter(g_timeOfFlight);
+       g_timeOfFlight = kalman_filter(g_timeOfFlight);
        
 
         for( i = 29; i > 0; i-- )  //将最新一次的飞行时间差采样，送入缓冲区（8 bits）
@@ -875,16 +871,18 @@ void ultrasonicTimeOfFlightMeasure(void)
         }
         long tempValueSum = 0;
 
-        
-        
-        for( i = 5; i < 10; i++ )
+
+        int count = 0;
+        for( i = 10; i < 20; i++ )
         {
           tempValueSum += tempValueBuffer[i];
           
         }
-        tempValueSum = tempValueSum/5;
+        tempValueSum = tempValueSum/10;
         
-        tempValueSum = kalman_filter(tempValueSum);
+        //tempValueSum = (tempValueBuffer[6] + tempValueBuffer[7] + tempValueBuffer[13] + tempValueBuffer[14]) /40;
+        
+        //tempValueSum = kalman_filter(tempValueSum);
         
         g_timeOfFlight_ave = tempValueSum;
         
@@ -992,7 +990,15 @@ void ultrasonicTimeOfFlightMeasure(void)
             else if( g_displayState == DISP_STAT_TIMEF )          
             {
               if( g_timeOfFlight_ave < 0 )
+              {
                 g_timeOfFlight_ave *= -1;
+                Display_unit_Icon(1);
+                positiveFlag = 0;
+                
+              }else{
+                Display_unit_Icon(0);
+                positiveFlag = 1;
+              }
               temp = (unsigned long)g_timeOfFlight_ave;          
               Display_Else_Icon(DISP_STAT_TIMEF,temp,0);
             }
@@ -1030,9 +1036,9 @@ void ultrasonicTimeOfFlightMeasure(void)
      else
      {
        Display_Alarm_Icon(1);
-       initConfigureRegisterTDCGP21();
+       //initConfigureRegisterTDCGP21();
        
-       Print_TimeOut();
+       //Print_TimeOut();
      } 
 }
 
@@ -1286,7 +1292,7 @@ __interrupt void PORT2 (void)
 
 
 //卡尔曼滤波
-double q = 0.2;
+double q = 0.1;
 double r = 2;
 
 //状态均值x， 过程噪声均值w，方差p
@@ -1305,7 +1311,7 @@ long kalman_filter( long z){
   
   double p_ = p + q;
   
-  double k = p_ / (p_ + r);
+  double k = p_ / (p_ + r + 0.001);
   
   // 更新
   x = x_ + k * (z - x_);
@@ -1338,7 +1344,7 @@ double kalman_filterup( double zup){
   
   double pup_ = pup + qup;
   
-  double kup = pup_ / (pup_ + rup);
+  double kup = pup_ / (pup_ + rup + 0.001);
   
   // 更新
   xup = xup_ + kup * (zup - xup_);
@@ -1369,7 +1375,7 @@ double kalman_filterdown( double zdown){
   
   double pdown_ = pdown + qdown;
   
-  double kdown = pdown_ / (pdown_ + rdown);
+  double kdown = pdown_ / (pdown_ + rdown + 0.001);
   
   // 更新
   xdown = xdown_ + kdown * (zdown - xdown_);
