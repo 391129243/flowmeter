@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <settings>
     <DebugChecksum>
-        <Checksum>2633187280</Checksum>
+        <Checksum>1367154474</Checksum>
     </DebugChecksum>
     <Stack>
         <FillEnabled>0</FillEnabled>
@@ -95,7 +95,7 @@
     </DataSample>
     <Breakpoints>
         <Bp0>_ "STD_CODE" "{$PROJ_DIR$\cluster.h}.2.1" 0 0 0 0 "" 0 ""</Bp0>
-        <Bp1>_ "STD_CODE" "{$PROJ_DIR$\Flash.c}.37.3" 1 0 0 0 "" 0 ""</Bp1>
+        <Bp1>_ "STD_CODE" "{$PROJ_DIR$\Flash.c}.37.3" 0 0 0 0 "" 0 ""</Bp1>
         <Count>2</Count>
     </Breakpoints>
     <FET>

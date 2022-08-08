@@ -235,11 +235,11 @@ extern double         g_timeResult3;
 extern double         g_averageTimeResultUp;
 extern double         g_averageTimeResultDown;
 extern double         g_PW1STValue;
-extern long         g_timeOfFlight;
-extern long         g_timeOfFlight_ave;
+extern double         g_timeOfFlight;
+extern double         g_timeOfFlight_ave;
 
-extern long         g_timeOfFlightBuffer[60];
-extern long         tempValueBuffer[60];
+extern double         g_timeOfFlightBuffer[60];
+extern double         tempValueBuffer[60];
 
 extern double         g_timeOfFlightUpBuffer[60];
 extern double         tempValueUpBuffer[60];
@@ -271,5 +271,8 @@ extern unsigned int  g_tempValue;
 extern double         g_tempHot;
 extern double         g_tempClod;
 extern unsigned int  g_tempTableP;
+
+
+extern long g_timeOfFlight_ave_offset;
 
 #endif  // PARAMS_H__

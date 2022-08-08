@@ -8,6 +8,7 @@
 #include "lcd.h"
 #include "dataSave.h"
 #include "rs485.h"
+#include "math.h"
 
 #include "cluster.h"
 
@@ -17,6 +18,9 @@ double kalman_filterup( double zup);
 
 
 double kalman_filterdown( double zdown);
+
+
+long offset= 31780;
 
 //PT1000分度表
 const unsigned int tempTable[1000]=
@@ -491,9 +495,9 @@ void initConfigureRegisterTDCGP21( void )
   
   
   
- //configureRegisterTDCGP21( WRITE_REG4, 0x1000bf04 );
+  configureRegisterTDCGP21( WRITE_REG4, 0x1000bf04 );
   
-   configureRegisterTDCGP21( WRITE_REG4, 0x1000a004 );
+   //configureRegisterTDCGP21( WRITE_REG4, 0x1000a004 );
   
 	// 这里有十五个保留位；
         // 设置是否关闭脉冲宽度测量功能，这里为0=开启该功能；
@@ -621,9 +625,8 @@ unsigned int timecalibratorcount = 0;
 void ultrasonicTimeOfFlightMeasure(void)
 {
      unsigned int i;
-     unsigned long temp,temp1;
-     
-     
+     unsigned long temp;
+     unsigned long tempshow,tempshow1;
      
      //unsigned char time=BCDtoDec(g_tagRTC.g_Second);
      /*if((time++%30==0)&&(tempMeasureOk==0)) //2 second测温度一次
@@ -664,7 +667,7 @@ void ultrasonicTimeOfFlightMeasure(void)
        //g_timeResultdown2 = dotHextoDotDec(temp);
      }
      configureRegisterTDCGP21( WRITE_REG5, 0x30000005 );//切换上游测量
-     DelayNS(1);//等待至少2.8us 
+     DelayNS(100);//等待至少2.8us 
      
      initMeasureTDCGP21();
      timeFlightStartTDCGP21();
@@ -690,7 +693,7 @@ void ultrasonicTimeOfFlightMeasure(void)
        //g_timeResultup2 = dotHextoDotDec(temp);
      }
      configureRegisterTDCGP21( WRITE_REG5, 0x50000005 );//切换下游测量
-     DelayNS(1);//等待至少2.8us 
+     DelayNS(100);//等待至少2.8us 
      
      if( (0 == g_downTimeOutFlag) && (0 == g_upTimeOutFlag) )
      {
@@ -706,14 +709,14 @@ void ultrasonicTimeOfFlightMeasure(void)
      
        g_PW1STValue = readPW1STRegisterTDCGP22();//获取首波脉宽比
        
-       if(g_PW1STValue<0.6){/////如果 PW1ST < 0.3 信号太弱, 则发出报警信号。
+       if(g_PW1STValue<0.5){/////如果 PW1ST < 0.3 信号太弱, 则发出报警信号。
          
          Display_Alarm_Icon(1);
          //initConfigureRegisterTDCGP21();
          return;
        }
        
-       DelayNS(1);//等待至少2.8us 
+       DelayNS(100);//等待至少2.8us 
        
        calibrateResonator();
        
@@ -724,7 +727,7 @@ void ultrasonicTimeOfFlightMeasure(void)
        //g_averageTimeResultUp = g_averageTimeResultUp*0.25;
        //g_timeOfFlight = (long)((g_averageTimeResultDown - g_averageTimeResultUp)*1000000*0.25);    
        
-       
+       //g_calibrateCorrectionFactor = 1.0f;
        
        g_averageTimeResultDown = kalman_filterdown(g_averageTimeResultDown * g_calibrateCorrectionFactor);
        
@@ -822,12 +825,12 @@ void ultrasonicTimeOfFlightMeasure(void)
      
        
        
-       double temp1 = ((g_averageTimeResultDown - g_averageTimeResultUp)*10000.0);    
+       double temp1 = ((g_averageTimeResultDown - g_averageTimeResultUp)*1000000.0);    
         
 
        g_timeOfFlight = (long)temp1;
      
-       if( g_timeOfFlight > 5000 || g_timeOfFlight < -5000 )
+       if( g_timeOfFlight > 500000 || g_timeOfFlight < -500000 )
        {       
          Display_Alarm_Icon(1);
          //initConfigureRegisterTDCGP21();
@@ -835,7 +838,7 @@ void ultrasonicTimeOfFlightMeasure(void)
        }
        
        
-       DelayNS(1);//等待至少2.8us 
+       DelayNS(100);//等待至少2.8us 
        
        
        Display_Alarm_Icon(0);
@@ -844,22 +847,22 @@ void ultrasonicTimeOfFlightMeasure(void)
        g_timeOfFlight = kalman_filter(g_timeOfFlight);
        
 
-        for( i = 29; i > 0; i-- )  //将最新一次的飞行时间差采样，送入缓冲区（8 bits）
+        for( i = 19; i > 0; i-- )  //将最新一次的飞行时间差采样，送入缓冲区（8 bits）
         {
           g_timeOfFlightBuffer[i] = g_timeOfFlightBuffer[i-1];
         }
         g_timeOfFlightBuffer[0] = g_timeOfFlight;
 
         
-        for( i = 0; i < 30; i++ )
+        for( i = 0; i < 20; i++ )
         {
           tempValueBuffer[i] = g_timeOfFlightBuffer[i];
         }
         unsigned j, k;
         long tempValue;
-        for( j = 0; j < 30-1; j++ )
+        for( j = 0; j < 20-1; j++ )
         {
-          for( k = 0; k < 30-j-1; k++ )
+          for( k = 0; k < 20-j-1; k++ )
           {
             if( tempValueBuffer[k] > tempValueBuffer[k+1] )
             {
@@ -869,26 +872,33 @@ void ultrasonicTimeOfFlightMeasure(void)
             }
           }
         }
-        long tempValueSum = 0;
+        double tempValueSum = 0;
 
 
         int count = 0;
-        for( i = 10; i < 20; i++ )
+        for( i = 5; i < 15; i++ )
         {
           tempValueSum += tempValueBuffer[i];
           
         }
-        tempValueSum = tempValueSum/10;
+        tempValueSum = round(((float)tempValueSum)/10);
         
         //tempValueSum = (tempValueBuffer[6] + tempValueBuffer[7] + tempValueBuffer[13] + tempValueBuffer[14]) /40;
         
         //tempValueSum = kalman_filter(tempValueSum);
         
-        g_timeOfFlight_ave = tempValueSum;
+        //g_timeOfFlight_ave = tempValueSum;
         
         g_tofDisplay = tempValueSum;
         
         
+        g_timeOfFlight_ave_offset = tempValueSum;
+        
+        
+        float roundtempValueSum = tempValueSum;
+        
+        
+        g_timeOfFlight_ave = round((roundtempValueSum - offset)/100);
         
         
 
@@ -929,9 +939,19 @@ void ultrasonicTimeOfFlightMeasure(void)
           //g_waterSurfaceSpeed = 0.75*(3.1415926*0.02*0.02/4)*g_waterLineSpeed*1000;
           //g_waterSurfaceSpeed = g_waterLineSpeed*0.235619445;
           
-          g_waterLineSpeed = 1450.0 *1450.0 *tempValueSum / 2 / 0.0045 / 0.707 /1000000/1000000 ;
+          //g_waterLineSpeed = 1450.0 *1450.0 *tempValueSum / 2 / 0.0045 / 0.707 /1000000/1000000 ;
           
-          g_waterSurfaceSpeed = 0.75 * g_waterLineSpeed  * 0.5 * 0.5 * 60;
+          //g_waterSurfaceSpeed = 0.75 * g_waterLineSpeed  * 0.5 * 0.5 * 60;
+          
+          
+          g_waterSurfaceSpeed = tempValueSum;
+          
+          //Equation                : a + b*x
+          //a = 0.000000000000000E+00
+          //b = 1.263948497854077E+01
+          
+          g_waterSurfaceSpeed = 1.263948497854077 * g_timeOfFlight_ave;
+          
              /*if( tempValueSum < 300 )
             {
                     g_valueOpenCount++;
@@ -961,7 +981,33 @@ void ultrasonicTimeOfFlightMeasure(void)
         {
             displayFre = 0;
             
-            if( g_displayState == DISP_STAT_MAIN )               
+            
+            if( g_timeOfFlight_ave < 0 )
+              {
+                g_timeOfFlight_ave *= -1;
+                Display_unit_Icon(1);
+                positiveFlag = 0;
+                
+              }else{
+                Display_unit_Icon(0);
+                positiveFlag = 1;
+              }    
+            
+            tempshow = (unsigned long)g_timeOfFlight_ave; 
+            
+            
+            if( g_waterSurfaceSpeed < 0 )
+            {
+                g_waterSurfaceSpeed *= -1;
+            }
+            tempshow1 = (unsigned long)(g_waterSurfaceSpeed);          
+           
+           
+              
+            Display_Else_Icon(DISP_STAT_MAIN,tempshow,tempshow1);
+            
+            
+            /*if( g_displayState == DISP_STAT_MAIN )               
             {
               temp = WfmInfo.Normal.TotalVolume;
               //g_waterSurfaceSpeedDisp = g_waterSurfaceSpeed*3.6;//单位转换为m3/h
@@ -1029,6 +1075,7 @@ void ultrasonicTimeOfFlightMeasure(void)
             {
               Display_Else_Icon(DISP_STAT_IR,0,0);
             }  
+            */
    
             Print_Information();
         }  

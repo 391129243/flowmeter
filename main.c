@@ -17,6 +17,8 @@
 #include "timerA1.h"
 
 
+
+
 //计量循环
 void MeterLoop()
 {
@@ -24,7 +26,7 @@ void MeterLoop()
    
    calibrateResonator();
    
-   ultrasonicWaterMeterParamInit();//初始化超声波水表计量参数
+   //ultrasonicWaterMeterParamInit();//初始化超声波水表计量参数
    
    for(unsigned  long i= 600;i>0;i--);       // 延迟   
      
@@ -35,7 +37,7 @@ void MeterLoop()
           g_externalTriggerEvent &= ~TRI_KEYPRESS_L;
           doKeyPressL();
         }
-        if(g_externalTriggerEvent & TRI_IR)
+        /*if(g_externalTriggerEvent & TRI_IR)
         {
           g_externalTriggerEvent &= ~TRI_IR;
           doDecodeIR();
@@ -45,6 +47,7 @@ void MeterLoop()
           g_externalTriggerEvent &= ~TRI_RTC;
           doRtcEvent();
         }  
+        */
         ultrasonicTimeOfFlightMeasure();
    }
 }

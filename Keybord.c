@@ -9,6 +9,13 @@
 #include "timerA1.h"
 #include "tdc-gp22.h"
 
+
+extern long g_timeOfFlight_ave_offset;
+
+
+extern long offset;
+
+
 void Init_Keybord(void)
 {
   P1IES |= ( BIT2);  //下降沿中断，BIT0为红外接收，BIT2为按键
@@ -32,7 +39,10 @@ void doKeyPressL(void)//按键处理
 {  
   unsigned long temp,temp1;         
   
-	if( g_displayState == DISP_STAT_CLOSE )               
+  
+  offset = g_timeOfFlight_ave_offset;
+  
+	/*if( g_displayState == DISP_STAT_CLOSE )               
 	{
           g_displayState = DISP_STAT_MAIN;
           
@@ -113,7 +123,11 @@ void doKeyPressL(void)//按键处理
         
           if(WfmInfo.State == WFM_STATE_RUN)  
             Display_WaterRunning_Icon(1);
-	}           
+	} */  
+
+        
+
+        
 }
 
 

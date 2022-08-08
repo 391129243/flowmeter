@@ -317,26 +317,24 @@ void Display_Cum_Icon(unsigned long cum, unsigned long speed)
 {
   ClearLCD();
   
-  Display_unit_Icon(1);
-  Icon_xiaoshudian1_On; //累积量小数点，单位0.1L
-  Icon_xiaoshudian5_On; //瞬时流速小数点，单位1/L
-  speed = speed * 1000 / 60;
+  if(positiveFlag){
+    Display_unit_Icon(0);
+  }else{ 
+    Display_unit_Icon(1);
+  }
+  
+  
+  
+  //I
+  //con_xiaoshudian1_On; //累积量小数点，单位0.1L
+  //Icon_xiaoshudian5_On; //瞬时流速小数点，单位1/L
+  //speed = speed * 1000 / 60;
   unsigned char ge1,shi1,bai1,qian1;
-  speed %= 9999; 
+  
   qian1 = speed/1000;
   bai1 = (speed-1000*qian1)/100;
   shi1 = (speed-1000*qian1-100*bai1)/10;
   ge1 = speed%10;
-  
-  unsigned char ge2,shi2,bai2,qian2,wan2,shiwan2,baiwan2,qianwan2;
-  qianwan2 = cum/10000000;
-  baiwan2 = (cum-10000000*qianwan2)/1000000;
-  shiwan2 = (cum-10000000*qianwan2-1000000*baiwan2)/100000;
-  wan2 = (cum-10000000*qianwan2-1000000*baiwan2-100000*shiwan2)/10000;
-  qian2 = (cum-10000000*qianwan2-1000000*baiwan2-100000*shiwan2-10000*wan2)/1000;
-  bai2 = (cum-10000000*qianwan2-1000000*baiwan2-100000*shiwan2-10000*wan2-1000*qian2)/100;
-  shi2 = (cum-10000000*qianwan2-1000000*baiwan2-100000*shiwan2-10000*wan2-1000*qian2-100*bai2)/10;
-  ge2 = cum%10;
   
   //瞬时流量显示
   seg[16] = (seg[16] & 0x08) | (digit[qian1] & 0x0f);
@@ -357,8 +355,21 @@ void Display_Cum_Icon(unsigned long cum, unsigned long speed)
   ht1621_write_data(0x00,seg[23]);  
   
   
+  unsigned char ge2,shi2,bai2,qian2,wan2,shiwan2,baiwan2,qianwan2;
+  qianwan2 = cum/10000000;
+  baiwan2 = (cum-10000000*qianwan2)/1000000;
+  shiwan2 = (cum-10000000*qianwan2-1000000*baiwan2)/100000;
+  wan2 = (cum-10000000*qianwan2-1000000*baiwan2-100000*shiwan2)/10000;
+  qian2 = (cum-10000000*qianwan2-1000000*baiwan2-100000*shiwan2-10000*wan2)/1000;
+  bai2 = (cum-10000000*qianwan2-1000000*baiwan2-100000*shiwan2-10000*wan2-1000*qian2)/100;
+  shi2 = (cum-10000000*qianwan2-1000000*baiwan2-100000*shiwan2-10000*wan2-1000*qian2-100*bai2)/10;
+  ge2 = cum%10;
+  
+
+  
+  
   //累积量显示
-  if(qianwan2)
+  /*if(qianwan2)
   {
     seg[0] = (seg[0] & 0x08) | (digit[qianwan2] & 0x0f);
     ht1621_write_data(0x17,seg[0]);
@@ -390,7 +401,7 @@ void Display_Cum_Icon(unsigned long cum, unsigned long speed)
     ht1621_write_data(0x13,seg[4]);
     seg[5] = (digit[shiwan2]>>4) & 0x0f;
     ht1621_write_data(0x12,seg[5]);     
-  }
+  }*/
   
   seg[6] = (seg[6] & 0x08) | (digit[wan2] & 0x0f);
   ht1621_write_data(0x11,seg[6]);
