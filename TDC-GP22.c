@@ -447,7 +447,7 @@ void initConfigureRegisterTDCGP21( void )
   powerOnResetTDCGP21();
   for(unsigned int i = 0; i < 65000; i++);
   initMeasureTDCGP21();
-  configureRegisterTDCGP21( WRITE_REG0,0xd107ef00);//  0xd1c7f800
+  configureRegisterTDCGP21( WRITE_REG0,0xf1c7ef00);//  0xd1c7f800
   //configureRegisterTDCGP21( WRITE_REG0, 0xd1c7d800 );
   //configureRegisterTDCGP21( WRITE_REG0, 0xD3C7E800 );     /// Configure TDC register.
 	// 设置低四位超声波发射的脉冲数为20个；            4M陶瓷晶振，1MHz脉冲，设置时钟信号产生脉冲分频因数为3=4分频；
@@ -469,7 +469,7 @@ void initConfigureRegisterTDCGP21( void )
 	// 设置FIRE_IN管脚功能为7=32KHz 信号输出；
   //configureRegisterTDCGP21( WRITE_REG2, 0xA0140002 );
   //configureRegisterTDCGP21( WRITE_REG2, 0xa0050002 );//10us
-  //configureRegisterTDCGP21( WRITE_REG2, 0xa0040002 );//8us
+  //configureRegisterTDCGP21( WRITE_REG2, 0xe0044002 );//9us
     configureRegisterTDCGP21( WRITE_REG2, 0xe0040002 );//8us
 	// 设置TimeOut(溢出)中断触发有效，EndHits(达到预定采样数)中断触发无效，ALU(ALU数据处理完成)中断触发有效，中断都开启；
 	// 设置通道2的边沿敏感性为0=上升沿或则下降沿,这里仅应用上升沿；
@@ -495,7 +495,7 @@ void initConfigureRegisterTDCGP21( void )
   
   
   
-  configureRegisterTDCGP21( WRITE_REG4, 0x1000bf04 );
+  configureRegisterTDCGP21( WRITE_REG4, 0x1000b004 );
   
    //configureRegisterTDCGP21( WRITE_REG4, 0x1000a004 );
   
@@ -659,12 +659,12 @@ void ultrasonicTimeOfFlightMeasure(void)
        g_timeResult3 = dotHextoDotDec(temp);
        g_averageTimeResultDown = g_timeResult3;
        
-       //temp = readRegisterTDCGP21(READ_RES0);
-       //g_timeResultdown0 = dotHextoDotDec(temp);
-       //temp = readRegisterTDCGP21(READ_RES1);
-       //g_timeResultdown1 = dotHextoDotDec(temp);
-       //temp = readRegisterTDCGP21(READ_RES2);
-       //g_timeResultdown2 = dotHextoDotDec(temp);
+       temp = readRegisterTDCGP21(READ_RES0);
+       g_timeResultdown0 = dotHextoDotDec(temp);
+       temp = readRegisterTDCGP21(READ_RES1);
+       g_timeResultdown1 = dotHextoDotDec(temp);
+       temp = readRegisterTDCGP21(READ_RES2);
+       g_timeResultdown2 = dotHextoDotDec(temp);
      }
      configureRegisterTDCGP21( WRITE_REG5, 0x30000005 );//切换上游测量
      DelayNS(100);//等待至少2.8us 
@@ -685,19 +685,19 @@ void ultrasonicTimeOfFlightMeasure(void)
        g_timeResult3 = dotHextoDotDec(temp);
        g_averageTimeResultUp = g_timeResult3;  
        
-       //temp = readRegisterTDCGP21(READ_RES0);
-       //g_timeResultup0 = dotHextoDotDec(temp);
-       //temp = readRegisterTDCGP21(READ_RES1);
-       //g_timeResultup1 = dotHextoDotDec(temp);
-       //temp = readRegisterTDCGP21(READ_RES2);
-       //g_timeResultup2 = dotHextoDotDec(temp);
+       temp = readRegisterTDCGP21(READ_RES0);
+       g_timeResultup0 = dotHextoDotDec(temp);
+       temp = readRegisterTDCGP21(READ_RES1);
+       g_timeResultup1 = dotHextoDotDec(temp);
+       temp = readRegisterTDCGP21(READ_RES2);
+       g_timeResultup2 = dotHextoDotDec(temp);
      }
      configureRegisterTDCGP21( WRITE_REG5, 0x50000005 );//切换下游测量
      DelayNS(100);//等待至少2.8us 
      
      if( (0 == g_downTimeOutFlag) && (0 == g_upTimeOutFlag) )
      {
-       if( ( (g_averageTimeResultDown<=60)||(g_averageTimeResultDown>=65) ) || ( (g_averageTimeResultUp<=60)||(g_averageTimeResultUp>=65) ) )
+       if( ( (g_averageTimeResultDown<=50)||(g_averageTimeResultDown>=65) ) || ( (g_averageTimeResultUp<=50)||(g_averageTimeResultUp>=65) ) )
        {       
          Display_Alarm_Icon(1);
          //initConfigureRegisterTDCGP21();
@@ -709,7 +709,7 @@ void ultrasonicTimeOfFlightMeasure(void)
      
        g_PW1STValue = readPW1STRegisterTDCGP22();//获取首波脉宽比
        
-       if(g_PW1STValue<0.5){/////如果 PW1ST < 0.3 信号太弱, 则发出报警信号。
+       if(g_PW1STValue<0.3){/////如果 PW1ST < 0.3 信号太弱, 则发出报警信号。
          
          Display_Alarm_Icon(1);
          //initConfigureRegisterTDCGP21();
@@ -872,6 +872,7 @@ void ultrasonicTimeOfFlightMeasure(void)
             }
           }
         }
+        
         double tempValueSum = 0;
 
 
