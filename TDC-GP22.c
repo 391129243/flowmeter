@@ -505,7 +505,7 @@ void initConfigureRegisterTDCGP21( void )
         // 设置是否开启额外的offset +20mV，这里为1=开启该功能;
         // 设置是否开启额外的offset -20mV，这里为0=关闭该功能；
 	// 设置比较器offset，单位为1mV, 这里为F=+10mV;这里总的offset为 (+20mV)+(+10mV) = +30mV;
-  configureRegisterTDCGP21( WRITE_REG5, 0x80000005 );
+  configureRegisterTDCGP21( WRITE_REG5, 0x88000005 );
   //configureRegisterTDCGP21( WRITE_REG5, 0x50000005 );
 	// 设置关闭FIRE_UP，先从FIRE_DOWN下游测量开始,交替的给上游下游换能器进行驱动测量；
 	// 设置Start通道是否外加噪声为0=关闭噪声单元；                设置是否关闭相位噪声单元为0=开启相位噪声移位单元；
@@ -667,7 +667,7 @@ void ultrasonicTimeOfFlightMeasure(void)
        g_timeResultdown2 = dotHextoDotDec(temp);
      }
      configureRegisterTDCGP21( WRITE_REG5, 0x30000005 );//切换上游测量
-     DelayNS(100);//等待至少2.8us 
+     DelayNS(1000);//等待至少2.8us 
      
      initMeasureTDCGP21();
      timeFlightStartTDCGP21();
@@ -693,11 +693,11 @@ void ultrasonicTimeOfFlightMeasure(void)
        g_timeResultup2 = dotHextoDotDec(temp);
      }
      configureRegisterTDCGP21( WRITE_REG5, 0x50000005 );//切换下游测量
-     DelayNS(100);//等待至少2.8us 
+     DelayNS(5000);//等待至少2.8us 
      
      if( (0 == g_downTimeOutFlag) && (0 == g_upTimeOutFlag) )
      {
-       if( ( (g_averageTimeResultDown<=50)||(g_averageTimeResultDown>=65) ) || ( (g_averageTimeResultUp<=50)||(g_averageTimeResultUp>=65) ) )
+       if( ( (g_averageTimeResultDown<=50)||(g_averageTimeResultDown>=80) ) || ( (g_averageTimeResultUp<=50)||(g_averageTimeResultUp>=80) ) )
        {       
          Display_Alarm_Icon(1);
          //initConfigureRegisterTDCGP21();
@@ -716,9 +716,9 @@ void ultrasonicTimeOfFlightMeasure(void)
          return;
        }
        
-       DelayNS(100);//等待至少2.8us 
+       DelayNS(5000);//等待至少2.8us 
        
-       calibrateResonator();
+       //calibrateResonator();
        
     
        //g_averageTimeResultDown = g_averageTimeResultDown*0.25/g_calibrateCorrectionFactor;
@@ -727,7 +727,7 @@ void ultrasonicTimeOfFlightMeasure(void)
        //g_averageTimeResultUp = g_averageTimeResultUp*0.25;
        //g_timeOfFlight = (long)((g_averageTimeResultDown - g_averageTimeResultUp)*1000000*0.25);    
        
-       //g_calibrateCorrectionFactor = 1.0f;
+       g_calibrateCorrectionFactor = 1.0f;
        
        g_averageTimeResultDown = kalman_filterdown(g_averageTimeResultDown * g_calibrateCorrectionFactor);
        
@@ -775,7 +775,7 @@ void ultrasonicTimeOfFlightMeasure(void)
       
       
       
-      g_averageTimeResultUp = tempValueUpSum;
+      g_averageTimeResultUp = tempValueUpSum/10;
       
       
      
@@ -815,7 +815,7 @@ void ultrasonicTimeOfFlightMeasure(void)
         tempValueDownSum += tempValueDownBuffer[i];
         
       }
-      g_averageTimeResultDown = tempValueDownSum;
+      g_averageTimeResultDown = tempValueDownSum/10;
        
       
       
@@ -830,7 +830,7 @@ void ultrasonicTimeOfFlightMeasure(void)
 
        g_timeOfFlight = (long)temp1;
      
-       if( g_timeOfFlight > 500000 || g_timeOfFlight < -500000 )
+       if( g_timeOfFlight > 600000 || g_timeOfFlight < -600000 )
        {       
          Display_Alarm_Icon(1);
          //initConfigureRegisterTDCGP21();
@@ -838,7 +838,7 @@ void ultrasonicTimeOfFlightMeasure(void)
        }
        
        
-       DelayNS(100);//等待至少2.8us 
+       DelayNS(5000);//等待至少2.8us 
        
        
        Display_Alarm_Icon(0);
@@ -847,22 +847,22 @@ void ultrasonicTimeOfFlightMeasure(void)
        g_timeOfFlight = kalman_filter(g_timeOfFlight);
        
 
-        for( i = 19; i > 0; i-- )  //将最新一次的飞行时间差采样，送入缓冲区（8 bits）
+        for( i = 59; i > 0; i-- )  //将最新一次的飞行时间差采样，送入缓冲区（8 bits）
         {
           g_timeOfFlightBuffer[i] = g_timeOfFlightBuffer[i-1];
         }
         g_timeOfFlightBuffer[0] = g_timeOfFlight;
 
         
-        for( i = 0; i < 20; i++ )
+        for( i = 0; i < 60; i++ )
         {
           tempValueBuffer[i] = g_timeOfFlightBuffer[i];
         }
         unsigned j, k;
         long tempValue;
-        for( j = 0; j < 20-1; j++ )
+        for( j = 0; j < 60-1; j++ )
         {
-          for( k = 0; k < 20-j-1; k++ )
+          for( k = 0; k < 60-j-1; k++ )
           {
             if( tempValueBuffer[k] > tempValueBuffer[k+1] )
             {
@@ -877,12 +877,12 @@ void ultrasonicTimeOfFlightMeasure(void)
 
 
         int count = 0;
-        for( i = 5; i < 15; i++ )
+        for( i = 10; i < 50; i++ )
         {
           tempValueSum += tempValueBuffer[i];
           
         }
-        tempValueSum = round(((float)tempValueSum)/10);
+        tempValueSum = round(((float)tempValueSum)/40);
         
         //tempValueSum = (tempValueBuffer[6] + tempValueBuffer[7] + tempValueBuffer[13] + tempValueBuffer[14]) /40;
         
@@ -899,7 +899,7 @@ void ultrasonicTimeOfFlightMeasure(void)
         float roundtempValueSum = tempValueSum;
         
         
-        g_timeOfFlight_ave = round((roundtempValueSum - offset)/100);
+        g_timeOfFlight_ave = round((roundtempValueSum - offset)/10);
         
         
 
@@ -951,7 +951,10 @@ void ultrasonicTimeOfFlightMeasure(void)
           //a = 0.000000000000000E+00
           //b = 1.263948497854077E+01
           
-          g_waterSurfaceSpeed = 1.263948497854077 * g_timeOfFlight_ave;
+          //g_waterSurfaceSpeed = -1.672228467050715E+01 + 2.239356470422932E+00 * g_timeOfFlight_ave;
+          
+          g_waterSurfaceSpeed = 2.186061923838742 * g_timeOfFlight_ave;
+          //g_waterSurfaceSpeed = 0;
           
              /*if( tempValueSum < 300 )
             {
@@ -1373,7 +1376,7 @@ long kalman_filter( long z){
 
 
 //卡尔曼滤波
-double qup = 0.1;
+double qup = 0.5;
 double rup = 2;
 
 //状态均值x， 过程噪声均值w，方差p
@@ -1405,7 +1408,7 @@ double kalman_filterup( double zup){
 
 
 //卡尔曼滤波
-double qdown = 0.1;
+double qdown = 0.5;
 double rdown = 2;
 //状态均值x， 过程噪声均值w，方差p
 static double xdown = 0;
