@@ -9,14 +9,14 @@ Warning[w6]: Type conflict for external/entry "Display_unit_Icon", in module TDC
 #                                                                              #
 #      IAR Universal Linker V6.4.6.89                                          #
 #                                                                              #
-#           Link time     =  03/Jan/2023  10:23:33                             #
+#           Link time     =  11/Apr/2023  18:33:22                             #
 #           Target CPU    =  MSP430                                            #
 #           List file     =  D:\GP224MHz_2Mhz\Debug\List\CSSBV1.0.map          #
 #           Output file 1 =  D:\GP224MHz_2Mhz\Debug\Exe\CSSBV1.0.d43           #
 #                            Format: ubrof10                                   #
 #                            UBROF version 10.0.6                              #
 #                            Using library modules for C-SPY (-rt)             #
-#           Command line  =  -f C:\Users\86188\AppData\Local\Temp\EW6B3C.tmp   #
+#           Command line  =  -f C:\Users\86188\AppData\Local\Temp\EW9095.tmp   #
 #                            (D:\GP224MHz_2Mhz\Debug\Obj\cluster.r43           #
 #                            D:\GP224MHz_2Mhz\Debug\Obj\DataSave.r43           #
 #                            D:\GP224MHz_2Mhz\Debug\Obj\Flash.r43              #
@@ -176,11 +176,11 @@ Absolute parts
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: AD7C - AD7D (0x2 bytes), align: 1
+  Relative segment, address: AAC4 - AAC5 (0x2 bytes), align: 1
   Segment part 10.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           readSystemParam         AD7C            main (main)
+           readSystemParam         AAC4            main (main)
 
     *************************************************************************
 
@@ -320,27 +320,27 @@ DATA16_AN
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: AAE2 - AAF9 (0x18 bytes), align: 1
+  Relative segment, address: A828 - A83F (0x18 bytes), align: 1
   Segment part 4.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           BCDtoDec                AAE2            Display_Date_Icon (lcd)
+           BCDtoDec                A828            Display_Date_Icon (lcd)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: 936A - 948F (0x126 bytes), align: 1
+  Relative segment, address: 9342 - 9467 (0x126 bytes), align: 1
   Segment part 5.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           dotHextoDotDec          936A            calibrateResonator (TDC-GP22)
+           dotHextoDotDec          9342            calibrateResonator (TDC-GP22)
                                                    ultrasonicTimeOfFlightMeasure (TDC-GP22)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A2DA - A335 (0x5c bytes), align: 1
+  Relative segment, address: 9FC4 - A01F (0x5c bytes), align: 1
   Segment part 7.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           reverseHighLowBit       A2DA            Timer0_B0 (timerB0)
+           reverseHighLowBit       9FC4            Timer0_B0 (timerB0)
 
     *************************************************************************
 
@@ -422,32 +422,32 @@ DATA16_AN
            PAIFG_L                 021C 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: ACEE - ACFB (0xe bytes), align: 1
+  Relative segment, address: AA44 - AA51 (0xe bytes), align: 1
   Segment part 8.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Init_Keybord            ACEE            main (main)
+           Init_Keybord            AA44            main (main)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AD62 - AD67 (0x6 bytes), align: 1
+  Relative segment, address: AAB0 - AAB5 (0x6 bytes), align: 1
   Segment part 9.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Enable_Keybord          AD62            TimerA1ISR (timerA1)
+           Enable_Keybord          AAB0            TimerA1ISR (timerA1)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AD68 - AD6D (0x6 bytes), align: 1
+  Relative segment, address: AAAA - AAAF (0x6 bytes), align: 1
   Segment part 10.            Intra module refs:   PORT1
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Disable_Keybord         AD68 
+           Disable_Keybord         AAAA 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AC6C - AC7D (0x12 bytes), align: 1
+  Relative segment, address: A9B4 - A9C5 (0x12 bytes), align: 1
   Segment part 11.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           doKeyPressL             AC6C            MeterLoop (main)
+           doKeyPressL             A9B4            MeterLoop (main)
     -------------------------------------------------------------------------
 ISR_CODE
   Relative segment, address: 5C30 - 5C8B (0x5c bytes), align: 1
@@ -500,7 +500,7 @@ DATA16_AN
            PBDIR_L                 0224 
     -------------------------------------------------------------------------
 DATA20_C
-  Relative segment, address: AD80 - AD8B (0xc bytes), align: 0
+  Relative segment, address: AAC8 - AAD3 (0xc bytes), align: 0
   Segment part 4.             Intra module refs:   Display_Cum_Icon
                                                    Display_Date_Icon
                                                    Display_IR_Icon
@@ -508,10 +508,10 @@ DATA20_C
                                                    Display_TimeOfFlight_Icon
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           digit                   AD80 
+           digit                   AAC8 
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 2346 - 235D (0x18 bytes), align: 0
+  Relative segment, address: 230A - 2321 (0x18 bytes), align: 0
   Segment part 5.             Intra module refs:   ClearLCD
                                                    Display_Cum_Icon
                                                    Display_Date_Icon
@@ -526,7 +526,7 @@ DATA20_Z
                                                    Icon_xiaoshudian6_On_ht1621b
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           seg                     2346 
+           seg                     230A 
     -------------------------------------------------------------------------
 DATA20_I
   Relative segment, address: 1C00 - 1C01 (0x2 bytes), align: 1
@@ -537,14 +537,14 @@ DATA20_I
            positiveFlag            1C00            ultrasonicTimeOfFlightMeasure (TDC-GP22)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: 99D6 - 9A79 (0xa4 bytes), align: 1
+  Relative segment, address: 9712 - 97B5 (0xa4 bytes), align: 1
   Segment part 8.             Intra module refs:   InitLCD
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ht1621_write_com        99D6 
+           ht1621_write_com        9712 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: 9912 - 99D5 (0xc4 bytes), align: 1
+  Relative segment, address: 964E - 9711 (0xc4 bytes), align: 1
   Segment part 9.             Intra module refs:   AllLCDDisplay
                                                    ClearLCD
                                                    Display_Cum_Icon
@@ -560,10 +560,10 @@ DATA20_I
                                                    Icon_xiaoshudian6_On_ht1621b
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ht1621_write_data       9912 
+           ht1621_write_data       964E 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A90A - A92B (0x22 bytes), align: 1
+  Relative segment, address: A62E - A64F (0x22 bytes), align: 1
   Segment part 10.            Intra module refs:   Display_Cum_Icon
                                                    Display_Date_Icon
                                                    Display_IR_Icon
@@ -572,119 +572,119 @@ DATA20_I
                                                    InitLCD
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ClearLCD                A90A 
+           ClearLCD                A62E 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AA5E - AA79 (0x1c bytes), align: 1
+  Relative segment, address: A788 - A7A3 (0x1c bytes), align: 1
   Segment part 11.            Intra module refs:   InitLCD
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           AllLCDDisplay           AA5E 
+           AllLCDDisplay           A788 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A21C - A27D (0x62 bytes), align: 1
+  Relative segment, address: 9F62 - 9FC3 (0x62 bytes), align: 1
   Segment part 12.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           InitLCD                 A21C            main (main)
+           InitLCD                 9F62            main (main)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AB90 - ABA3 (0x14 bytes), align: 1
+  Relative segment, address: A93C - A94F (0x14 bytes), align: 1
   Segment part 13.            Intra module refs:   Display_Alarm_Icon
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            Icon_jiantou1_On_ht1621b
-                                   AB90 
+                                   A93C 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AC08 - AC1B (0x14 bytes), align: 1
+  Relative segment, address: A98C - A99F (0x14 bytes), align: 1
   Segment part 14.            Intra module refs:   Display_Alarm_Icon
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            Icon_jiantou1_Off_ht1621b
-                                   AC08 
+                                   A98C 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: ABF4 - AC07 (0x14 bytes), align: 1
+  Relative segment, address: A978 - A98B (0x14 bytes), align: 1
   Segment part 25.            Intra module refs:   Display_Temp_Icon
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            Icon_xiaoshudian4_On_ht1621b
-                                   ABF4 
+                                   A978 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: ABE0 - ABF3 (0x14 bytes), align: 1
+  Relative segment, address: A900 - A913 (0x14 bytes), align: 1
   Segment part 29.            Intra module refs:   Display_Date_Icon
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            Icon_xiaoshudian6_On_ht1621b
-                                   ABE0 
+                                   A900 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: ABB8 - ABCB (0x14 bytes), align: 1
+  Relative segment, address: A8EC - A8FF (0x14 bytes), align: 1
   Segment part 33.            Intra module refs:   Display_unit_Icon
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            Icon_danwei_On_ht1621b
-                                   ABB8 
+                                   A8EC 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: ABA4 - ABB7 (0x14 bytes), align: 1
+  Relative segment, address: A8D8 - A8EB (0x14 bytes), align: 1
   Segment part 34.            Intra module refs:   Display_unit_Icon
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            Icon_danwei_Off_ht1621b
-                                   ABA4 
+                                   A8D8 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AB10 - AB25 (0x16 bytes), align: 1
+  Relative segment, address: A882 - A897 (0x16 bytes), align: 1
   Segment part 35.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Display_Alarm_Icon      AB10            ultrasonicTimeOfFlightMeasure (TDC-GP22)
+           Display_Alarm_Icon      A882            ultrasonicTimeOfFlightMeasure (TDC-GP22)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AB3C - AB51 (0x16 bytes), align: 1
+  Relative segment, address: A898 - A8AD (0x16 bytes), align: 1
   Segment part 37.            Intra module refs:   Display_Cum_Icon
                                                    Display_TimeOfFlight_Icon
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Display_unit_Icon       AB3C            ultrasonicTimeOfFlightMeasure (TDC-GP22)
+           Display_unit_Icon       A898            ultrasonicTimeOfFlightMeasure (TDC-GP22)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: 7C0A - 82FD (0x6f4 bytes), align: 1
+  Relative segment, address: 7BE2 - 82D5 (0x6f4 bytes), align: 1
   Segment part 38.            Intra module refs:   Display_Else_Icon
                                                    LCD_ReFlash
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Display_Cum_Icon        7C0A 
+           Display_Cum_Icon        7BE2 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: 87BA - 8BB1 (0x3f8 bytes), align: 1
+  Relative segment, address: 8792 - 8B89 (0x3f8 bytes), align: 1
   Segment part 39.            Intra module refs:   Display_Else_Icon
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Display_Date_Icon       87BA            rtc (rtc)
+           Display_Date_Icon       8792            rtc (rtc)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: 8E02 - 8F81 (0x180 bytes), align: 1
+  Relative segment, address: 8DDA - 8F59 (0x180 bytes), align: 1
   Segment part 40.            Intra module refs:   Display_Else_Icon
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Display_Temp_Icon       8E02 
+           Display_Temp_Icon       8DDA 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
@@ -697,31 +697,31 @@ DATA20_I
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: 8BB2 - 8E01 (0x250 bytes), align: 1
+  Relative segment, address: 8B8A - 8DD9 (0x250 bytes), align: 1
   Segment part 42.            Intra module refs:   Display_Else_Icon
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Display_IR_Icon         8BB2 
+           Display_IR_Icon         8B8A 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: 9BBC - 9C5B (0xa0 bytes), align: 1
+  Relative segment, address: 9858 - 98F7 (0xa0 bytes), align: 1
   Segment part 43.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Display_Else_Icon       9BBC            ultrasonicTimeOfFlightMeasure (TDC-GP22)
+           Display_Else_Icon       9858            ultrasonicTimeOfFlightMeasure (TDC-GP22)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A82E - A857 (0x2a bytes), align: 1
+  Relative segment, address: A54A - A573 (0x2a bytes), align: 1
   Segment part 44.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           LCD_ReFlash             A82E            main (main)
+           LCD_ReFlash             A54A            main (main)
                calls direct
     -------------------------------------------------------------------------
 DATA20_ID
-  Relative segment, address: ADE2 - ADE3 (0x2 bytes), align: 1
+  Relative segment, address: AB2A - AB2B (0x2 bytes), align: 1
   Segment part 7.             Intra module refs:   positiveFlag
 
     *************************************************************************
@@ -744,19 +744,19 @@ DATA16_AN
            WDTCTL_L                015C 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A686 - A6B9 (0x34 bytes), align: 1
+  Relative segment, address: A3CC - A3FF (0x34 bytes), align: 1
   Segment part 3.             Intra module refs:   main
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           MeterLoop               A686 
+           MeterLoop               A3CC 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A614 - A64D (0x3a bytes), align: 1
+  Relative segment, address: A35A - A393 (0x3a bytes), align: 1
   Segment part 4.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           main                    A614            Segment part 26 (?cstart)
+           main                    A35A            Segment part 26 (?cstart)
                calls direct
 
     *************************************************************************
@@ -819,11 +819,11 @@ DATA16_AN
            UCA0ICTL_L              05DC 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A1B2 - A21B (0x6a bytes), align: 1
+  Relative segment, address: 9EF8 - 9F61 (0x6a bytes), align: 1
   Segment part 8.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           initMBUS                A1B2            main (main)
+           initMBUS                9EF8            main (main)
     -------------------------------------------------------------------------
 ISR_CODE
   Relative segment, address: 5C8C - 5CA3 (0x18 bytes), align: 1
@@ -850,342 +850,342 @@ INTVEC
   SEGMENTS IN THE MODULE
   ======================
 DATA20_Z
-  Relative segment, address: 1C20 - 1D2F (0x110 bytes), align: 1
+  Relative segment, address: 1C08 - 1D17 (0x110 bytes), align: 1
   Segment part 4.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           WfmInfo                 1C20            LCD_ReFlash (lcd)
+           WfmInfo                 1C08            LCD_ReFlash (lcd)
                                                    Print_Information (RS485)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 1D30 - 1D31 (0x2 bytes), align: 1
+  Relative segment, address: 1D18 - 1D19 (0x2 bytes), align: 1
   Segment part 10.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            g_externalTriggerEvent
-                                   1D30            MeterLoop (main)
+                                   1D18            MeterLoop (main)
                                                    Timer0_B0 (timerB0)
                                                    TimerA1ISR (timerA1)
                                                    rtc (rtc)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 235E - 2364 (0x7 bytes), align: 0
+  Relative segment, address: 2322 - 2328 (0x7 bytes), align: 0
   Segment part 11.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           g_tagRTC                235E            Display_Else_Icon (lcd)
+           g_tagRTC                2322            Display_Else_Icon (lcd)
                                                    rtc (rtc)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 2365 - 2396 (0x32 bytes), align: 0
+  Relative segment, address: 2329 - 235A (0x32 bytes), align: 0
   Segment part 15.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           g_irReceiveBuffer       2365            Reset_IR_Param (timerB0)
+           g_irReceiveBuffer       2329            Reset_IR_Param (timerB0)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 2397 - 23E6 (0x50 bytes), align: 0
+  Relative segment, address: 235B - 23AA (0x50 bytes), align: 0
   Segment part 16.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           g_irSendBuffer          2397            Reset_IR_Param (timerB0)
+           g_irSendBuffer          235B            Reset_IR_Param (timerB0)
                                                    Stop_IRSend_PWM (timerB0)
                                                    Timer0_B0 (timerB0)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 23E7 - 23E7 (0x1 bytes), align: 0
+  Relative segment, address: 23AB - 23AB (0x1 bytes), align: 0
   Segment part 17.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            g_irSendByteNumberCount
-                                   23E7            Reset_IR_Param (timerB0)
+                                   23AB            Reset_IR_Param (timerB0)
                                                    Stop_IRSend_PWM (timerB0)
                                                    Timer0_B0 (timerB0)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 23E8 - 23E8 (0x1 bytes), align: 0
+  Relative segment, address: 23AC - 23AC (0x1 bytes), align: 0
   Segment part 18.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            g_irReceiveByteNumberCount
-                                   23E8            Reset_IR_Param (timerB0)
+                                   23AC            Reset_IR_Param (timerB0)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 23E9 - 23E9 (0x1 bytes), align: 0
+  Relative segment, address: 23AD - 23AD (0x1 bytes), align: 0
   Segment part 19.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           g_irReceiveCode         23E9            Timer0_B0 (timerB0)
+           g_irReceiveCode         23AD            Timer0_B0 (timerB0)
     -------------------------------------------------------------------------
 DATA20_I
-  Relative segment, address: 1C1E - 1C1E (0x1 bytes), align: 0
+  Relative segment, address: 1C06 - 1C06 (0x1 bytes), align: 0
   Segment part 20.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           g_irReceiveByteOkFlag   1C1E            PORT1 (Keybord)
+           g_irReceiveByteOkFlag   1C06            PORT1 (Keybord)
                                                    Reset_IR_Param (timerB0)
                                                    Timer0_B0 (timerB0)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 23EA - 23EA (0x1 bytes), align: 0
+  Relative segment, address: 23AE - 23AE (0x1 bytes), align: 0
   Segment part 22.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           g_irReceiveOrSendFlag   23EA            PORT1 (Keybord)
+           g_irReceiveOrSendFlag   23AE            PORT1 (Keybord)
                                                    Reset_IR_Param (timerB0)
                                                    Stop_IRSend_PWM (timerB0)
                                                    Timer0_B0 (timerB0)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 23EB - 23EB (0x1 bytes), align: 0
+  Relative segment, address: 23AF - 23AF (0x1 bytes), align: 0
   Segment part 28.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           g_uartReceiveCode       23EB            USCI_A0_ISR (mbus)
+           g_uartReceiveCode       23AF            USCI_A0_ISR (mbus)
                                                    USCI_A3_ISR (RS485)
     -------------------------------------------------------------------------
 DATA20_I
-  Relative segment, address: 1C1F - 1C1F (0x1 bytes), align: 0
+  Relative segment, address: 1C07 - 1C07 (0x1 bytes), align: 0
   Segment part 35.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           g_displayState          1C1F            LCD_ReFlash (lcd)
+           g_displayState          1C07            LCD_ReFlash (lcd)
                                                    TimerA1ISR (timerA1)
                                                    rtc (rtc)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 23EC - 23EC (0x1 bytes), align: 0
+  Relative segment, address: 23B0 - 23B0 (0x1 bytes), align: 0
   Segment part 42.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            g_KeyInteruptDown_Flag
-                                   23EC            PORT1 (Keybord)
+                                   23B0            PORT1 (Keybord)
                                                    TimerA1ISR (timerA1)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 23ED - 23ED (0x1 bytes), align: 0
+  Relative segment, address: 23B1 - 23B1 (0x1 bytes), align: 0
   Segment part 43.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           g_tdcInterruptFlag      23ED            PORT2 (TDC-GP22)
+           g_tdcInterruptFlag      23B1            PORT2 (TDC-GP22)
                                                    calibrateResonator (TDC-GP22)
                                                    ultrasonicTimeOfFlightMeasure (TDC-GP22)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 1D32 - 1D33 (0x2 bytes), align: 1
+  Relative segment, address: 1D1A - 1D1B (0x2 bytes), align: 1
   Segment part 44.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           g_tdcStatusRegister     1D32            calibrateResonator (TDC-GP22)
+           g_tdcStatusRegister     1D1A            calibrateResonator (TDC-GP22)
                                                    ultrasonicTimeOfFlightMeasure (TDC-GP22)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 1D34 - 1D37 (0x4 bytes), align: 1
+  Relative segment, address: 1D1C - 1D1F (0x4 bytes), align: 1
   Segment part 46.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           g_calibrateResult       1D34            calibrateResonator (TDC-GP22)
+           g_calibrateResult       1D1C            calibrateResonator (TDC-GP22)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 1D38 - 1D3B (0x4 bytes), align: 1
+  Relative segment, address: 1D20 - 1D23 (0x4 bytes), align: 1
   Segment part 47.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            g_calibrateCorrectionFactor
-                                   1D38            calibrateResonator (TDC-GP22)
+                                   1D20            calibrateResonator (TDC-GP22)
                                                    ultrasonicTimeOfFlightMeasure (TDC-GP22)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 1D3C - 1D3F (0x4 bytes), align: 1
+  Relative segment, address: 1D24 - 1D27 (0x4 bytes), align: 1
   Segment part 60.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           g_timeResultup0         1D3C            ultrasonicTimeOfFlightMeasure (TDC-GP22)
+           g_timeResultup0         1D24            ultrasonicTimeOfFlightMeasure (TDC-GP22)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 1D40 - 1D43 (0x4 bytes), align: 1
+  Relative segment, address: 1D28 - 1D2B (0x4 bytes), align: 1
   Segment part 61.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           g_timeResultup1         1D40            ultrasonicTimeOfFlightMeasure (TDC-GP22)
+           g_timeResultup1         1D28            ultrasonicTimeOfFlightMeasure (TDC-GP22)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 1D44 - 1D47 (0x4 bytes), align: 1
+  Relative segment, address: 1D2C - 1D2F (0x4 bytes), align: 1
   Segment part 62.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           g_timeResultup2         1D44            ultrasonicTimeOfFlightMeasure (TDC-GP22)
+           g_timeResultup2         1D2C            ultrasonicTimeOfFlightMeasure (TDC-GP22)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 1D48 - 1D4B (0x4 bytes), align: 1
+  Relative segment, address: 1D30 - 1D33 (0x4 bytes), align: 1
   Segment part 64.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           g_timeResultdown0       1D48            ultrasonicTimeOfFlightMeasure (TDC-GP22)
+           g_timeResultdown0       1D30            ultrasonicTimeOfFlightMeasure (TDC-GP22)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 1D4C - 1D4F (0x4 bytes), align: 1
+  Relative segment, address: 1D34 - 1D37 (0x4 bytes), align: 1
   Segment part 65.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           g_timeResultdown1       1D4C            ultrasonicTimeOfFlightMeasure (TDC-GP22)
+           g_timeResultdown1       1D34            ultrasonicTimeOfFlightMeasure (TDC-GP22)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 1D50 - 1D53 (0x4 bytes), align: 1
+  Relative segment, address: 1D38 - 1D3B (0x4 bytes), align: 1
   Segment part 66.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           g_timeResultdown2       1D50            ultrasonicTimeOfFlightMeasure (TDC-GP22)
+           g_timeResultdown2       1D38            ultrasonicTimeOfFlightMeasure (TDC-GP22)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 1D54 - 1D57 (0x4 bytes), align: 1
+  Relative segment, address: 1D3C - 1D3F (0x4 bytes), align: 1
   Segment part 71.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           g_timeResult3           1D54            ultrasonicTimeOfFlightMeasure (TDC-GP22)
+           g_timeResult3           1D3C            ultrasonicTimeOfFlightMeasure (TDC-GP22)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 1D58 - 1D5B (0x4 bytes), align: 1
+  Relative segment, address: 1D40 - 1D43 (0x4 bytes), align: 1
   Segment part 72.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           g_averageTimeResultUp   1D58            Print_Information (RS485)
+           g_averageTimeResultUp   1D40            Print_Information (RS485)
                                                    ultrasonicTimeOfFlightMeasure (TDC-GP22)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 1D5C - 1E4B (0xf0 bytes), align: 1
+  Relative segment, address: 1D44 - 1E33 (0xf0 bytes), align: 1
   Segment part 73.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            g_timeOfFlightUpBuffer
-                                   1D5C            ultrasonicTimeOfFlightMeasure (TDC-GP22)
+                                   1D44            ultrasonicTimeOfFlightMeasure (TDC-GP22)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 1E4C - 1E4F (0x4 bytes), align: 1
+  Relative segment, address: 1E34 - 1E37 (0x4 bytes), align: 1
   Segment part 74.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            g_averageTimeResultDown
-                                   1E4C            Print_Information (RS485)
+                                   1E34            Print_Information (RS485)
                                                    ultrasonicTimeOfFlightMeasure (TDC-GP22)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 1E50 - 1F3F (0xf0 bytes), align: 1
+  Relative segment, address: 1E38 - 1F27 (0xf0 bytes), align: 1
   Segment part 75.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            g_timeOfFlightDownBuffer
-                                   1E50            ultrasonicTimeOfFlightMeasure (TDC-GP22)
+                                   1E38            ultrasonicTimeOfFlightMeasure (TDC-GP22)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 1F40 - 1F43 (0x4 bytes), align: 1
+  Relative segment, address: 1F28 - 1F2B (0x4 bytes), align: 1
   Segment part 76.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           g_PW1STValue            1F40            ultrasonicTimeOfFlightMeasure (TDC-GP22)
+           g_PW1STValue            1F28            ultrasonicTimeOfFlightMeasure (TDC-GP22)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 1F44 - 1F47 (0x4 bytes), align: 1
+  Relative segment, address: 1F2C - 1F2F (0x4 bytes), align: 1
   Segment part 77.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           g_timeOfFlight          1F44            ultrasonicTimeOfFlightMeasure (TDC-GP22)
+           g_timeOfFlight          1F2C            ultrasonicTimeOfFlightMeasure (TDC-GP22)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 1F48 - 1F4B (0x4 bytes), align: 1
+  Relative segment, address: 1F30 - 1F33 (0x4 bytes), align: 1
   Segment part 78.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           g_timeOfFlight_ave      1F48            Print_Information (RS485)
+           g_timeOfFlight_ave      1F30            Print_Information (RS485)
                                                    ultrasonicTimeOfFlightMeasure (TDC-GP22)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 1F4C - 1F4F (0x4 bytes), align: 1
+  Relative segment, address: 1F34 - 1F37 (0x4 bytes), align: 1
   Segment part 79.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            g_timeOfFlight_ave_offset
-                                   1F4C            doKeyPressL (Keybord)
+                                   1F34            doKeyPressL (Keybord)
                                                    ultrasonicTimeOfFlightMeasure (TDC-GP22)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 1F50 - 203F (0xf0 bytes), align: 1
+  Relative segment, address: 1F38 - 2027 (0xf0 bytes), align: 1
   Segment part 80.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           g_timeOfFlightBuffer    1F50            ultrasonicTimeOfFlightMeasure (TDC-GP22)
+           g_timeOfFlightBuffer    1F38            ultrasonicTimeOfFlightMeasure (TDC-GP22)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 2040 - 212F (0xf0 bytes), align: 1
+  Relative segment, address: 2028 - 2117 (0xf0 bytes), align: 1
   Segment part 81.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           tempValueBuffer         2040            ultrasonicTimeOfFlightMeasure (TDC-GP22)
+           tempValueBuffer         2028            ultrasonicTimeOfFlightMeasure (TDC-GP22)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 2130 - 221F (0xf0 bytes), align: 1
+  Relative segment, address: 2118 - 2207 (0xf0 bytes), align: 1
   Segment part 82.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           tempValueUpBuffer       2130            ultrasonicTimeOfFlightMeasure (TDC-GP22)
+           tempValueUpBuffer       2118            ultrasonicTimeOfFlightMeasure (TDC-GP22)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 2220 - 230F (0xf0 bytes), align: 1
+  Relative segment, address: 2208 - 22F7 (0xf0 bytes), align: 1
   Segment part 83.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           tempValueDownBuffer     2220            ultrasonicTimeOfFlightMeasure (TDC-GP22)
+           tempValueDownBuffer     2208            ultrasonicTimeOfFlightMeasure (TDC-GP22)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 2310 - 2313 (0x4 bytes), align: 1
+  Relative segment, address: 22F8 - 22FB (0x4 bytes), align: 1
   Segment part 84.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           g_tofDisplay            2310            ultrasonicTimeOfFlightMeasure (TDC-GP22)
+           g_tofDisplay            22F8            ultrasonicTimeOfFlightMeasure (TDC-GP22)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 2314 - 2317 (0x4 bytes), align: 1
+  Relative segment, address: 22FC - 22FF (0x4 bytes), align: 1
   Segment part 86.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           g_waterSurfaceSpeed     2314            ultrasonicTimeOfFlightMeasure (TDC-GP22)
+           g_waterSurfaceSpeed     22FC            ultrasonicTimeOfFlightMeasure (TDC-GP22)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 2318 - 231B (0x4 bytes), align: 1
+  Relative segment, address: 2300 - 2303 (0x4 bytes), align: 1
   Segment part 87.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            g_waterSurfaceSpeedDisp
-                                   2318            LCD_ReFlash (lcd)
+                                   2300            LCD_ReFlash (lcd)
                                                    Print_Information (RS485)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 23EE - 23EE (0x1 bytes), align: 0
+  Relative segment, address: 23B2 - 23B2 (0x1 bytes), align: 0
   Segment part 95.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           g_upTimeOutFlag         23EE            ultrasonicTimeOfFlightMeasure (TDC-GP22)
+           g_upTimeOutFlag         23B2            ultrasonicTimeOfFlightMeasure (TDC-GP22)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 23EF - 23EF (0x1 bytes), align: 0
+  Relative segment, address: 23B3 - 23B3 (0x1 bytes), align: 0
   Segment part 96.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           g_downTimeOutFlag       23EF            ultrasonicTimeOfFlightMeasure (TDC-GP22)
+           g_downTimeOutFlag       23B3            ultrasonicTimeOfFlightMeasure (TDC-GP22)
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 23F0 - 23F0 (0x1 bytes), align: 0
+  Relative segment, address: 23B4 - 23B4 (0x1 bytes), align: 0
   Segment part 101.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           g_valueOpenFlag         23F0            ultrasonicTimeOfFlightMeasure (TDC-GP22)
+           g_valueOpenFlag         23B4            ultrasonicTimeOfFlightMeasure (TDC-GP22)
     -------------------------------------------------------------------------
 DATA20_ID
-  Relative segment, address: AE00 - AE00 (0x1 bytes), align: 0
+  Relative segment, address: AB30 - AB30 (0x1 bytes), align: 0
   Segment part 21.            Intra module refs:   g_irReceiveByteOkFlag
     -------------------------------------------------------------------------
 DATA20_ID
-  Relative segment, address: AE01 - AE01 (0x1 bytes), align: 0
+  Relative segment, address: AB31 - AB31 (0x1 bytes), align: 0
   Segment part 36.            Intra module refs:   g_displayState
 
     *************************************************************************
@@ -1267,51 +1267,51 @@ DATA16_AN
            UCA3ICTL_L              069C 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A046 - A0C1 (0x7c bytes), align: 1
+  Relative segment, address: 9D8C - 9E07 (0x7c bytes), align: 1
   Segment part 22.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           initRS485               A046            main (main)
+           initRS485               9D8C            main (main)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: ACC2 - ACD1 (0x10 bytes), align: 1
+  Relative segment, address: A9FA - AA09 (0x10 bytes), align: 1
   Segment part 23.            Intra module refs:   Print_Information
                                                    Print_String
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Print_Byte              ACC2 
+           Print_Byte              A9FA 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AB26 - AB3B (0x16 bytes), align: 1
+  Relative segment, address: A86C - A881 (0x16 bytes), align: 1
   Segment part 24.            Intra module refs:   Print_Information
                                                    Print_Text1
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Print_String            AB26 
+           Print_String            A86C 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A7AA - A7D7 (0x2e bytes), align: 1
+  Relative segment, address: A4F0 - A51D (0x2e bytes), align: 1
   Segment part 25.            Intra module refs:   Print_Information
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Print_Text1             A7AA 
+           Print_Text1             A4F0 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: 90E6 - 9239 (0x154 bytes), align: 1
+  Relative segment, address: 90BE - 9211 (0x154 bytes), align: 1
   Segment part 27.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Print_Information       90E6            ultrasonicTimeOfFlightMeasure (TDC-GP22)
+           Print_Information       90BE            ultrasonicTimeOfFlightMeasure (TDC-GP22)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AD7A - AD7B (0x2 bytes), align: 1
+  Relative segment, address: AAC6 - AAC7 (0x2 bytes), align: 1
   Segment part 30.            Intra module refs:   USCI_A3_ISR
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           doCj188Decode           AD7A            USCI_A0_ISR (mbus)
+           doCj188Decode           AAC6            USCI_A0_ISR (mbus)
     -------------------------------------------------------------------------
 ISR_CODE
   Relative segment, address: 5CA4 - 5CB7 (0x14 bytes), align: 1
@@ -1331,35 +1331,35 @@ INTVEC
                                    FFD8 
     -------------------------------------------------------------------------
 DATA20_C
-  Relative segment, address: AD8C - AD90 (0x5 bytes), align: 0
+  Relative segment, address: AAD4 - AAD8 (0x5 bytes), align: 0
   Segment part 13.            Intra module refs:   Print_Text1
     -------------------------------------------------------------------------
 DATA20_C
-  Relative segment, address: AD91 - AD9C (0xc bytes), align: 0
+  Relative segment, address: AAD9 - AAE4 (0xc bytes), align: 0
   Segment part 15.            Intra module refs:   Print_Information
     -------------------------------------------------------------------------
 DATA20_C
-  Relative segment, address: AD9D - AD9E (0x2 bytes), align: 0
+  Relative segment, address: AAE5 - AAE6 (0x2 bytes), align: 0
   Segment part 16.            Intra module refs:   Print_Information
     -------------------------------------------------------------------------
 DATA20_C
-  Relative segment, address: AD9F - ADAD (0xf bytes), align: 0
+  Relative segment, address: AAE7 - AAF5 (0xf bytes), align: 0
   Segment part 17.            Intra module refs:   Print_Information
     -------------------------------------------------------------------------
 DATA20_C
-  Relative segment, address: ADAE - ADB1 (0x4 bytes), align: 0
+  Relative segment, address: AAF6 - AAF9 (0x4 bytes), align: 0
   Segment part 18.            Intra module refs:   Print_Information
     -------------------------------------------------------------------------
 DATA20_C
-  Relative segment, address: ADB2 - ADBB (0xa bytes), align: 0
+  Relative segment, address: AAFA - AB03 (0xa bytes), align: 0
   Segment part 19.            Intra module refs:   Print_Information
     -------------------------------------------------------------------------
 DATA20_C
-  Relative segment, address: ADBC - ADBE (0x3 bytes), align: 0
+  Relative segment, address: AB04 - AB06 (0x3 bytes), align: 0
   Segment part 20.            Intra module refs:   Print_Information
     -------------------------------------------------------------------------
 DATA20_C
-  Relative segment, address: ADBF - ADC7 (0x9 bytes), align: 0
+  Relative segment, address: AB07 - AB0F (0x9 bytes), align: 0
   Segment part 21.            Intra module refs:   Print_Information
 
     *************************************************************************
@@ -1485,11 +1485,11 @@ DATA16_AN
            RTCADOWDAY_L            04BA 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A336 - A38D (0x58 bytes), align: 1
+  Relative segment, address: A07C - A0D3 (0x58 bytes), align: 1
   Segment part 19.            Intra module refs:   rtc
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           rtcGetDateTimeBCD       A336 
+           rtcGetDateTimeBCD       A07C 
     -------------------------------------------------------------------------
 ISR_CODE
   Relative segment, address: 5CB8 - 5D2D (0x76 bytes), align: 1
@@ -1598,28 +1598,28 @@ DATA20_I
            offset                  1C02            doKeyPressL (Keybord)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: 9842 - 9911 (0xd0 bytes), align: 1
+  Relative segment, address: 957E - 964D (0xd0 bytes), align: 1
   Segment part 48.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           initSPI                 9842            main (main)
+           initSPI                 957E            main (main)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: ACA2 - ACB1 (0x10 bytes), align: 1
+  Relative segment, address: A9EA - A9F9 (0x10 bytes), align: 1
   Segment part 49.            Intra module refs:   readAndWriteByteTDCGP21
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           writeByteTDCGP21        ACA2 
+           writeByteTDCGP21        A9EA 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: ACB2 - ACC1 (0x10 bytes), align: 1
+  Relative segment, address: AA0A - AA19 (0x10 bytes), align: 1
   Segment part 50.            Intra module refs:   readAndWriteByteTDCGP21
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           readByteTDCGP21         ACB2 
+           readByteTDCGP21         AA0A 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AD24 - AD2F (0xc bytes), align: 1
+  Relative segment, address: AA60 - AA6B (0xc bytes), align: 1
   Segment part 51.            Intra module refs:   calibrateResonatorTDCGP21
                                                    configureRegisterTDCGP21
                                                    initMeasureTDCGP21
@@ -1632,132 +1632,132 @@ DATA20_I
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            readAndWriteByteTDCGP21
-                                   AD24 
+                                   AA60 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A7D8 - A803 (0x2c bytes), align: 1
+  Relative segment, address: A51E - A549 (0x2c bytes), align: 1
   Segment part 52.            Intra module refs:   initConfigureRegisterTDCGP21
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           resetTDCGP21            A7D8 
+           resetTDCGP21            A51E 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A94E - A96F (0x22 bytes), align: 1
+  Relative segment, address: A60C - A62D (0x22 bytes), align: 1
   Segment part 53.            Intra module refs:   initConfigureRegisterTDCGP21
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           powerOnResetTDCGP21     A94E 
+           powerOnResetTDCGP21     A60C 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A8C6 - A8E7 (0x22 bytes), align: 1
+  Relative segment, address: A672 - A693 (0x22 bytes), align: 1
   Segment part 54.            Intra module refs:   calibrateResonator
                                                    initConfigureRegisterTDCGP21
                                                    ultrasonicTimeOfFlightMeasure
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           initMeasureTDCGP21      A8C6 
+           initMeasureTDCGP21      A672 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A8E8 - A909 (0x22 bytes), align: 1
+  Relative segment, address: A650 - A671 (0x22 bytes), align: 1
   Segment part 55.            Intra module refs:   calibrateResonator
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            calibrateResonatorTDCGP21
-                                   A8E8 
+                                   A650 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A990 - A9AF (0x20 bytes), align: 1
+  Relative segment, address: A6F6 - A715 (0x20 bytes), align: 1
   Segment part 56.            Intra module refs:   ultrasonicTimeOfFlightMeasure
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            timeFlightStartTDCGP21
-                                   A990 
+                                   A6F6 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A27E - A2D9 (0x5c bytes), align: 1
+  Relative segment, address: A020 - A07B (0x5c bytes), align: 1
   Segment part 59.            Intra module refs:   initConfigureRegisterTDCGP21
                                                    ultrasonicTimeOfFlightMeasure
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            configureRegisterTDCGP21
-                                   A27E 
+                                   A020 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A558 - A597 (0x40 bytes), align: 1
+  Relative segment, address: A25E - A29D (0x40 bytes), align: 1
   Segment part 60.            Intra module refs:   calibrateResonator
                                                    ultrasonicTimeOfFlightMeasure
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            readStatusRegisterTDCGP21
-                                   A558 
+                                   A25E 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: 9C5C - 9CF9 (0x9e bytes), align: 1
+  Relative segment, address: 9998 - 9A35 (0x9e bytes), align: 1
   Segment part 61.            Intra module refs:   ultrasonicTimeOfFlightMeasure
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            readPW1STRegisterTDCGP22
-                                   9C5C 
+                                   9998 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A0C2 - A13B (0x7a bytes), align: 1
+  Relative segment, address: 9E08 - 9E81 (0x7a bytes), align: 1
   Segment part 62.            Intra module refs:   calibrateResonator
                                                    ultrasonicTimeOfFlightMeasure
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           readRegisterTDCGP21     A0C2 
+           readRegisterTDCGP21     9E08 
                calls direct
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 23F1 - 23F7 (0x7 bytes), align: 0
+  Relative segment, address: 23B5 - 23BB (0x7 bytes), align: 0
   Segment part 21.            Intra module refs:   readIDbytesTDCGP21
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ID_Bytes                23F1 
+           ID_Bytes                23B5 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A13C - A1B1 (0x76 bytes), align: 1
+  Relative segment, address: 9E82 - 9EF7 (0x76 bytes), align: 1
   Segment part 63.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           readIDbytesTDCGP21      A13C            MeterLoop (main)
+           readIDbytesTDCGP21      9E82            MeterLoop (main)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: 9FC0 - A045 (0x86 bytes), align: 1
+  Relative segment, address: 9D06 - 9D8B (0x86 bytes), align: 1
   Segment part 64.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            initConfigureRegisterTDCGP21
-                                   9FC0            main (main)
+                                   9D06            main (main)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: 9E1C - 9EAB (0x90 bytes), align: 1
-  Segment part 65.
+  Relative segment, address: 9A36 - 9ACF (0x9a bytes), align: 1
+  Segment part 65.            Intra module refs:   ultrasonicTimeOfFlightMeasure
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           calibrateResonator      9E1C            MeterLoop (main)
+           calibrateResonator      9A36            MeterLoop (main)
                calls direct
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 23F8 - 23F8 (0x1 bytes), align: 0
+  Relative segment, address: 23BC - 23BC (0x1 bytes), align: 0
   Segment part 22.            Intra module refs:   ultrasonicTimeOfFlightMeasure
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           displayFre              23F8 
+           displayFre              23BC 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: 72DE - 7C09 (0x92c bytes), align: 1
-  Segment part 70.
+  Relative segment, address: 72DE - 7BE1 (0x904 bytes), align: 1
+  Segment part 68.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            ultrasonicTimeOfFlightMeasure
@@ -1765,11 +1765,11 @@ DATA20_Z
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AC30 - AC43 (0x14 bytes), align: 1
-  Segment part 69.            Intra module refs:   ultrasonicTimeOfFlightMeasure
+  Relative segment, address: A8AE - A8C3 (0x16 bytes), align: 1
+  Segment part 67.            Intra module refs:   ultrasonicTimeOfFlightMeasure
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           DelayNS                 AC30 
+           DelayNS                 A8AE 
     -------------------------------------------------------------------------
 ISR_CODE
   Relative segment, address: 5D2E - 5D45 (0x18 bytes), align: 1
@@ -1779,135 +1779,6 @@ ISR_CODE
            PORT2                   5D2E 
                interrupt function
     -------------------------------------------------------------------------
-DATA20_I
-  Relative segment, address: 1C06 - 1C09 (0x4 bytes), align: 1
-  Segment part 27.            Intra module refs:   kalman_filter
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           q                       1C06 
-    -------------------------------------------------------------------------
-DATA20_I
-  Relative segment, address: 1C0A - 1C0D (0x4 bytes), align: 1
-  Segment part 29.            Intra module refs:   kalman_filter
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           r                       1C0A 
-    -------------------------------------------------------------------------
-DATA20_Z
-  Relative segment, address: 231C - 231F (0x4 bytes), align: 1
-  Segment part 31.            Intra module refs:   kalman_filter
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           x                       231C 
-    -------------------------------------------------------------------------
-DATA20_Z
-  Relative segment, address: 2320 - 2323 (0x4 bytes), align: 1
-  Segment part 32.            Intra module refs:   kalman_filter
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           w                       2320 
-    -------------------------------------------------------------------------
-DATA20_Z
-  Relative segment, address: 2324 - 2327 (0x4 bytes), align: 1
-  Segment part 33.            Intra module refs:   kalman_filter
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           p                       2324 
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: 95A6 - 9691 (0xec bytes), align: 1
-  Segment part 74.            Intra module refs:   ultrasonicTimeOfFlightMeasure
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           kalman_filter           95A6 
-               calls direct
-    -------------------------------------------------------------------------
-DATA20_I
-  Relative segment, address: 1C0E - 1C11 (0x4 bytes), align: 1
-  Segment part 34.            Intra module refs:   kalman_filterup
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           qup                     1C0E 
-    -------------------------------------------------------------------------
-DATA20_I
-  Relative segment, address: 1C12 - 1C15 (0x4 bytes), align: 1
-  Segment part 36.            Intra module refs:   kalman_filterup
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           rup                     1C12 
-    -------------------------------------------------------------------------
-DATA20_Z
-  Relative segment, address: 2328 - 232B (0x4 bytes), align: 1
-  Segment part 38.            Intra module refs:   kalman_filterup
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           xup                     2328 
-    -------------------------------------------------------------------------
-DATA20_Z
-  Relative segment, address: 232C - 232F (0x4 bytes), align: 1
-  Segment part 39.            Intra module refs:   kalman_filterup
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           wup                     232C 
-    -------------------------------------------------------------------------
-DATA20_Z
-  Relative segment, address: 2330 - 2333 (0x4 bytes), align: 1
-  Segment part 40.            Intra module refs:   kalman_filterup
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           pup                     2330 
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: 976A - 9841 (0xd8 bytes), align: 1
-  Segment part 67.            Intra module refs:   ultrasonicTimeOfFlightMeasure
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           kalman_filterup         976A 
-               calls direct
-    -------------------------------------------------------------------------
-DATA20_I
-  Relative segment, address: 1C16 - 1C19 (0x4 bytes), align: 1
-  Segment part 41.            Intra module refs:   kalman_filterdown
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           qdown                   1C16 
-    -------------------------------------------------------------------------
-DATA20_I
-  Relative segment, address: 1C1A - 1C1D (0x4 bytes), align: 1
-  Segment part 43.            Intra module refs:   kalman_filterdown
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           rdown                   1C1A 
-    -------------------------------------------------------------------------
-DATA20_Z
-  Relative segment, address: 2334 - 2337 (0x4 bytes), align: 1
-  Segment part 45.            Intra module refs:   kalman_filterdown
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           xdown                   2334 
-    -------------------------------------------------------------------------
-DATA20_Z
-  Relative segment, address: 2338 - 233B (0x4 bytes), align: 1
-  Segment part 46.            Intra module refs:   kalman_filterdown
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           wdown                   2338 
-    -------------------------------------------------------------------------
-DATA20_Z
-  Relative segment, address: 233C - 233F (0x4 bytes), align: 1
-  Segment part 47.            Intra module refs:   kalman_filterdown
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           pdown                   233C 
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: 9692 - 9769 (0xd8 bytes), align: 1
-  Segment part 68.            Intra module refs:   ultrasonicTimeOfFlightMeasure
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           kalman_filterdown       9692 
-               calls direct
-    -------------------------------------------------------------------------
 INTVEC
   Common segment, address: FF80 - FFD5 (0x56 bytes), align: 1
   Segment part 16. ROOT 
@@ -1916,32 +1787,8 @@ INTVEC
            PORT2::??INTVEC 84      FFD4 
     -------------------------------------------------------------------------
 DATA20_ID
-  Relative segment, address: ADE4 - ADE7 (0x4 bytes), align: 1
+  Relative segment, address: AB2C - AB2F (0x4 bytes), align: 1
   Segment part 19.            Intra module refs:   offset
-    -------------------------------------------------------------------------
-DATA20_ID
-  Relative segment, address: ADE8 - ADEB (0x4 bytes), align: 1
-  Segment part 28.            Intra module refs:   q
-    -------------------------------------------------------------------------
-DATA20_ID
-  Relative segment, address: ADEC - ADEF (0x4 bytes), align: 1
-  Segment part 30.            Intra module refs:   r
-    -------------------------------------------------------------------------
-DATA20_ID
-  Relative segment, address: ADF0 - ADF3 (0x4 bytes), align: 1
-  Segment part 35.            Intra module refs:   qup
-    -------------------------------------------------------------------------
-DATA20_ID
-  Relative segment, address: ADF4 - ADF7 (0x4 bytes), align: 1
-  Segment part 37.            Intra module refs:   rup
-    -------------------------------------------------------------------------
-DATA20_ID
-  Relative segment, address: ADF8 - ADFB (0x4 bytes), align: 1
-  Segment part 42.            Intra module refs:   qdown
-    -------------------------------------------------------------------------
-DATA20_ID
-  Relative segment, address: ADFC - ADFF (0x4 bytes), align: 1
-  Segment part 44.            Intra module refs:   rdown
 
     *************************************************************************
 
@@ -2020,49 +1867,49 @@ DATA16_AN
            TA1CCR0                 0392 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A804 - A82D (0x2a bytes), align: 1
+  Relative segment, address: A574 - A59D (0x2a bytes), align: 1
   Segment part 9.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           initTimerA1             A804            main (main)
+           initTimerA1             A574            main (main)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A92C - A94D (0x22 bytes), align: 1
+  Relative segment, address: A694 - A6B5 (0x22 bytes), align: 1
   Segment part 10.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           startTimerA1            A92C            PORT1 (Keybord)
+           startTimerA1            A694            PORT1 (Keybord)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AD46 - AD4F (0xa bytes), align: 1
+  Relative segment, address: AA8E - AA97 (0xa bytes), align: 1
   Segment part 11.            Intra module refs:   TimerA1ISR
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           stopTimerA1             AD46 
+           stopTimerA1             AA8E 
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 2340 - 2341 (0x2 bytes), align: 1
+  Relative segment, address: 2304 - 2305 (0x2 bytes), align: 1
   Segment part 7.             Intra module refs:   TimerA1ISR
                                                    clearLcdReturnMainMenuDelayCount
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            LCDReturnMainMenuDelay
-                                   2340 
+                                   2304 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AD5A - AD61 (0x8 bytes), align: 1
+  Relative segment, address: AAA2 - AAA9 (0x8 bytes), align: 1
   Segment part 14.            Intra module refs:   TimerA1ISR
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            clearLcdReturnMainMenuDelayCount
-                                   AD5A 
+                                   AAA2 
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 23F9 - 23F9 (0x1 bytes), align: 0
+  Relative segment, address: 23BD - 23BD (0x1 bytes), align: 0
   Segment part 8.             Intra module refs:   TimerA1ISR
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           touchKeyDelayCount      23F9 
+           touchKeyDelayCount      23BD 
     -------------------------------------------------------------------------
 ISR_CODE
   Relative segment, address: 5D48 - 5DD9 (0x92 bytes), align: 1
@@ -2143,184 +1990,184 @@ DATA16_AN
            TB0CCR1                 03D4 
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 23FA - 23FA (0x1 bytes), align: 0
+  Relative segment, address: 23BE - 23BE (0x1 bytes), align: 0
   Segment part 16.            Intra module refs:   IRDecodeError
                                                    IRRecPulseDown
                                                    Reset_IR_Param
                                                    Timer0_B0
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           IR_Rec_First_Flag       23FA 
+           IR_Rec_First_Flag       23BE 
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 23FB - 23FB (0x1 bytes), align: 0
+  Relative segment, address: 23BF - 23BF (0x1 bytes), align: 0
   Segment part 17.            Intra module refs:   IRDecodeError
                                                    Reset_IR_Param
                                                    Timer0_B0
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           IR_Rec_Start_Flag       23FB 
+           IR_Rec_Start_Flag       23BF 
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 23FC - 23FC (0x1 bytes), align: 0
+  Relative segment, address: 23C0 - 23C0 (0x1 bytes), align: 0
   Segment part 18.            Intra module refs:   IRDecodeError
                                                    Reset_IR_Param
                                                    Timer0_B0
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           IR_Rec_PulseIndex       23FC 
+           IR_Rec_PulseIndex       23C0 
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 2342 - 2343 (0x2 bytes), align: 1
+  Relative segment, address: 2306 - 2307 (0x2 bytes), align: 1
   Segment part 19.            Intra module refs:   IRDecodeError
                                                    Reset_IR_Param
                                                    Timer0_B0
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           IR_Rec_Code             2342 
+           IR_Rec_Code             2306 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AB52 - AB67 (0x16 bytes), align: 1
+  Relative segment, address: A856 - A86B (0x16 bytes), align: 1
   Segment part 33.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           IRRecPulseDown          AB52            PORT1 (Keybord)
+           IRRecPulseDown          A856            PORT1 (Keybord)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AA96 - AAAF (0x1a bytes), align: 1
+  Relative segment, address: A7F6 - A80F (0x1a bytes), align: 1
   Segment part 34.            Intra module refs:   Timer0_B0
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           IRDecodeError           AA96 
+           IRDecodeError           A7F6 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A8A2 - A8C5 (0x24 bytes), align: 1
+  Relative segment, address: A5E8 - A60B (0x24 bytes), align: 1
   Segment part 28.            Intra module refs:   Reset_IR_Param
                                                    Stop_IRSend_PWM
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Init_TimerB0_IRRecive   A8A2 
+           Init_TimerB0_IRRecive   A5E8 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AD3C - AD45 (0xa bytes), align: 1
+  Relative segment, address: AA98 - AAA1 (0xa bytes), align: 1
   Segment part 35.            Intra module refs:   Timer0_B0
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Stop_TimerB0            AD3C 
+           Stop_TimerB0            AA98 
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 23FD - 23FD (0x1 bytes), align: 0
+  Relative segment, address: 23C1 - 23C1 (0x1 bytes), align: 0
   Segment part 20.            Intra module refs:   IRSendError
                                                    IR_Send_Byte
                                                    Reset_IR_Param
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           IR_Send_First_Flag      23FD 
+           IR_Send_First_Flag      23C1 
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 23FE - 23FE (0x1 bytes), align: 0
+  Relative segment, address: 23C2 - 23C2 (0x1 bytes), align: 0
   Segment part 21.            Intra module refs:   IRSendError
                                                    IR_Send_Byte
                                                    Reset_IR_Param
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           IR_Send_Start_Flag      23FE 
+           IR_Send_Start_Flag      23C2 
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 23FF - 23FF (0x1 bytes), align: 0
+  Relative segment, address: 23C3 - 23C3 (0x1 bytes), align: 0
   Segment part 22.            Intra module refs:   IRSendError
                                                    IR_Send_Byte
                                                    Reset_IR_Param
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           IR_Send_PulseIndex      23FF 
+           IR_Send_PulseIndex      23C3 
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 2400 - 2400 (0x1 bytes), align: 0
+  Relative segment, address: 23C4 - 23C4 (0x1 bytes), align: 0
   Segment part 23.            Intra module refs:   Reset_IR_Param
                                                    Timer0_B0
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           IR_Send_Data_Count      2400 
+           IR_Send_Data_Count      23C4 
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 2401 - 2401 (0x1 bytes), align: 0
+  Relative segment, address: 23C5 - 23C5 (0x1 bytes), align: 0
   Segment part 24.            Intra module refs:   IR_Send_Byte
                                                    Reset_IR_Param
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           IR_Send_Count_38KHz     2401 
+           IR_Send_Count_38KHz     23C5 
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 2402 - 2402 (0x1 bytes), align: 0
+  Relative segment, address: 23C6 - 23C6 (0x1 bytes), align: 0
   Segment part 25.            Intra module refs:   Reset_IR_Param
                                                    Timer0_B0
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            IR_Send_OneByte_OK_Flag
-                                   2402 
+                                   23C6 
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 2403 - 2403 (0x1 bytes), align: 0
+  Relative segment, address: 23C7 - 23C7 (0x1 bytes), align: 0
   Segment part 26.            Intra module refs:   IR_Send_Byte
                                                    Reset_IR_Param
                                                    Timer0_B0
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           IR_Sending_Byte         2403 
+           IR_Sending_Byte         23C7 
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 2344 - 2345 (0x2 bytes), align: 1
+  Relative segment, address: 2308 - 2309 (0x2 bytes), align: 1
   Segment part 27.            Intra module refs:   Reset_IR_Param
                                                    Timer0_B0
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            IR_SendOneByte_Delay10ms_Count
-                                   2344 
+                                   2308 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A77C - A7A9 (0x2e bytes), align: 1
+  Relative segment, address: A4C2 - A4EF (0x2e bytes), align: 1
   Segment part 38.            Intra module refs:   Timer0_B0
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Stop_IRSend_PWM         A77C 
+           Stop_IRSend_PWM         A4C2 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: ABCC - ABDF (0x14 bytes), align: 1
+  Relative segment, address: A9A0 - A9B3 (0x14 bytes), align: 1
   Segment part 39.            Intra module refs:   IR_Send_Byte
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Open_IRSend_PWM         ABCC 
+           Open_IRSend_PWM         A9A0 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AB68 - AB7B (0x14 bytes), align: 1
+  Relative segment, address: A964 - A977 (0x14 bytes), align: 1
   Segment part 40.            Intra module refs:   IR_Send_Byte
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Close_IRSend_PWM        AB68 
+           Close_IRSend_PWM        A964 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AB7C - AB8F (0x14 bytes), align: 1
+  Relative segment, address: A950 - A963 (0x14 bytes), align: 1
   Segment part 41.            Intra module refs:   IR_Send_Byte
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           IRSendError             AB7C 
+           IRSendError             A950 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: 9F36 - 9FBF (0x8a bytes), align: 1
+  Relative segment, address: 9BF2 - 9C7B (0x8a bytes), align: 1
   Segment part 29.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Reset_IR_Param          9F36            TimerA1ISR (timerA1)
+           Reset_IR_Param          9BF2            TimerA1ISR (timerA1)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: 9B1C - 9BBB (0xa0 bytes), align: 1
+  Relative segment, address: 98F8 - 9997 (0xa0 bytes), align: 1
   Segment part 42.            Intra module refs:   Timer0_B0
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           IR_Send_Byte            9B1C 
+           IR_Send_Byte            98F8 
                calls direct
     -------------------------------------------------------------------------
 ISR_CODE
@@ -2432,11 +2279,11 @@ DATA16_AN
            UCSCTL7_L               016E 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A598 - A5D7 (0x40 bytes), align: 1
+  Relative segment, address: A29E - A2DD (0x40 bytes), align: 1
   Segment part 9.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           initUCS                 A598            main (main)
+           initUCS                 A29E            main (main)
 
     *************************************************************************
 
@@ -2446,11 +2293,11 @@ DATA16_AN
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: AD7E - AD7F (0x2 bytes), align: 1
+  Relative segment, address: AAC2 - AAC3 (0x2 bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           __DebugBreak            AD7E            __exit (?__exit)
+           __DebugBreak            AAC2            __exit (?__exit)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?__exit
@@ -2458,11 +2305,11 @@ DATA16_AN
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: AC58 - AC6B (0x14 bytes), align: 1
+  Relative segment, address: A928 - A93B (0x14 bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           __exit                  AC58            Segment part 6 (?_exit)
+           __exit                  A928            Segment part 6 (?_exit)
                                                    _exit (?_exit)
                calls direct
 
@@ -2472,14 +2319,14 @@ DATA16_AN
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: AD6E, align: 1
+  Relative segment, address: AABA, align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           _exit                   AD6E            exit (?exit)
+           _exit                   AABA            exit (?exit)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AD6E - AD71 (0x4 bytes), align: 1
+  Relative segment, address: AABA - AABD (0x4 bytes), align: 1
   Segment part 6.             Intra module refs:   _exit
 
     -------------------------------------------------------------------------
@@ -2496,27 +2343,27 @@ CODE_I
   Segment part 5.
     -------------------------------------------------------------------------
 CODE_ID
-  Relative segment, address: AE02, align: 1
+  Relative segment, address: AB32, align: 1
   Segment part 6.
     -------------------------------------------------------------------------
 DATA20_Z
-  Relative segment, address: 2346, align: 1
+  Relative segment, address: 230A, align: 1
   Segment part 7.
     -------------------------------------------------------------------------
 DATA20_I
-  Relative segment, address: 1C1E, align: 1
+  Relative segment, address: 1C06, align: 1
   Segment part 8.
     -------------------------------------------------------------------------
 DATA20_ID
-  Relative segment, address: AE00, align: 1
+  Relative segment, address: AB30, align: 1
   Segment part 9.
     -------------------------------------------------------------------------
 DATA20_C
-  Relative segment, address: AD80, align: 1
+  Relative segment, address: AAC8, align: 1
   Segment part 10.
     -------------------------------------------------------------------------
 DATA20_N
-  Relative segment, address: 2404, align: 1
+  Relative segment, address: 23C8, align: 1
   Segment part 12.
     -------------------------------------------------------------------------
 CSTART
@@ -2585,20 +2432,11 @@ CSTART
                                                    g_valueOpenFlag (params)
                                                    g_waterSurfaceSpeed (params)
                                                    g_waterSurfaceSpeedDisp (params)
-                                                   p (TDC-GP22)
-                                                   pdown (TDC-GP22)
-                                                   pup (TDC-GP22)
                                                    seg (lcd)
                                                    tempValueBuffer (params)
                                                    tempValueDownBuffer (params)
                                                    tempValueUpBuffer (params)
                                                    touchKeyDelayCount (timerA1)
-                                                   w (TDC-GP22)
-                                                   wdown (TDC-GP22)
-                                                   wup (TDC-GP22)
-                                                   x (TDC-GP22)
-                                                   xdown (TDC-GP22)
-                                                   xup (TDC-GP22)
     -------------------------------------------------------------------------
 CSTART
   Relative segment, address: 5C14 - 5C27 (0x14 bytes), align: 1
@@ -2609,12 +2447,6 @@ CSTART
                                                    g_irReceiveByteOkFlag (params)
                                                    offset (TDC-GP22)
                                                    positiveFlag (lcd)
-                                                   q (TDC-GP22)
-                                                   qdown (TDC-GP22)
-                                                   qup (TDC-GP22)
-                                                   r (TDC-GP22)
-                                                   rdown (TDC-GP22)
-                                                   rup (TDC-GP22)
     -------------------------------------------------------------------------
 CSTART
   Relative segment, address: 5C28 - 5C2F (0x8 bytes), align: 1
@@ -2625,7 +2457,7 @@ CSTART
            ?cstart_end             5C30 
     -------------------------------------------------------------------------
 CODE_ID
-  Relative segment, address: AE02, align: 1
+  Relative segment, address: AB32, align: 1
   Segment part 27.            Intra module refs:   Segment part 5
 
     -------------------------------------------------------------------------
@@ -2646,14 +2478,14 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: 9A7A - 9B1B (0xa2 bytes), align: 1
+  Relative segment, address: 97B6 - 9857 (0xa2 bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           _Div64u                 9A7A            _LitobFull (?xprintffull)
+           _Div64u                 97B6            _LitobFull (?xprintffull)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AAB0 - AAC9 (0x1a bytes), align: 1
+  Relative segment, address: A7DC - A7F5 (0x1a bytes), align: 1
   Segment part 4.             Intra module refs:   _Div64u
 
     -------------------------------------------------------------------------
@@ -2662,11 +2494,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: AAFA - AB0F (0x16 bytes), align: 1
+  Relative segment, address: A840 - A855 (0x16 bytes), align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           div                     AAFA            _GenldFull (?xprintffull)
+           div                     A840            _GenldFull (?xprintffull)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?exit
@@ -2674,11 +2506,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: AD72 - AD75 (0x4 bytes), align: 1
+  Relative segment, address: AAB6 - AAB9 (0x4 bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           exit                    AD72            Segment part 26 (?cstart)
+           exit                    AAB6            Segment part 26 (?cstart)
                calls direct
 
     -------------------------------------------------------------------------
@@ -2687,15 +2519,12 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: 9490 - 95A5 (0x116 bytes), align: 1
+  Relative segment, address: 9468 - 957D (0x116 bytes), align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?Mul32fHw32             9490            Print_Information (RS485)
+           ?Mul32fHw32             9468            Print_Information (RS485)
                                                    _LdtobFull (?xprintffull)
-                                                   kalman_filter (TDC-GP22)
-                                                   kalman_filterdown (TDC-GP22)
-                                                   kalman_filterup (TDC-GP22)
                                                    scale (?xprintffull)
                                                    ultrasonicTimeOfFlightMeasure (TDC-GP22)
 
@@ -2705,21 +2534,20 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: 9CFA - 9D0D (0x14 bytes), align: 1
+  Relative segment, address: 9AD0 - 9AE3 (0x14 bytes), align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           _Cast32sto32f           9CFA            _LdtobFull (?xprintffull)
-                                                   kalman_filter (TDC-GP22)
+           _Cast32sto32f           9AD0            _LdtobFull (?xprintffull)
                                                    readPW1STRegisterTDCGP22 (TDC-GP22)
                                                    ultrasonicTimeOfFlightMeasure (TDC-GP22)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: 9D0E - 9D8B (0x7e bytes), align: 1
+  Relative segment, address: 9AE4 - 9B61 (0x7e bytes), align: 1
   Segment part 1.             Intra module refs:   _Cast32sto32f
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           _Cast32uto32f           9D0E            Print_Information (RS485)
+           _Cast32uto32f           9AE4            Print_Information (RS485)
                                                    _LdtobFull (?xprintffull)
                                                    dotHextoDotDec (functions)
                                                    readPW1STRegisterTDCGP22 (TDC-GP22)
@@ -2730,11 +2558,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: AD30 - AD3B (0xc bytes), align: 1
+  Relative segment, address: AA6C - AA77 (0xc bytes), align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           _Cast32fto32u           AD30            LCD_ReFlash (lcd)
+           _Cast32fto32u           AA6C            LCD_ReFlash (lcd)
                                                    _LdtobFull (?xprintffull)
                                                    ultrasonicTimeOfFlightMeasure (TDC-GP22)
 
@@ -2744,12 +2572,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: A6BA - A6EB (0x32 bytes), align: 1
+  Relative segment, address: A400 - A431 (0x32 bytes), align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           _Cast32fto32s           A6BA            _LdtobFull (?xprintffull)
-                                                   kalman_filter (TDC-GP22)
+           _Cast32fto32s           A400            _LdtobFull (?xprintffull)
                                                    ultrasonicTimeOfFlightMeasure (TDC-GP22)
 
     -------------------------------------------------------------------------
@@ -2758,11 +2585,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: A484 - A4CF (0x4c bytes), align: 1
+  Relative segment, address: A1CA - A215 (0x4c bytes), align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?FLT_Extract            A484            _Cast32fto32s (_Cast32fto32s)
+           ?FLT_Extract            A1CA            _Cast32fto32s (_Cast32fto32s)
                                                    _Cast32fto32u (_Cast32fto32u)
 
     -------------------------------------------------------------------------
@@ -2771,11 +2598,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: A38E - A3E3 (0x56 bytes), align: 1
+  Relative segment, address: A0D4 - A129 (0x56 bytes), align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?FLT_GE                 A38E            _LdtobFull (?xprintffull)
+           ?FLT_GE                 A0D4            _LdtobFull (?xprintffull)
                                                    ultrasonicTimeOfFlightMeasure (TDC-GP22)
 
     -------------------------------------------------------------------------
@@ -2784,11 +2611,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: A3E4 - A435 (0x52 bytes), align: 1
+  Relative segment, address: A12A - A17B (0x52 bytes), align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?FLT_LT                 A3E4            Segment part 22 (?xprintffull)
+           ?FLT_LT                 A12A            Segment part 22 (?xprintffull)
                                                    ultrasonicTimeOfFlightMeasure (TDC-GP22)
 
     -------------------------------------------------------------------------
@@ -2797,16 +2624,13 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: 923A - 9369 (0x130 bytes), align: 1
+  Relative segment, address: 9212 - 9341 (0x130 bytes), align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           _Div32f                 923A            _LdtobFull (?xprintffull)
+           _Div32f                 9212            _LdtobFull (?xprintffull)
                                                    calibrateResonator (TDC-GP22)
                                                    dotHextoDotDec (functions)
-                                                   kalman_filter (TDC-GP22)
-                                                   kalman_filterdown (TDC-GP22)
-                                                   kalman_filterup (TDC-GP22)
                                                    readPW1STRegisterTDCGP22 (TDC-GP22)
                                                    ultrasonicTimeOfFlightMeasure (TDC-GP22)
 
@@ -2816,26 +2640,20 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: 8F82 - 8F85 (0x4 bytes), align: 1
+  Relative segment, address: 8F5A - 8F5D (0x4 bytes), align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           _Sub32f                 8F82            _LdtobFull (?xprintffull)
-                                                   kalman_filter (TDC-GP22)
-                                                   kalman_filterdown (TDC-GP22)
-                                                   kalman_filterup (TDC-GP22)
+           _Sub32f                 8F5A            _LdtobFull (?xprintffull)
                                                    ultrasonicTimeOfFlightMeasure (TDC-GP22)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: 8F86 - 90E5 (0x160 bytes), align: 1
+  Relative segment, address: 8F5E - 90BD (0x160 bytes), align: 1
   Segment part 1.             Intra module refs:   _Sub32f
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           _Add32f                 8F86            calibrateResonator (TDC-GP22)
+           _Add32f                 8F5E            calibrateResonator (TDC-GP22)
                                                    dotHextoDotDec (functions)
-                                                   kalman_filter (TDC-GP22)
-                                                   kalman_filterdown (TDC-GP22)
-                                                   kalman_filterup (TDC-GP22)
                                                    readPW1STRegisterTDCGP22 (TDC-GP22)
                                                    round (?round)
                                                    ultrasonicTimeOfFlightMeasure (TDC-GP22)
@@ -2846,18 +2664,18 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: AA7A - AA7D (0x4 bytes), align: 1
+  Relative segment, address: A76C - A76F (0x4 bytes), align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?DivMod8u               AA7A            Display_Date_Icon (lcd)
+           ?DivMod8u               A76C            Display_Date_Icon (lcd)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AA7E - AA95 (0x18 bytes), align: 1
+  Relative segment, address: A770 - A787 (0x18 bytes), align: 1
   Segment part 1.             Intra module refs:   ?DivMod8u
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?DivMod16u              AA7E            ?DivMod16s (?DivMod816s)
+           ?DivMod16u              A770            ?DivMod16s (?DivMod816s)
                                                    Display_Date_Icon (lcd)
 
     -------------------------------------------------------------------------
@@ -2866,11 +2684,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: A6EC - A71B (0x30 bytes), align: 1
+  Relative segment, address: A462 - A491 (0x30 bytes), align: 1
   Segment part 1.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?DivMod16s              A6EC            div (?div)
+           ?DivMod16s              A462            div (?div)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?DivMod32u
@@ -2878,11 +2696,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: A71C - A74B (0x30 bytes), align: 1
+  Relative segment, address: A432 - A461 (0x30 bytes), align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?DivMod32u              A71C            ?DivMod32s (?DivMod32s)
+           ?DivMod32u              A432            ?DivMod32s (?DivMod32s)
                                                    Display_Cum_Icon (lcd)
                                                    Display_Temp_Icon (lcd)
                                                    Display_TimeOfFlight_Icon (lcd)
@@ -2894,11 +2712,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: A518 - A557 (0x40 bytes), align: 1
+  Relative segment, address: A2DE - A31D (0x40 bytes), align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?DivMod32s              A518            _LdtobFull (?xprintffull)
+           ?DivMod32s              A2DE            _LdtobFull (?xprintffull)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?ShiftLeft32_8n
@@ -2906,39 +2724,39 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: A9EE - A9F1 (0x4 bytes), align: 1
+  Relative segment, address: A7C0 - A7C3 (0x4 bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?ShiftLeft32_12         A9EE            dotHextoDotDec (functions)
+           ?ShiftLeft32_12         A7C0            dotHextoDotDec (functions)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A9F2 - A9F5 (0x4 bytes), align: 1
+  Relative segment, address: A7C4 - A7C7 (0x4 bytes), align: 1
   Segment part 3.             Intra module refs:   ?ShiftLeft32_12
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?ShiftLeft32_11         A9F2 
+           ?ShiftLeft32_11         A7C4 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A9F6 - A9F9 (0x4 bytes), align: 1
+  Relative segment, address: A7C8 - A7CB (0x4 bytes), align: 1
   Segment part 4.             Intra module refs:   ?ShiftLeft32_11
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?ShiftLeft32_10         A9F6 
+           ?ShiftLeft32_10         A7C8 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A9FA - A9FD (0x4 bytes), align: 1
+  Relative segment, address: A7CC - A7CF (0x4 bytes), align: 1
   Segment part 5.             Intra module refs:   ?ShiftLeft32_10
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?ShiftLeft32_9          A9FA 
+           ?ShiftLeft32_9          A7CC 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A9FE - AA09 (0xc bytes), align: 1
+  Relative segment, address: A7D0 - A7DB (0xc bytes), align: 1
   Segment part 6.             Intra module refs:   ?ShiftLeft32_9
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?ShiftLeft32_8          A9FE 
+           ?ShiftLeft32_8          A7D0 
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?ShiftRight16s_n
@@ -2946,18 +2764,18 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: AD50 - AD51 (0x2 bytes), align: 1
+  Relative segment, address: AA84 - AA85 (0x2 bytes), align: 1
   Segment part 3.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?ShiftRight16s_4        AD50            dotHextoDotDec (functions)
+           ?ShiftRight16s_4        AA84            dotHextoDotDec (functions)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AD52 - AD59 (0x8 bytes), align: 1
+  Relative segment, address: AA86 - AA8D (0x8 bytes), align: 1
   Segment part 4.             Intra module refs:   ?ShiftRight16s_4
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?ShiftRight16s_3        AD52 
+           ?ShiftRight16s_3        AA86 
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?ShiftRight32s
@@ -2965,25 +2783,25 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: AC90 - AC93 (0x4 bytes), align: 1
+  Relative segment, address: A9D8 - A9DB (0x4 bytes), align: 1
   Segment part 4.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?ShiftRight32s_4        AC90            _LdtobFull (?xprintffull)
+           ?ShiftRight32s_4        A9D8            _LdtobFull (?xprintffull)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AC94 - AC97 (0x4 bytes), align: 1
+  Relative segment, address: A9DC - A9DF (0x4 bytes), align: 1
   Segment part 5.             Intra module refs:   ?ShiftRight32s_4
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?ShiftRight32s_3        AC94 
+           ?ShiftRight32s_3        A9DC 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AC98 - ACA1 (0xa bytes), align: 1
+  Relative segment, address: A9E0 - A9E9 (0xa bytes), align: 1
   Segment part 6.             Intra module refs:   ?ShiftRight32s_3
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?ShiftRight32s_2        AC98 
+           ?ShiftRight32s_2        A9E0 
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?memchr
@@ -2991,11 +2809,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: A9D0 - A9ED (0x1e bytes), align: 1
+  Relative segment, address: A716 - A733 (0x1e bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           __iar_Memchr            A9D0            _PrintfFull (?xprintffull)
+           __iar_Memchr            A716            _PrintfFull (?xprintffull)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?memcpy
@@ -3003,11 +2821,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: AA0A - AA25 (0x1c bytes), align: 1
+  Relative segment, address: A7A4 - A7BF (0x1c bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           memcpy                  AA0A            Segment part 13 (?xprintffull)
+           memcpy                  A7A4            Segment part 13 (?xprintffull)
                                                    Segment part 14 (?xprintffull)
                                                    _GenldFull (?xprintffull)
                                                    _LdtobFull (?xprintffull)
@@ -3019,11 +2837,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: AA42 - AA5D (0x1c bytes), align: 1
+  Relative segment, address: A750 - A76B (0x1c bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           memset                  AA42            Reset_IR_Param (timerB0)
+           memset                  A750            Reset_IR_Param (timerB0)
                                                    Stop_IRSend_PWM (timerB0)
 
     -------------------------------------------------------------------------
@@ -3032,18 +2850,18 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: AACA - AAE1 (0x18 bytes), align: 1
+  Relative segment, address: A810 - A827 (0x18 bytes), align: 1
   Segment part 5.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           __data20_memzero        AACA            ?cstart_init_zero20 (?cstart)
+           __data20_memzero        A810            ?cstart_init_zero20 (?cstart)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AD76 - AD79 (0x4 bytes), align: 1
+  Relative segment, address: AABE - AAC1 (0x4 bytes), align: 1
   Segment part 6.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           __data20_memcpy         AD76            ?cstart_init_copy20 (?cstart)
+           __data20_memcpy         AABE            ?cstart_init_copy20 (?cstart)
                calls direct
 
     -------------------------------------------------------------------------
@@ -3052,19 +2870,19 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: A970 - A973 (0x4 bytes), align: 1
+  Relative segment, address: A6D6 - A6D9 (0x4 bytes), align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?Mul8Hw                 A970            _LitobFull (?xprintffull)
+           ?Mul8Hw                 A6D6            _LitobFull (?xprintffull)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A974 - A98F (0x1c bytes), align: 1
+  Relative segment, address: A6DA - A6F5 (0x1c bytes), align: 1
   Segment part 1.             Intra module refs:   ?Mul8Hw
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?Mul16Hw                A974 
-           ?Mul16to32uHw           A974 
+           ?Mul16Hw                A6DA 
+           ?Mul16to32uHw           A6DA 
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?Mul16to32sHw
@@ -3072,11 +2890,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: AA26 - AA41 (0x1c bytes), align: 1
+  Relative segment, address: A734 - A74F (0x1c bytes), align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?Mul16to32sHw           AA26            _LdtobFull (?xprintffull)
+           ?Mul16to32sHw           A734            _LdtobFull (?xprintffull)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?round
@@ -3084,11 +2902,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: A436 - A483 (0x4e bytes), align: 1
+  Relative segment, address: A17C - A1C9 (0x4e bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           round                   A436            ultrasonicTimeOfFlightMeasure (TDC-GP22)
+           round                   A17C            ultrasonicTimeOfFlightMeasure (TDC-GP22)
                calls direct
 
     -------------------------------------------------------------------------
@@ -3097,11 +2915,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: A5D8 - A613 (0x3c bytes), align: 1
+  Relative segment, address: A31E - A359 (0x3c bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           sprintf                 A5D8            Print_Text1 (RS485)
+           sprintf                 A31E            Print_Text1 (RS485)
                calls direct
 
     -------------------------------------------------------------------------
@@ -3110,11 +2928,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: ACE0 - ACED (0xe bytes), align: 1
+  Relative segment, address: AA28 - AA35 (0xe bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           __iar_Strchr            ACE0            _PrintfFull (?xprintffull)
+           __iar_Strchr            AA28            _PrintfFull (?xprintffull)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?strlen
@@ -3122,11 +2940,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: A9B0 - A9CF (0x20 bytes), align: 1
+  Relative segment, address: A6B6 - A6D5 (0x20 bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           strlen                  A9B0            _PrintfFull (?xprintffull)
+           strlen                  A6B6            _PrintfFull (?xprintffull)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?xdint
@@ -3134,11 +2952,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: 9EAC - 9F35 (0x8a bytes), align: 1
+  Relative segment, address: 9C7C - 9D05 (0x8a bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           __iar_Dint              9EAC            round (?round)
+           __iar_Dint              9C7C            round (?round)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?xdscale
@@ -3146,11 +2964,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: 9D8C - 9E1B (0x90 bytes), align: 1
+  Relative segment, address: 9B62 - 9BF1 (0x90 bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           __iar_Dscale            9D8C            _LdtobFull (?xprintffull)
+           __iar_Dscale            9B62            _LdtobFull (?xprintffull)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?xdunscal
@@ -3158,11 +2976,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: A4D0 - A517 (0x48 bytes), align: 1
+  Relative segment, address: A216 - A25D (0x48 bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           __iar_Dunscale          A4D0            _LdtobFull (?xprintffull)
+           __iar_Dunscale          A216            _LdtobFull (?xprintffull)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?xprintffull
@@ -3170,23 +2988,23 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: 82FE - 87B9 (0x4bc bytes), align: 1
+  Relative segment, address: 82D6 - 8791 (0x4bc bytes), align: 1
   Segment part 26.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           _PrintfFull             82FE            sprintf (?sprintf)
+           _PrintfFull             82D6            sprintf (?sprintf)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: ACD2 - ACDF (0xe bytes), align: 1
+  Relative segment, address: AA36 - AA43 (0xe bytes), align: 1
   Segment part 31.            Intra module refs:   _PrintfFull
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AC44 - AC49 (0x6 bytes), align: 1
+  Relative segment, address: A914 - A919 (0x6 bytes), align: 1
   Segment part 32.            Intra module refs:   _PrintfFull
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AC4A - AC57 (0xe bytes), align: 1
+  Relative segment, address: A91A - A927 (0xe bytes), align: 1
   Segment part 33.            Intra module refs:   Segment part 32
                                                    _PrintfFull
     -------------------------------------------------------------------------
@@ -3284,79 +3102,79 @@ RESET
                                                    _PrintfFull
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A74C - A77B (0x30 bytes), align: 1
+  Relative segment, address: A492 - A4C1 (0x30 bytes), align: 1
   Segment part 36.            Intra module refs:   Segment part 33
            LOCAL                   ADDRESS         
            =====                   =======         
-           pad                     A74C 
+           pad                     A492 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AD18 - AD1B (0x4 bytes), align: 1
+  Relative segment, address: AA78 - AA7B (0x4 bytes), align: 1
   Segment part 27.            Intra module refs:   Segment part 35
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AD1C - AD23 (0x8 bytes), align: 1
+  Relative segment, address: AA7C - AA83 (0x8 bytes), align: 1
   Segment part 28.            Intra module refs:   Segment part 27
                                                    _LdtobFull
                                                    _PrintfFull
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A87E - A8A1 (0x24 bytes), align: 1
+  Relative segment, address: A5C4 - A5E7 (0x24 bytes), align: 1
   Segment part 37.            Intra module refs:   _PrintfFull
                                                    _PutcharsFull
            LOCAL                   ADDRESS         
            =====                   =======         
-           _PutcharFull            A87E 
+           _PutcharFull            A5C4 
                calls indirect
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A858 - A87D (0x26 bytes), align: 1
+  Relative segment, address: A59E - A5C3 (0x26 bytes), align: 1
   Segment part 38.            Intra module refs:   Segment part 31
                                                    pad
            LOCAL                   ADDRESS         
            =====                   =======         
-           _PutcharsFull           A858 
+           _PutcharsFull           A59E 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: ACFC - AD09 (0xe bytes), align: 1
+  Relative segment, address: AA52 - AA5F (0xe bytes), align: 1
   Segment part 29.            Intra module refs:   _PrintfFull
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AC7E - AC8F (0x12 bytes), align: 1
+  Relative segment, address: A9C6 - A9D7 (0x12 bytes), align: 1
   Segment part 30.            Intra module refs:   _PrintfFull
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: AC1C - AC2F (0x14 bytes), align: 1
+  Relative segment, address: A8C4 - A8D7 (0x14 bytes), align: 1
   Segment part 34.            Intra module refs:   _PrintfFull
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: A64E - A685 (0x38 bytes), align: 1
+  Relative segment, address: A394 - A3CB (0x38 bytes), align: 1
   Segment part 35.            Intra module refs:   _PrintfFull
     -------------------------------------------------------------------------
 DATA20_C
-  Relative segment, address: ADC8 - ADCE (0x7 bytes), align: 0
+  Relative segment, address: AB10 - AB16 (0x7 bytes), align: 0
   Segment part 2.             Intra module refs:   _PrintfFull
     -------------------------------------------------------------------------
 DATA20_C
-  Relative segment, address: ADCF - ADD2 (0x4 bytes), align: 0
+  Relative segment, address: AB17 - AB1A (0x4 bytes), align: 0
   Segment part 3.             Intra module refs:   _LdtobFull
     -------------------------------------------------------------------------
 DATA20_C
-  Relative segment, address: ADD3 - ADD6 (0x4 bytes), align: 0
+  Relative segment, address: AB1B - AB1E (0x4 bytes), align: 0
   Segment part 4.             Intra module refs:   _LdtobFull
     -------------------------------------------------------------------------
 DATA20_C
-  Relative segment, address: ADD7 - ADDA (0x4 bytes), align: 0
+  Relative segment, address: AB1F - AB22 (0x4 bytes), align: 0
   Segment part 5.             Intra module refs:   _LdtobFull
     -------------------------------------------------------------------------
 DATA20_C
-  Relative segment, address: ADDB - ADDE (0x4 bytes), align: 0
+  Relative segment, address: AB23 - AB26 (0x4 bytes), align: 0
   Segment part 6.             Intra module refs:   _LdtobFull
     -------------------------------------------------------------------------
 DATA20_C
-  Relative segment, address: ADDF - ADE0 (0x2 bytes), align: 0
+  Relative segment, address: AB27 - AB28 (0x2 bytes), align: 0
   Segment part 7.             Intra module refs:   _GenldFull
 
     -------------------------------------------------------------------------
@@ -3365,11 +3183,11 @@ DATA20_C
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: AD0A - AD17 (0xe bytes), align: 1
+  Relative segment, address: AA1A - AA27 (0xe bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           _SProut                 AD0A            sprintf (?sprintf)
+           _SProut                 AA1A            sprintf (?sprintf)
 
     *************************************************************************
 
@@ -3429,16 +3247,16 @@ DATA16_AN                              0102 - 0103               2   rel    0
                                        06AE - 06AE               1 
                                        06BC - 06BD               2 
 CODE_I                                    1C00                       rel    1
-DATA20_I                               1C00 - 1C1F              20   rel    1
-DATA20_Z                               1C20 - 2403             7E4   rel    1
-DATA20_N                                  2404                       rel    1
+DATA20_I                               1C00 - 1C07               8   rel    1
+DATA20_Z                               1C08 - 23C7             7C0   rel    1
+DATA20_N                                  23C8                       rel    1
 CSTACK                                 5B60 - 5BFF              A0   rel    1
 CSTART                                 5C00 - 5C2F              30   rel    1
 ISR_CODE                               5C30 - 5ED7             2A8   rel    1
-<CODE> 1                               5ED8 - AD7F            4EA8   rel    1
-DATA20_C                               AD80 - ADE0              61   rel    1
-DATA20_ID                              ADE2 - AE01              20   rel    1
-CODE_ID                                   AE02                       rel    1
+<CODE> 1                               5ED8 - AAC7            4BF0   rel    1
+DATA20_C                               AAC8 - AB28              61   rel    1
+DATA20_ID                              AB2A - AB31               8   rel    1
+CODE_ID                                   AB32                       rel    1
 INTVEC                                 FF80 - FFF9              7A   com    1
 RESET                                  FFFE - FFFF               2   rel    1
 
@@ -3448,9 +3266,9 @@ RESET                                  FFFE - FFFF               2   rel    1
                 *                                      *
                 ****************************************
 
- 20 988 bytes of CODE  memory
-  2 212 bytes of DATA  memory (+ 123 absolute )
-    129 bytes of CONST memory
+ 20 292 bytes of CODE  memory
+  2 152 bytes of DATA  memory (+ 123 absolute )
+    105 bytes of CONST memory
 
 Errors: none
 Warnings: 1

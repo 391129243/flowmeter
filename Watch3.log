@@ -1,0 +1,28 @@
+Expression	Value	Location	Type	
+g_tofDisplay	4196	Memory:0x22f8	long	
+g_averageTimeResultDown	7.5207489011E+1	Memory:0x1e34	double	
+g_averageTimeResultUp	7.52030639E+1	Memory:0x1d40	double	
+g_calibrateCorrectionFactor	1.0	Memory:0x1d20	double	
+g_averageTimeResultDown	7.5207489011E+1	Memory:0x1e34	double	
+g_averageTimeResultUp	7.52030639E+1	Memory:0x1d40	double	
+g_timeOfFlight	4150.0	Memory:0x1f2c	double	
+g_calibrateCorrectionFactor	1.0	Memory:0x1d20	double	
+g_tdcStatusRegister	17	Memory:0x1d1a	unsigned int	
+g_tdcStatusRegister	17	Memory:0x1d1a	unsigned int	
+g_PW1STValue	1.375	Memory:0x1f28	double	
+g_timeOfFlightBuffer	<array>	Memory:0x1f38	double[60]	
+tempValueBuffer	<array>	Memory:0x2028	double[60]	
+g_averageTimeResultDown	7.5207489011E+1	Memory:0x1e34	double	
+g_timeResultdown0	7.5207489011E+1	Memory:0x1d30	double	
+g_timeResultdown1	3.7303136711E+4	Memory:0x1d34	double	
+g_timeResultdown2	6.22162841E+2	Memory:0x1d38	double	
+g_averageTimeResultUp	7.52030639E+1	Memory:0x1d40	double	
+g_timeResultup0	7.52030639E+1	Memory:0x1d24	double	
+g_timeResultup1	3.7303136711E+4	Memory:0x1d28	double	
+g_timeResultup2	6.22162841E+2	Memory:0x1d2c	double	
+tempDownValue	Error: non-readable. 			
+tempValueDownBuffer	<array>	Memory:0x2208	double[60]	
+g_timeOfFlightDownBuffer	7.5207855222E+1	Memory:0x1e38	<double>	
+tempValueUpBuffer	<array>	Memory:0x2118	double[60]	
+g_timeOfFlightUpBuffer	<array>	Memory:0x1d44	double[60]	
+ID_Bytes	<array>""	Memory:0x23b5	unsigned char[7]	

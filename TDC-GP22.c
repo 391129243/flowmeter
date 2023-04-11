@@ -448,6 +448,7 @@ void initConfigureRegisterTDCGP21( void )
   for(unsigned int i = 0; i < 65000; i++);
   initMeasureTDCGP21();
   configureRegisterTDCGP21( WRITE_REG0,0xf1c7ef00);//  0xd1c7f800
+
   //configureRegisterTDCGP21( WRITE_REG0, 0xd1c7d800 );
   //configureRegisterTDCGP21( WRITE_REG0, 0xD3C7E800 );     /// Configure TDC register.
 	// 设置低四位超声波发射的脉冲数为20个；            4M陶瓷晶振，1MHz脉冲，设置时钟信号产生脉冲分频因数为3=4分频；
@@ -495,9 +496,9 @@ void initConfigureRegisterTDCGP21( void )
   
   
   
-  configureRegisterTDCGP21( WRITE_REG4, 0x1000b004 );
+  //configureRegisterTDCGP21( WRITE_REG4, 0x1000b004 );
   
-   //configureRegisterTDCGP21( WRITE_REG4, 0x1000a004 );
+   configureRegisterTDCGP21( WRITE_REG4, 0x1000cf04 );
   
 	// 这里有十五个保留位；
         // 设置是否关闭脉冲宽度测量功能，这里为0=开启该功能；
@@ -551,7 +552,9 @@ void calibrateResonator( void )
   //g_calibrateCorrectionFactor = 1953.125/g_calibrateResult;
   
    // 2*(1/32768)/0.25*1000000=1953.125
-  g_calibrateCorrectionFactor = 244.140625/(g_calibrateResult+1);
+  //g_calibrateCorrectionFactor = 244.140625/(g_calibrateResult+1);
+  g_calibrateCorrectionFactor = 1953.125/(g_calibrateResult+1)/10;
+  
 }
 
 
@@ -624,6 +627,7 @@ unsigned int timecalibratorcount = 0;
 
 void ultrasonicTimeOfFlightMeasure(void)
 {
+     DelayNS(1000);
      unsigned int i;
      unsigned long temp;
      unsigned long tempshow,tempshow1;
@@ -667,7 +671,11 @@ void ultrasonicTimeOfFlightMeasure(void)
        g_timeResultdown2 = dotHextoDotDec(temp);
      }
      configureRegisterTDCGP21( WRITE_REG5, 0x30000005 );//切换上游测量
-     DelayNS(1000);//等待至少2.8us 
+     
+     calibrateResonator();
+     g_averageTimeResultDown = (g_averageTimeResultDown * g_calibrateCorrectionFactor);
+     
+     DelayNS(500);//等待至少2.8us 
      
      initMeasureTDCGP21();
      timeFlightStartTDCGP21();
@@ -692,12 +700,19 @@ void ultrasonicTimeOfFlightMeasure(void)
        temp = readRegisterTDCGP21(READ_RES2);
        g_timeResultup2 = dotHextoDotDec(temp);
      }
+     
+     
+     calibrateResonator();
+       
+     g_averageTimeResultUp = (g_averageTimeResultUp * g_calibrateCorrectionFactor);
+       
+     
      configureRegisterTDCGP21( WRITE_REG5, 0x50000005 );//切换下游测量
-     DelayNS(5000);//等待至少2.8us 
+     DelayNS(500);//等待至少2.8us 
      
      if( (0 == g_downTimeOutFlag) && (0 == g_upTimeOutFlag) )
      {
-       if( ( (g_averageTimeResultDown<=50)||(g_averageTimeResultDown>=80) ) || ( (g_averageTimeResultUp<=50)||(g_averageTimeResultUp>=80) ) )
+       if( ( (g_averageTimeResultDown<=5)||(g_averageTimeResultDown>=80) ) || ( (g_averageTimeResultUp<=5)||(g_averageTimeResultUp>=80) ) )
        {       
          Display_Alarm_Icon(1);
          //initConfigureRegisterTDCGP21();
@@ -718,7 +733,7 @@ void ultrasonicTimeOfFlightMeasure(void)
        
        DelayNS(5000);//等待至少2.8us 
        
-       //calibrateResonator();
+       
        
     
        //g_averageTimeResultDown = g_averageTimeResultDown*0.25/g_calibrateCorrectionFactor;
@@ -727,13 +742,23 @@ void ultrasonicTimeOfFlightMeasure(void)
        //g_averageTimeResultUp = g_averageTimeResultUp*0.25;
        //g_timeOfFlight = (long)((g_averageTimeResultDown - g_averageTimeResultUp)*1000000*0.25);    
        
-       g_calibrateCorrectionFactor = 1.0f;
+       //g_calibrateCorrectionFactor = 1.0f;
        
-       g_averageTimeResultDown = kalman_filterdown(g_averageTimeResultDown * g_calibrateCorrectionFactor);
+       //g_averageTimeResultDown = kalman_filterdown(g_averageTimeResultDown * g_calibrateCorrectionFactor);
        
        
        
-       g_averageTimeResultUp = kalman_filterup(g_averageTimeResultUp * g_calibrateCorrectionFactor);
+       //g_averageTimeResultUp = kalman_filterup(g_averageTimeResultUp * g_calibrateCorrectionFactor);
+       
+       //calibrateResonator();
+       
+       
+       //g_averageTimeResultDown = (g_averageTimeResultDown * g_calibrateCorrectionFactor);
+       
+       
+       //calibrateResonator();
+       
+       //g_averageTimeResultUp = (g_averageTimeResultUp * g_calibrateCorrectionFactor);
        
        
       ////////////////////////////////////////////////////////////////////////////// 
@@ -771,11 +796,11 @@ void ultrasonicTimeOfFlightMeasure(void)
         tempValueUpSum += tempValueUpBuffer[i];
         
       }
-      
-      
-      
+           
       
       g_averageTimeResultUp = tempValueUpSum/10;
+      
+      //g_timeOfFlightUpBuffer[0]= g_averageTimeResultUp;
       
       
      
@@ -816,7 +841,9 @@ void ultrasonicTimeOfFlightMeasure(void)
         
       }
       g_averageTimeResultDown = tempValueDownSum/10;
-       
+      
+      
+      //g_timeOfFlightDownBuffer[0] = g_averageTimeResultDown;
       
       
       
@@ -830,7 +857,7 @@ void ultrasonicTimeOfFlightMeasure(void)
 
        g_timeOfFlight = (long)temp1;
      
-       if( g_timeOfFlight > 600000 || g_timeOfFlight < -600000 )
+       if( g_timeOfFlight > 60000 || g_timeOfFlight < -60000 )
        {       
          Display_Alarm_Icon(1);
          //initConfigureRegisterTDCGP21();
@@ -838,13 +865,13 @@ void ultrasonicTimeOfFlightMeasure(void)
        }
        
        
-       DelayNS(5000);//等待至少2.8us 
+       DelayNS(500);//等待至少2.8us 
        
        
        Display_Alarm_Icon(0);
        
        
-       g_timeOfFlight = kalman_filter(g_timeOfFlight);
+       //g_timeOfFlight = kalman_filter(g_timeOfFlight);
        
 
         for( i = 59; i > 0; i-- )  //将最新一次的飞行时间差采样，送入缓冲区（8 bits）
@@ -896,7 +923,7 @@ void ultrasonicTimeOfFlightMeasure(void)
         g_timeOfFlight_ave_offset = tempValueSum;
         
         
-        float roundtempValueSum = tempValueSum;
+        double roundtempValueSum = tempValueSum;
         
         
         g_timeOfFlight_ave = round((roundtempValueSum - offset)/10);
@@ -1323,7 +1350,7 @@ void CalcVolume(double frequence,unsigned long tof_ave)
 
 void DelayNS(unsigned long dly)
 {
-	unsigned int  i;
+	unsigned long i;
 		for(i=0;i<dly;i++);
 } 
 
